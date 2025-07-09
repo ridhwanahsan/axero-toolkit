@@ -1,5 +1,5 @@
 <?php
-    namespace lunex_toolkit\Widgets;
+    namespace axero_toolkit\Widgets;
 
     use Elementor\Controls_Manager;
     use Elementor\Widget_Base;
@@ -8,17 +8,17 @@
         exit;
     }
 
-    class lunex_image_shape  extends Widget_Base
+    class axero_image_shape extends Widget_Base
     {
 
         public function get_name()
         {
-            return 'lunex_image_shape ';
+            return 'axero_image_shape ';
         }
 
         public function get_title()
         {
-            return __('Image Shape', 'lunex-toolkit');
+            return __('Image Shape', 'axero-toolkit');
         }
 
         public function get_icon()
@@ -28,7 +28,7 @@
 
         public function get_categories()
         {
-            return ['Lunex'];
+            return ['Axero'];
         }
 
         protected function register_controls()
@@ -43,7 +43,7 @@
             $this->start_controls_section(
                 'section_selection',
                 [
-                    'label' => esc_html__('Section Selection', 'lunex-toolkit'),
+                    'label' => esc_html__('Section Selection', 'axero-toolkit'),
                     'tab'   => Controls_Manager::TAB_CONTENT,
                 ]
             );
@@ -51,48 +51,48 @@
             $this->add_control(
                 'style_selection',
                 [
-                    'label'   => esc_html__('Select Section', 'lunex-toolkit'),
+                    'label'   => esc_html__('Select Section', 'axero-toolkit'),
                     'type'    => Controls_Manager::SELECT,
                     'default' => 'style1',
                     'options' => [
-                        'style1' => esc_html__('Style 1', 'lunex-toolkit'),
-                        
+                        'style1' => esc_html__('Style 1', 'axero-toolkit'),
+
                     ],
                 ]
             );
 
             $this->end_controls_section();
-        // Image Control
-        $this->start_controls_section(
-            'image_section',
-            [
-                'label' => esc_html__('Image', 'lunex-toolkit'),
-                'tab'   => Controls_Manager::TAB_CONTENT,
-            ]
-        );
+            // Image Control
+            $this->start_controls_section(
+                'image_section',
+                [
+                    'label' => esc_html__('Image', 'axero-toolkit'),
+                    'tab'   => Controls_Manager::TAB_CONTENT,
+                ]
+            );
 
-        $this->add_control(
-            'image',
-            [
-                'label' => esc_html__('Choose Image', 'lunex-toolkit'),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => get_template_directory_uri() . '/assets/images/banners/banner2.jpg',
-                ],
-            ]
-        );
+            $this->add_control(
+                'image',
+                [
+                    'label'   => esc_html__('Choose Image', 'axero-toolkit'),
+                    'type'    => Controls_Manager::MEDIA,
+                    'default' => [
+                        'url' => get_template_directory_uri() . '/assets/images/banners/banner2.jpg',
+                    ],
+                ]
+            );
 
-        $this->add_control(
-            'image_alt',
-            [
-                'label' => esc_html__('Alt Text', 'lunex-toolkit'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Banner Image', 'lunex-toolkit'),
-                'label_block' => true,
-            ]
-        );
+            $this->add_control(
+                'image_alt',
+                [
+                    'label'       => esc_html__('Alt Text', 'axero-toolkit'),
+                    'type'        => Controls_Manager::TEXT,
+                    'default'     => esc_html__('Banner Image', 'axero-toolkit'),
+                    'label_block' => true,
+                ]
+            );
 
-        $this->end_controls_section();
+            $this->end_controls_section();
 
         }
         /**
@@ -135,4 +135,4 @@
             }
         }
 
-    $widgets_manager->register(new lunex_image_shape ());
+    $widgets_manager->register(new axero_image_shape());

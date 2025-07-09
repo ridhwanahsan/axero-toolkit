@@ -15,7 +15,7 @@ function rcb_shortcode_integrateWithVC()
 {
     vc_map([
         "name"              => __("Reusable Block", "reusablec-block"),
-        "base"              => "lunex_block",
+        "base"              => "axero_block",
         "class"             => "reusecb_data_source",
         "category"          => __("Content", "reusablec-block"),
         "icon"              => "dashicons-clipboard",
@@ -28,10 +28,10 @@ function rcb_shortcode_integrateWithVC()
                 'heading'     => __('Data source', "reusablec-block"),
                 'param_name'  => 'data_source',
                 'value'       => [
-                    __('Reusable Block', 'lunex-toolkit')   => 'reusable_block',
-                    __('Other Post types', 'lunex-toolkit') => 'db_other',
+                    __('Reusable Block', 'axero-toolkit')   => 'reusable_block',
+                    __('Other Post types', 'axero-toolkit') => 'db_other',
                 ],
-                'description' => __('Select data source', 'lunex-toolkit'),
+                'description' => __('Select data source', 'axero-toolkit'),
             ],
             [
                 "type"        => "rcb_posts",

@@ -1,79 +1,83 @@
 <?php
 /**
- * lunex Toolkit Functions
+ * axero Toolkit Functions
  */
 
-add_filter('script_loader_tag', 'lunex_clean_script_tag');
-function lunex_clean_script_tag($input) {
-	$input = str_replace( array( 'type="text/javascript"', "type='text/javascript'" ), '', $input );
-	return $input;
+add_filter('script_loader_tag', 'axero_clean_script_tag');
+function axero_clean_script_tag($input)
+{
+    $input = str_replace(['type="text/javascript"', "type='text/javascript'"], '', $input);
+    return $input;
 }
 
-function lunex_toolkit_get_products_cat_list() {
+function axero_toolkit_get_products_cat_list()
+{
 
-	$courses_category_id = get_queried_object_id();
-	$args = array(
-		'parent' => $courses_category_id
-	);
+    $courses_category_id = get_queried_object_id();
+    $args                = [
+        'parent' => $courses_category_id,
+    ];
 
-	$terms = get_terms( 'product_cat', get_the_ID());
-	$cat_options = array('' => '');
+    $terms       = get_terms('product_cat', get_the_ID());
+    $cat_options = ['' => ''];
 
-	if ($terms) {
-		foreach ($terms as $term) {
-			$cat_options[$term->name] = $term->name;
-		}
-	}
-	return $cat_options;
+    if ($terms) {
+        foreach ($terms as $term) {
+            $cat_options[$term->name] = $term->name;
+        }
+    }
+    return $cat_options;
 }
 
-function lunex_toolkit_get_cat_list() {
-	$category_id = get_queried_object_id();
-	$args = array(
-		'parent' => $category_id
-	);
-    $terms = get_terms( array(
-        'taxonomy' => 'category',
+function axero_toolkit_get_cat_list()
+{
+    $category_id = get_queried_object_id();
+    $args        = [
+        'parent' => $category_id,
+    ];
+    $terms = get_terms([
+        'taxonomy'   => 'category',
         'hide_empty' => false,
-    ) );
-	$cat_options = array('' => '');
+    ]);
+    $cat_options = ['' => ''];
 
-	if ($terms) {
-		foreach ($terms as $term) {
-			$cat_options[$term->name] = $term->name;
-		}
-	}
-	return $cat_options;
+    if ($terms) {
+        foreach ($terms as $term) {
+            $cat_options[$term->name] = $term->name;
+        }
+    }
+    return $cat_options;
 }
-
 
 // Post Category Select
-function lunex_toolkit_get_post_cat_list() {
-	$post_category_id = get_queried_object_id();
-	$args = array(
-		'parent' => $post_category_id
-	);
+function axero_toolkit_get_post_cat_list()
+{
+    $post_category_id = get_queried_object_id();
+    $args             = [
+        'parent' => $post_category_id,
+    ];
 
-	$terms = get_terms( 'category', get_the_ID());
-	$cat_options = array(esc_html__('', 'lunex-toolkit') => '');
+    $terms       = get_terms('category', get_the_ID());
+    $cat_options = [esc_html__('', 'axero-toolkit') => ''];
 
-	if ($terms) {
-		foreach ($terms as $term) {
-			$cat_options[$term->name] = $term->name;
-		}
-	}
-	return $cat_options;
+    if ($terms) {
+        foreach ($terms as $term) {
+            $cat_options[$term->name] = $term->name;
+        }
+    }
+    return $cat_options;
 }
 
 // Select page for link
-function lunex_toolkit_get_page_as_list() {
-    $args = wp_parse_args(array(
-        'post_type' => 'page',
+function axero_toolkit_get_page_as_list()
+{
+    $args = wp_parse_args([
+        'post_type'   => 'page',
         'numberposts' => -1,
-    ));
+    ]);
 
-    $posts = get_posts($args);
-    $post_options = array(esc_html__('', 'lunex-toolkit') => '');
+    $posts        = get_posts($args);
+    $post_options = [esc_html__('', 'axero-toolkit') => ''];
 
     if ($posts) {
         foreach ($posts as $post) {
@@ -84,18 +88,19 @@ function lunex_toolkit_get_page_as_list() {
     return $flipped;
 }
 
-add_filter( 'body_class', function( $classes ) {
-    return array_merge( $classes, array( 'lunex-toolkit-activate' ) );
-} );
+add_filter('body_class', function ($classes) {
+    return array_merge($classes, ['axero-toolkit-activate']);
+});
 
 // Disables the block editor from managing widgets in the Gutenberg plugin.
-add_filter( 'gutenberg_use_widgets_block_editor', '__return_false', 100 );
+add_filter('gutenberg_use_widgets_block_editor', '__return_false', 100);
 
 // Disables the block editor from managing widgets. renamed from wp_use_widgets_block_editor
-add_filter( 'use_widgets_block_editor', '__return_false' );
+add_filter('use_widgets_block_editor', '__return_false');
 
-add_filter( 'navigation_markup_template', 'lunex_navigation_template' );
-function lunex_navigation_template( $template ) {
+add_filter('navigation_markup_template', 'axero_navigation_template');
+function axero_navigation_template($template)
+{
     $template = '
     <nav class="navigation %1$s">
         <h2 class="screen-reader-text">%2$s</h2>
@@ -108,10 +113,11 @@ function lunex_navigation_template( $template ) {
  * Get the existing menus in array format
  * @return array
  */
-function lunex_get_menu_array() {
-    $menus = wp_get_nav_menus();
+function axero_get_menu_array()
+{
+    $menus      = wp_get_nav_menus();
     $menu_array = [];
-    foreach ( $menus as $menu ) {
+    foreach ($menus as $menu) {
         $menu_array[$menu->slug] = $menu->name;
     }
     return $menu_array;
@@ -120,111 +126,116 @@ function lunex_get_menu_array() {
 /**
  * Post title array
  */
-function lunex_get_post_title_array( $postType = 'post' ) {
-	$args = wp_parse_args(array(
-        'post_type' => $postType,
+function axero_get_post_title_array($postType = 'post')
+{
+    $args = wp_parse_args([
+        'post_type'   => $postType,
         'numberposts' => -1,
-    ));
+    ]);
 
-    $posts = get_posts( $args );
-    $post_options = array( '' => '' );
+    $posts        = get_posts($args);
+    $post_options = ['' => ''];
 
     if ($posts) {
-        foreach ( $posts as $post ) {
+        foreach ($posts as $post) {
             $post_options[$post->post_title] = $post->ID;
         }
     }
-    $flipped = array_flip( $post_options);
-	return $flipped;
+    $flipped = array_flip($post_options);
+    return $flipped;
 }
 
-function lunex_year_shortcode() {
-	$year = date('Y');
-	return $year;
-  }
-add_shortcode('year', 'lunex_year_shortcode');
-
-function lunex_add_class_body_if_user_not_login($classes) {
-	if(!is_user_logged_in()) {
-		return array_merge( $classes, array( 'not-logged-in' ) );
-	}else{
-		return array_merge( $classes, array( '' ) );
-	}
+function axero_year_shortcode()
+{
+    $year = date('Y');
+    return $year;
 }
-add_filter( 'body_class', 'lunex_add_class_body_if_user_not_login' );
+add_shortcode('year', 'axero_year_shortcode');
+
+function axero_add_class_body_if_user_not_login($classes)
+{
+    if (! is_user_logged_in()) {
+        return array_merge($classes, ['not-logged-in']);
+    } else {
+        return array_merge($classes, ['']);
+    }
+}
+add_filter('body_class', 'axero_add_class_body_if_user_not_login');
 
 /**
  * Remove pages from search result
  */
-if ( ! function_exists( 'lunex_remove_pages_from_search' ) ) :
-    function lunex_remove_pages_from_search() {
-		global $lunex_opt;
-		global $wp_post_types;
+if (! function_exists('axero_remove_pages_from_search')):
+    function axero_remove_pages_from_search()
+{
+        global $axero_opt;
+        global $wp_post_types;
 
-		if( isset( $lunex_opt['lunex_search_page'] ) ):
-			if( $lunex_opt['lunex_search_page'] != true ):
-				$wp_post_types['page']->exclude_from_search = true;
-			else:
-				$wp_post_types['page']->exclude_from_search = false;
-			endif;
-		else:
-			$wp_post_types['page']->exclude_from_search = false;
-		endif;
-	}
+        if (isset($axero_opt['axero_search_page'])):
+            if ($axero_opt['axero_search_page'] != true):
+                $wp_post_types['page']->exclude_from_search = true;
+            else:
+                $wp_post_types['page']->exclude_from_search = false;
+            endif;
+        else:
+            $wp_post_types['page']->exclude_from_search = false;
+        endif;
+    }
 endif;
-add_action('init', 'lunex_remove_pages_from_search');
+add_action('init', 'axero_remove_pages_from_search');
 
-function lunex_toolkit_enable_svg_upload( $upload_mimes ) {
-    $upload_mimes['svg'] = 'image/svg+xml';
+function axero_toolkit_enable_svg_upload($upload_mimes)
+{
+    $upload_mimes['svg']  = 'image/svg+xml';
     $upload_mimes['svgz'] = 'image/svg+xml';
     return $upload_mimes;
 }
-add_filter( 'upload_mimes', 'lunex_toolkit_enable_svg_upload', 10, 1 );
+add_filter('upload_mimes', 'axero_toolkit_enable_svg_upload', 10, 1);
 
 /**
-* Get CPT Taxonomies
-* @return array
-*/
-function lunex_cpt_taxonomies($posttype,$value='id')
+ * Get CPT Taxonomies
+ * @return array
+ */
+function axero_cpt_taxonomies($posttype, $value = 'id')
 {
-	$options = array();
-	$terms = get_terms( $posttype );
-	if (!empty($terms) && !is_wp_error($terms)) {
-		foreach ($terms as $term) {
-			if ('name' == $value) {
-				$options[$term->name] = $term->name;
-			} else {
-				$options[$term->term_id] = $term->name;
-			}
-		}
-	}
-	return $options;
+    $options = [];
+    $terms   = get_terms($posttype);
+    if (! empty($terms) && ! is_wp_error($terms)) {
+        foreach ($terms as $term) {
+            if ('name' == $value) {
+                $options[$term->name] = $term->name;
+            } else {
+                $options[$term->term_id] = $term->name;
+            }
+        }
+    }
+    return $options;
 }
 
-function lunex_cpt_get_post_title($cptname='') {
-	if ( $cptname ) {
-		$list = get_posts( array(
-			'post_type'         => $cptname,
-			'posts_per_page'    => -1,
-		) );
-		$options = array();
-		if ( ! empty( $list ) && ! is_wp_error( $list ) ) {
-			foreach ( $list as $post ) {
-				$options[ $post->ID ] = $post->post_title;
-			}
-		}
-		return $options;
-	}
+function axero_cpt_get_post_title($cptname = '')
+{
+    if ($cptname) {
+        $list = get_posts([
+            'post_type'      => $cptname,
+            'posts_per_page' => -1,
+        ]);
+        $options = [];
+        if (! empty($list) && ! is_wp_error($list)) {
+            foreach ($list as $post) {
+                $options[$post->ID] = $post->post_title;
+            }
+        }
+        return $options;
+    }
 }
 
-
- // register widget category// 
+// register widget category//
 
 function add_elementor_widget_categories($elements_manager)
 {
     $categories = [
-        'Lunex'    => [
-            'title' => 'Lunex',
+        'Axero'         => [
+            'title' => 'Axero',
             'icon'  => 'fa fa-plug',
         ],
         'header_footer' => [
@@ -236,13 +247,13 @@ function add_elementor_widget_categories($elements_manager)
     $old_categories = $elements_manager->get_categories();
     $categories     = array_merge($categories, $old_categories);
 
-    // Remove duplicates and ensure 'Lunex' is at the top and 'header_footer' is under it
+    // Remove duplicates and ensure 'Axero' is at the top and 'header_footer' is under it
     $categories = array_unique($categories, SORT_REGULAR);
     uksort($categories, function ($key1, $key2) {
-        if ($key1 === 'Lunex') {
+        if ($key1 === 'Axero') {
             return -1;
         }
-        if ($key2 === 'Lunex') {
+        if ($key2 === 'Axero') {
             return 1;
         }
         if ($key1 === 'header_footer') {

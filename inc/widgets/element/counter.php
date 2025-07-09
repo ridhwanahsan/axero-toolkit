@@ -1,5 +1,5 @@
 <?php
-    namespace lunex_toolkit\Widgets;
+    namespace axero_toolkit\Widgets;
 
     use Elementor\Controls_Manager;
     use Elementor\Widget_Base;
@@ -8,17 +8,17 @@
         exit;
     }
 
-    class lunex_counter extends Widget_Base
+    class axero_counter extends Widget_Base
     {
 
         public function get_name()
         {
-            return 'lunex_counter';
+            return 'axero_counter';
         }
 
         public function get_title()
         {
-            return __('lunex counter', 'lunex-toolkit');
+            return __('axero counter', 'axero-toolkit');
         }
 
         public function get_icon()
@@ -28,7 +28,7 @@
 
         public function get_categories()
         {
-            return ['Lunex'];
+            return ['Axero'];
         }
 
         protected function register_controls()
@@ -43,7 +43,7 @@
             $this->start_controls_section(
                 'section_selection',
                 [
-                    'label' => esc_html__('Section Selection', 'lunex-toolkit'),
+                    'label' => esc_html__('Section Selection', 'axero-toolkit'),
                     'tab'   => Controls_Manager::TAB_CONTENT,
                 ]
             );
@@ -51,12 +51,12 @@
             $this->add_control(
                 'style_selection',
                 [
-                    'label'   => esc_html__('Select Section', 'lunex-toolkit'),
+                    'label'   => esc_html__('Select Section', 'axero-toolkit'),
                     'type'    => Controls_Manager::SELECT,
                     'default' => 'style1',
                     'options' => [
-                        'style1' => esc_html__('Style 1', 'lunex-toolkit'),
-                        
+                        'style1' => esc_html__('Style 1', 'axero-toolkit'),
+
                     ],
                 ]
             );
@@ -66,7 +66,7 @@
             $this->start_controls_section(
                 'section_counter',
                 [
-                    'label' => esc_html__('Counter', 'lunex-toolkit'),
+                    'label' => esc_html__('Counter', 'axero-toolkit'),
                     'tab'   => Controls_Manager::TAB_CONTENT,
                 ]
             );
@@ -74,32 +74,32 @@
             $this->add_control(
                 'counter_items',
                 [
-                    'label'       => esc_html__('Counter Items', 'lunex-toolkit'),
+                    'label'       => esc_html__('Counter Items', 'axero-toolkit'),
                     'type'        => \Elementor\Controls_Manager::REPEATER,
                     'fields'      => [
                         [
-                            'name'        => 'number',
-                            'label'       => esc_html__('Number', 'lunex-toolkit'),
-                            'type'        => \Elementor\Controls_Manager::TEXT,
-                            'default'     => '25',
+                            'name'    => 'number',
+                            'label'   => esc_html__('Number', 'axero-toolkit'),
+                            'type'    => \Elementor\Controls_Manager::TEXT,
+                            'default' => '25',
                         ],
                         [
-                            'name'        => 'suffix',
-                            'label'       => esc_html__('Suffix', 'lunex-toolkit'),
-                            'type'        => \Elementor\Controls_Manager::TEXT,
-                            'default'     => '+',
+                            'name'    => 'suffix',
+                            'label'   => esc_html__('Suffix', 'axero-toolkit'),
+                            'type'    => \Elementor\Controls_Manager::TEXT,
+                            'default' => '+',
                         ],
                         [
-                            'name'        => 'quote',
-                            'label'       => esc_html__('Quote', 'lunex-toolkit'),
-                            'type'        => \Elementor\Controls_Manager::TEXT,
-                            'default'     => '//',
+                            'name'    => 'quote',
+                            'label'   => esc_html__('Quote', 'axero-toolkit'),
+                            'type'    => \Elementor\Controls_Manager::TEXT,
+                            'default' => '//',
                         ],
                         [
-                            'name'        => 'title',
-                            'label'       => esc_html__('Title', 'lunex-toolkit'),
-                            'type'        => \Elementor\Controls_Manager::TEXT,
-                            'default'     => 'Awards & Recognitions',
+                            'name'    => 'title',
+                            'label'   => esc_html__('Title', 'axero-toolkit'),
+                            'type'    => \Elementor\Controls_Manager::TEXT,
+                            'default' => 'Awards & Recognitions',
                         ],
                     ],
                     'default'     => [
@@ -143,98 +143,98 @@
         protected function style_tab_content()
         {
             // content style controls tab
-        // Number Style
-        $this->start_controls_section(
-            'number_style',
-            [
-                'label' => esc_html__('Number Style', 'lunex-toolkit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
+            // Number Style
+            $this->start_controls_section(
+                'number_style',
+                [
+                    'label' => esc_html__('Number Style', 'axero-toolkit'),
+                    'tab'   => Controls_Manager::TAB_STYLE,
+                ]
+            );
 
-        $this->add_control(
-            'number_color',
-            [
-                'label'     => esc_html__('Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'default'   => '#ffffff',
-                'selectors' => [
-                    '{{WRAPPER}} .funfact_box .number' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'number_color',
+                [
+                    'label'     => esc_html__('Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'default'   => '#ffffff',
+                    'selectors' => [
+                        '{{WRAPPER}} .funfact_box .number' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'number_typography',
-                'selector' => '{{WRAPPER}} .funfact_box .number',
-            ]
-        );
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name'     => 'number_typography',
+                    'selector' => '{{WRAPPER}} .funfact_box .number',
+                ]
+            );
 
-        $this->end_controls_section();
+            $this->end_controls_section();
 
-        // Quote Style
-        $this->start_controls_section(
-            'quote_style',
-            [
-                'label' => esc_html__('Quote Style', 'lunex-toolkit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
+            // Quote Style
+            $this->start_controls_section(
+                'quote_style',
+                [
+                    'label' => esc_html__('Quote Style', 'axero-toolkit'),
+                    'tab'   => Controls_Manager::TAB_STYLE,
+                ]
+            );
 
-        $this->add_control(
-            'quote_color',
-            [
-                'label'     => esc_html__('Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'default'   => '#ffffff',
-                'selectors' => [
-                    '{{WRAPPER}} .funfact_box .quote' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'quote_color',
+                [
+                    'label'     => esc_html__('Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'default'   => '#ffffff',
+                    'selectors' => [
+                        '{{WRAPPER}} .funfact_box .quote' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'quote_typography',
-                'selector' => '{{WRAPPER}} .funfact_box .quote',
-            ]
-        );
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name'     => 'quote_typography',
+                    'selector' => '{{WRAPPER}} .funfact_box .quote',
+                ]
+            );
 
-        $this->end_controls_section();
+            $this->end_controls_section();
 
-        // Title Style
-        $this->start_controls_section(
-            'title_style',
-            [
-                'label' => esc_html__('Title Style', 'lunex-toolkit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
+            // Title Style
+            $this->start_controls_section(
+                'title_style',
+                [
+                    'label' => esc_html__('Title Style', 'axero-toolkit'),
+                    'tab'   => Controls_Manager::TAB_STYLE,
+                ]
+            );
 
-        $this->add_control(
-            'title_color',
-            [
-                'label'     => esc_html__('Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'default'   => '#ffffff',
-                'selectors' => [
-                    '{{WRAPPER}} .funfact_box .title' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'title_color',
+                [
+                    'label'     => esc_html__('Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'default'   => '#ffffff',
+                    'selectors' => [
+                        '{{WRAPPER}} .funfact_box .title' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .funfact_box .title',
-            ]
-        );
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name'     => 'title_typography',
+                    'selector' => '{{WRAPPER}} .funfact_box .title',
+                ]
+            );
 
-        $this->end_controls_section();
+            $this->end_controls_section();
 
         }
 
@@ -249,23 +249,23 @@
             <div class="funfacts_area ">
                 <div class="container">
                     <div class="row" data-cues="slideInUp" data-group="funfacts_list">
-                        <?php if ( ! empty( $settings['counter_items'] ) && is_array( $settings['counter_items'] ) ) : ?>
-                            <?php foreach ( $settings['counter_items'] as $item ) : ?>
+                        <?php if (! empty($settings['counter_items']) && is_array($settings['counter_items'])): ?>
+<?php foreach ($settings['counter_items'] as $item): ?>
                                 <div class="col-sm-6">
                                     <div class="funfact_box">
                                         <div class="number lh-1 fw-bold ">
-                                            <span class="counter_number"><?php echo esc_html( $item['number'] ); ?></span><?php echo esc_html( $item['suffix'] ); ?>
+                                            <span class="counter_number"><?php echo esc_html($item['number']); ?></span><?php echo esc_html($item['suffix']); ?>
                                         </div>
                                         <div class="quote  fw-medium lh-1">
-                                            <?php echo esc_html( $item['quote'] ); ?>
+                                            <?php echo esc_html($item['quote']); ?>
                                         </div>
                                         <div class="title text-lg-end text-uppercase fw-medium">
-                                            <?php echo esc_html( $item['title'] ); ?>
+                                            <?php echo esc_html($item['title']); ?>
                                         </div>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
-                        <?php endif; ?>
+<?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -285,4 +285,4 @@
             }
         }
 
-    $widgets_manager->register(new lunex_counter());
+    $widgets_manager->register(new axero_counter());

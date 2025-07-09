@@ -1,5 +1,5 @@
 <?php
-    namespace lunex_toolkit\Widgets;
+    namespace axero_toolkit\Widgets;
 
     use Elementor\Controls_Manager;
     use Elementor\Widget_Base;
@@ -8,17 +8,17 @@
         exit;
     }
 
-    class lunex_text_slide extends Widget_Base
+    class axero_text_slide extends Widget_Base
     {
 
         public function get_name()
         {
-            return 'lunex_text_slide';
+            return 'axero_text_slide';
         }
 
         public function get_title()
         {
-            return __('Text Slide', 'lunex-toolkit');
+            return __('Text Slide', 'axero-toolkit');
         }
 
         public function get_icon()
@@ -28,7 +28,7 @@
 
         public function get_categories()
         {
-            return ['Lunex'];
+            return ['Axero'];
         }
 
         protected function register_controls()
@@ -43,7 +43,7 @@
             $this->start_controls_section(
                 'section_selection',
                 [
-                    'label' => esc_html__('Section Selection', 'lunex-toolkit'),
+                    'label' => esc_html__('Section Selection', 'axero-toolkit'),
                     'tab'   => Controls_Manager::TAB_CONTENT,
                 ]
             );
@@ -51,184 +51,184 @@
             $this->add_control(
                 'style_selection',
                 [
-                    'label'   => esc_html__('Select Section', 'lunex-toolkit'),
+                    'label'   => esc_html__('Select Section', 'axero-toolkit'),
                     'type'    => Controls_Manager::SELECT,
                     'default' => 'style1',
                     'options' => [
-                        'style1' => esc_html__('Style 1', 'lunex-toolkit'),
-                        'style2' => esc_html__('Style 2', 'lunex-toolkit'),
-                        'style3' => esc_html__('Style 3', 'lunex-toolkit'),
+                        'style1' => esc_html__('Style 1', 'axero-toolkit'),
+                        'style2' => esc_html__('Style 2', 'axero-toolkit'),
+                        'style3' => esc_html__('Style 3', 'axero-toolkit'),
                     ],
                 ]
             );
 
             $this->end_controls_section();
-        // Text Content Controls
-        $this->start_controls_section(
-            'text_content',
-            [
-                'label' => esc_html__('Text Content', 'lunex-toolkit'),
-                'tab'   => Controls_Manager::TAB_CONTENT,
-                'condition' => [
-                    'style_selection' => 'style1',
-                ],
-            ]
-        );
-
-        $repeater = new \Elementor\Repeater();
-
-        $repeater->add_control(
-            'main_text',
-            [
-                'label' => esc_html__('Main Text', 'lunex-toolkit'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Creative', 'lunex-toolkit'),
-                'label_block' => true,
-            ]
-        );
-
-        $repeater->add_control(
-            'highlighted_text', 
-            [
-                'label' => esc_html__('Highlighted Text', 'lunex-toolkit'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Design', 'lunex-toolkit'),
-                'label_block' => true,
-            ]
-        );
-
-        $repeater->add_control(
-            'ending_text',
-            [
-                'label' => esc_html__('Ending Text', 'lunex-toolkit'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Agency', 'lunex-toolkit'),
-                'label_block' => true,
-            ]
-        );
-
-        $this->add_control(
-            'text_slides',
-            [
-                'label' => esc_html__('Text Slides', 'lunex-toolkit'),
-                'type' => Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'default' => [
-                    [
-                        'main_text' => esc_html__('Creative', 'lunex-toolkit'),
-                        'highlighted_text' => esc_html__('Design', 'lunex-toolkit'),
-                        'ending_text' => esc_html__('Agency', 'lunex-toolkit'),
+            // Text Content Controls
+            $this->start_controls_section(
+                'text_content',
+                [
+                    'label'     => esc_html__('Text Content', 'axero-toolkit'),
+                    'tab'       => Controls_Manager::TAB_CONTENT,
+                    'condition' => [
+                        'style_selection' => 'style1',
                     ],
-                    [
-                        'main_text' => esc_html__('Creative', 'lunex-toolkit'),
-                        'highlighted_text' => esc_html__('Design', 'lunex-toolkit'),
-                        'ending_text' => esc_html__('Agency', 'lunex-toolkit'),
-                    ],
-                    [
-                        'main_text' => esc_html__('Creative', 'lunex-toolkit'),
-                        'highlighted_text' => esc_html__('Design', 'lunex-toolkit'),
-                        'ending_text' => esc_html__('Agency', 'lunex-toolkit'),
-                    ],
-                ],
-                'title_field' => '{{{ main_text }}} <span>{{{ highlighted_text }}}</span> {{{ ending_text }}}',
-            ]
-        );
+                ]
+            );
 
-        $this->end_controls_section();
-        // Style 2 Content Controls
-        $this->start_controls_section(
-            'style2_content_section',
-            [
-                'label' => esc_html__('Style 2 Content', 'lunex-toolkit'),
-                'tab' => Controls_Manager::TAB_CONTENT,
-                'condition' => [
-                  'style_selection' => ['style2', 'style3'],
-                ],
-            ]
-        );
+            $repeater = new \Elementor\Repeater();
 
-        $repeater = new \Elementor\Repeater();
+            $repeater->add_control(
+                'main_text',
+                [
+                    'label'       => esc_html__('Main Text', 'axero-toolkit'),
+                    'type'        => Controls_Manager::TEXT,
+                    'default'     => esc_html__('Creative', 'axero-toolkit'),
+                    'label_block' => true,
+                ]
+            );
 
-        $repeater->add_control(
-            'slide_text',
-            [
-                'label' => esc_html__('Slide Text', 'lunex-toolkit'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Creative Design Agency', 'lunex-toolkit'),
-                'label_block' => true,
-            ]
-        );
+            $repeater->add_control(
+                'highlighted_text',
+                [
+                    'label'       => esc_html__('Highlighted Text', 'axero-toolkit'),
+                    'type'        => Controls_Manager::TEXT,
+                    'default'     => esc_html__('Design', 'axero-toolkit'),
+                    'label_block' => true,
+                ]
+            );
 
-         $repeater->add_control(
-            'slide_image',
-            [
-                'label' => esc_html__('Image', 'lunex-toolkit'),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => LUNEX_IMG . '/placeholder.jpg',
-                ],
-            ]
-        );
+            $repeater->add_control(
+                'ending_text',
+                [
+                    'label'       => esc_html__('Ending Text', 'axero-toolkit'),
+                    'type'        => Controls_Manager::TEXT,
+                    'default'     => esc_html__('Agency', 'axero-toolkit'),
+                    'label_block' => true,
+                ]
+            );
 
-         $this->add_control(
-            'style2_slides',
-            [
-                'label' => esc_html__('Slides', 'lunex-toolkit'),
-                'type' => Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'default' => [
-                    [
-                        'slide_text' => esc_html__('Creative Design Agency', 'lunex-toolkit'),
-                        'slide_image' => [
-                            'url' => LUNEX_IMG . '/placeholder.jpg',
+            $this->add_control(
+                'text_slides',
+                [
+                    'label'       => esc_html__('Text Slides', 'axero-toolkit'),
+                    'type'        => Controls_Manager::REPEATER,
+                    'fields'      => $repeater->get_controls(),
+                    'default'     => [
+                        [
+                            'main_text'        => esc_html__('Creative', 'axero-toolkit'),
+                            'highlighted_text' => esc_html__('Design', 'axero-toolkit'),
+                            'ending_text'      => esc_html__('Agency', 'axero-toolkit'),
+                        ],
+                        [
+                            'main_text'        => esc_html__('Creative', 'axero-toolkit'),
+                            'highlighted_text' => esc_html__('Design', 'axero-toolkit'),
+                            'ending_text'      => esc_html__('Agency', 'axero-toolkit'),
+                        ],
+                        [
+                            'main_text'        => esc_html__('Creative', 'axero-toolkit'),
+                            'highlighted_text' => esc_html__('Design', 'axero-toolkit'),
+                            'ending_text'      => esc_html__('Agency', 'axero-toolkit'),
                         ],
                     ],
-                    [
-                        'slide_text' => esc_html__('Innovative Solutions', 'lunex-toolkit'),
-                        'slide_image' => [
-                            'url' => LUNEX_IMG . '/placeholder.jpg',
+                    'title_field' => '{{{ main_text }}} <span>{{{ highlighted_text }}}</span> {{{ ending_text }}}',
+                ]
+            );
+
+            $this->end_controls_section();
+            // Style 2 Content Controls
+            $this->start_controls_section(
+                'style2_content_section',
+                [
+                    'label'     => esc_html__('Style 2 Content', 'axero-toolkit'),
+                    'tab'       => Controls_Manager::TAB_CONTENT,
+                    'condition' => [
+                        'style_selection' => ['style2', 'style3'],
+                    ],
+                ]
+            );
+
+            $repeater = new \Elementor\Repeater();
+
+            $repeater->add_control(
+                'slide_text',
+                [
+                    'label'       => esc_html__('Slide Text', 'axero-toolkit'),
+                    'type'        => Controls_Manager::TEXT,
+                    'default'     => esc_html__('Creative Design Agency', 'axero-toolkit'),
+                    'label_block' => true,
+                ]
+            );
+
+            $repeater->add_control(
+                'slide_image',
+                [
+                    'label'   => esc_html__('Image', 'axero-toolkit'),
+                    'type'    => Controls_Manager::MEDIA,
+                    'default' => [
+                        'url' => AXERO_IMG . '/placeholder.jpg',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'style2_slides',
+                [
+                    'label'       => esc_html__('Slides', 'axero-toolkit'),
+                    'type'        => Controls_Manager::REPEATER,
+                    'fields'      => $repeater->get_controls(),
+                    'default'     => [
+                        [
+                            'slide_text'  => esc_html__('Creative Design Agency', 'axero-toolkit'),
+                            'slide_image' => [
+                                'url' => AXERO_IMG . '/placeholder.jpg',
+                            ],
+                        ],
+                        [
+                            'slide_text'  => esc_html__('Innovative Solutions', 'axero-toolkit'),
+                            'slide_image' => [
+                                'url' => AXERO_IMG . '/placeholder.jpg',
+                            ],
+                        ],
+                        [
+                            'slide_text'  => esc_html__('Digital Experiences', 'axero-toolkit'),
+                            'slide_image' => [
+                                'url' => AXERO_IMG . '/placeholder.jpg',
+                            ],
                         ],
                     ],
-                    [
-                        'slide_text' => esc_html__('Digital Experiences', 'lunex-toolkit'),
-                        'slide_image' => [
-                            'url' => LUNEX_IMG . '/placeholder.jpg',
-                        ],
+                    'title_field' => '{{{ slide_text }}}',
+                ]
+            );
+
+            $this->end_controls_section();
+            // Style 2 Link URL Section
+            $this->start_controls_section(
+                'style2_link_section',
+                [
+                    'label'     => esc_html__('Link Settings', 'axero-toolkit'),
+                    'tab'       => Controls_Manager::TAB_CONTENT,
+                    'condition' => [
+                        'style_selection' => 'style2',
                     ],
-                ],
-                'title_field' => '{{{ slide_text }}}',
-            ]
-        );
+                ]
+            );
 
-        $this->end_controls_section();
-        // Style 2 Link URL Section
-        $this->start_controls_section(
-            'style2_link_section',
-            [
-                'label' => esc_html__('Link Settings', 'lunex-toolkit'),
-                'tab' => Controls_Manager::TAB_CONTENT,
-                'condition' => [
-                    'style_selection' => 'style2',
-                ],
-            ]
-        );
+            $this->add_control(
+                'style2_link_url',
+                [
+                    'label'         => esc_html__('Link URL', 'axero-toolkit'),
+                    'type'          => Controls_Manager::URL,
+                    'placeholder'   => esc_html__('https://your-link.com', 'axero-toolkit'),
+                    'show_external' => true,
+                    'default'       => [
+                        'url'         => '',
+                        'is_external' => false,
+                        'nofollow'    => false,
+                    ],
+                ]
+            );
 
-        $this->add_control(
-            'style2_link_url',
-            [
-                'label' => esc_html__('Link URL', 'lunex-toolkit'),
-                'type' => Controls_Manager::URL,
-                'placeholder' => esc_html__('https://your-link.com', 'lunex-toolkit'),
-                'show_external' => true,
-                'default' => [
-                    'url' => '',
-                    'is_external' => false,
-                    'nofollow' => false,
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
+            $this->end_controls_section();
 
         }
         /**
@@ -239,223 +239,222 @@
         protected function style_tab_content()
         {
             // content style controls tab
-        $this->start_controls_section(
-            'style1_content_style',
-            [
-                'label' => esc_html__('Style 1 Content', 'lunex-toolkit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'style_selection' => 'style1',
-                ],
-            ]
-        );
+            $this->start_controls_section(
+                'style1_content_style',
+                [
+                    'label'     => esc_html__('Style 1 Content', 'axero-toolkit'),
+                    'tab'       => Controls_Manager::TAB_STYLE,
+                    'condition' => [
+                        'style_selection' => 'style1',
+                    ],
+                ]
+            );
 
-        // Main Text Style
-        $this->add_control(
-            'main_text_heading',
-            [
-                'label' => esc_html__('Main Text', 'lunex-toolkit'),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
+            // Main Text Style
+            $this->add_control(
+                'main_text_heading',
+                [
+                    'label'     => esc_html__('Main Text', 'axero-toolkit'),
+                    'type'      => Controls_Manager::HEADING,
+                    'separator' => 'before',
+                ]
+            );
 
-        $this->add_control(
-            'main_text_color',
-            [
-                'label' => esc_html__('Color', 'lunex-toolkit'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .scroll_text_marquee h3' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'main_text_color',
+                [
+                    'label'     => esc_html__('Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .scroll_text_marquee h3' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name' => 'main_text_typography',
-                'selector' => '{{WRAPPER}} .scroll_text_marquee h3',
-            ]
-        );
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name'     => 'main_text_typography',
+                    'selector' => '{{WRAPPER}} .scroll_text_marquee h3',
+                ]
+            );
 
-        // Highlighted Text Style
-        $this->add_control(
-            'highlighted_text_heading',
-            [
-                'label' => esc_html__('Highlighted Text', 'lunex-toolkit'),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
+            // Highlighted Text Style
+            $this->add_control(
+                'highlighted_text_heading',
+                [
+                    'label'     => esc_html__('Highlighted Text', 'axero-toolkit'),
+                    'type'      => Controls_Manager::HEADING,
+                    'separator' => 'before',
+                ]
+            );
 
-        $this->add_control(
-            'highlighted_text_color',
-            [
-                'label' => esc_html__('Color', 'lunex-toolkit'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .scroll_text_marquee h3 span' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'highlighted_text_color',
+                [
+                    'label'     => esc_html__('Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .scroll_text_marquee h3 span' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name' => 'highlighted_text_typography',
-                'selector' => '{{WRAPPER}} .scroll_text_marquee h3 span',
-            ]
-        );
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name'     => 'highlighted_text_typography',
+                    'selector' => '{{WRAPPER}} .scroll_text_marquee h3 span',
+                ]
+            );
 
-        // Ending Text Style
-        $this->add_control(
-            'ending_text_heading',
-            [
-                'label' => esc_html__('Ending Text', 'lunex-toolkit'),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
+            // Ending Text Style
+            $this->add_control(
+                'ending_text_heading',
+                [
+                    'label'     => esc_html__('Ending Text', 'axero-toolkit'),
+                    'type'      => Controls_Manager::HEADING,
+                    'separator' => 'before',
+                ]
+            );
 
-        $this->add_control(
-            'ending_text_color',
-            [
-                'label' => esc_html__('Color', 'lunex-toolkit'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .scroll_text_marquee h3' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'ending_text_color',
+                [
+                    'label'     => esc_html__('Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .scroll_text_marquee h3' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name' => 'ending_text_typography',
-                'selector' => '{{WRAPPER}} .scroll_text_marquee h3',
-            ]
-        );
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name'     => 'ending_text_typography',
+                    'selector' => '{{WRAPPER}} .scroll_text_marquee h3',
+                ]
+            );
 
-        $this->end_controls_section();
-        // Style 2 Text Style
-        $this->start_controls_section(
-            'style2_text_style',
-            [
-                'label' => esc_html__('Style 2 Text', 'lunex-toolkit'),
-                'tab' => Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'style_selection' => 'style2',
-                ],
-            ]
-        );
+            $this->end_controls_section();
+            // Style 2 Text Style
+            $this->start_controls_section(
+                'style2_text_style',
+                [
+                    'label'     => esc_html__('Style 2 Text', 'axero-toolkit'),
+                    'tab'       => Controls_Manager::TAB_STYLE,
+                    'condition' => [
+                        'style_selection' => 'style2',
+                    ],
+                ]
+            );
 
-        $this->add_control(
-            'style2_text_color',
-            [
-                'label' => esc_html__('Text Color', 'lunex-toolkit'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .scroll_text_marquee h3' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'style2_text_color',
+                [
+                    'label'     => esc_html__('Text Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .scroll_text_marquee h3' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name' => 'style2_text_typography',
-                'selector' => '{{WRAPPER}} .scroll_text_marquee h3',
-            ]
-        );
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name'     => 'style2_text_typography',
+                    'selector' => '{{WRAPPER}} .scroll_text_marquee h3',
+                ]
+            );
 
-        $this->end_controls_section();
-        // Style 3 Text Style
-        $this->start_controls_section(
-            'style3_text_style',
-            [
-                'label' => esc_html__('Style 3 Text', 'lunex-toolkit'),
-                'tab' => Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'style_selection' => 'style3',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'style3_margin',
-            [
-                'label' => esc_html__('Margin', 'lunex-toolkit'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .scroll_text_area' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
+            $this->end_controls_section();
+            // Style 3 Text Style
+            $this->start_controls_section(
+                'style3_text_style',
+                [
+                    'label'     => esc_html__('Style 3 Text', 'axero-toolkit'),
+                    'tab'       => Controls_Manager::TAB_STYLE,
+                    'condition' => [
+                        'style_selection' => 'style3',
+                    ],
+                ]
+            );
+            $this->add_responsive_control(
+                'style3_margin',
+                [
+                    'label'      => esc_html__('Margin', 'axero-toolkit'),
+                    'type'       => Controls_Manager::DIMENSIONS,
+                    'size_units' => ['px', '%', 'em'],
+                    'selectors'  => [
+                        '{{WRAPPER}} .scroll_text_area' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
 
-        $this->add_responsive_control(
-            'style3_padding',
-            [
-                'label' => esc_html__('Padding', 'lunex-toolkit'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .scroll_text_area' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_control(
-            'style3_overflow',
-            [
-                'label' => esc_html__('Overflow', 'lunex-toolkit'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'hidden',
-                'options' => [
-                    'visible' => esc_html__('Visible', 'lunex-toolkit'),
-                    'hidden' => esc_html__('Hidden', 'lunex-toolkit'),
-                    'scroll' => esc_html__('Scroll', 'lunex-toolkit'),
-                    'auto' => esc_html__('Auto', 'lunex-toolkit'),
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .scroll_text_area' => 'overflow: {{VALUE}};',
-                ],
-            ]
-        );
-        // Background Color Control
-        $this->add_control(
-            'style3_background_color',
-            [
-                'label' => esc_html__('Background Color', 'lunex-toolkit'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .scroll_text_area' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_responsive_control(
+                'style3_padding',
+                [
+                    'label'      => esc_html__('Padding', 'axero-toolkit'),
+                    'type'       => Controls_Manager::DIMENSIONS,
+                    'size_units' => ['px', '%', 'em'],
+                    'selectors'  => [
+                        '{{WRAPPER}} .scroll_text_area' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+            $this->add_control(
+                'style3_overflow',
+                [
+                    'label'     => esc_html__('Overflow', 'axero-toolkit'),
+                    'type'      => Controls_Manager::SELECT,
+                    'default'   => 'hidden',
+                    'options'   => [
+                        'visible' => esc_html__('Visible', 'axero-toolkit'),
+                        'hidden'  => esc_html__('Hidden', 'axero-toolkit'),
+                        'scroll'  => esc_html__('Scroll', 'axero-toolkit'),
+                        'auto'    => esc_html__('Auto', 'axero-toolkit'),
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .scroll_text_area' => 'overflow: {{VALUE}};',
+                    ],
+                ]
+            );
+            // Background Color Control
+            $this->add_control(
+                'style3_background_color',
+                [
+                    'label'     => esc_html__('Background Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .scroll_text_area' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        // Text Color Control
-        $this->add_control(
-            'style3_text_color',
-            [
-                'label' => esc_html__('Text Color', 'lunex-toolkit'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .scroll_text_marquee h3.mb-0.text-uppercase.fw-semibold.lh-1' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            // Text Color Control
+            $this->add_control(
+                'style3_text_color',
+                [
+                    'label'     => esc_html__('Text Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .scroll_text_marquee h3.mb-0.text-uppercase.fw-semibold.lh-1' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        // Typography Control
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name' => 'style3_text_typography',
-                'selector' => '{{WRAPPER}} .scroll_text_marquee h3.mb-0.text-uppercase.fw-semibold.lh-1',
-            ]
-        );
+            // Typography Control
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name'     => 'style3_text_typography',
+                    'selector' => '{{WRAPPER}} .scroll_text_marquee h3.mb-0.text-uppercase.fw-semibold.lh-1',
+                ]
+            );
 
-        $this->end_controls_section();
-
+            $this->end_controls_section();
 
         }
 
@@ -494,18 +493,18 @@
                         <h3 class="mb-0 text-uppercase fw-medium lh-1">
                             <?php echo esc_html($slide['slide_text']); ?>
                         </h3>
-                        <img src="<?php echo esc_url($slide['slide_image']['url']); ?>" 
-                             class="w-auto d-inline-block" 
+                        <img src="<?php echo esc_url($slide['slide_image']['url']); ?>"
+                             class="w-auto d-inline-block"
                              alt="<?php echo esc_attr($slide['slide_text']); ?>">
                     <?php endforeach; ?>
                 </div>
             </div>
-            <?php if (!empty($settings['style2_link_url']['url'])) : ?>
+            <?php if (! empty($settings['style2_link_url']['url'])): ?>
 
-                <a href="<?php echo esc_url($settings['style2_link_url']['url']); ?>" 
+                <a href="<?php echo esc_url($settings['style2_link_url']['url']); ?>"
                    class="d-block position-absolute start-0 top-0 bottom-0 end-0"
-                   <?php echo ($settings['style2_link_url']['is_external'] ? 'target="_blank"' : ''); ?>
-                   <?php echo ($settings['style2_link_url']['nofollow'] ? 'rel="nofollow"' : ''); ?>>
+                   <?php echo($settings['style2_link_url']['is_external'] ? 'target="_blank"' : ''); ?>
+<?php echo($settings['style2_link_url']['nofollow'] ? 'rel="nofollow"' : ''); ?>>
                 </a>
 
             <?php endif; ?>
@@ -515,28 +514,28 @@
             } elseif ($settings['style_selection'] === 'style3') {
                     ?>
             <!-- style 3 -->
-           
-              
-                
+
+
+
             <div class="scroll_text_area overflow-hidden position-relative z-1">
-             
+
                     <div class="scroll_text_marquee d-flex align-items-center justify-content-center">
                         <?php foreach ($settings['style2_slides'] as $slide): ?>
                             <h3 class="mb-0 text-uppercase fw-semibold  lh-1">
                                 <?php echo esc_html($slide['slide_text']); ?>
                             </h3>
-                            <img src="<?php echo esc_url($slide['slide_image']['url']); ?>" 
-                                 class="w-auto d-inline-block" 
+                            <img src="<?php echo esc_url($slide['slide_image']['url']); ?>"
+                                 class="w-auto d-inline-block"
                                  alt="<?php echo esc_attr($slide['slide_text']); ?>">
                         <?php endforeach; ?>
                     </div>
-               
+
             </div>
-      
+
 
     <?php
         }
             }
         }
 
-    $widgets_manager->register(new lunex_text_slide());
+    $widgets_manager->register(new axero_text_slide());

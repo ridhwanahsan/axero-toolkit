@@ -1,11 +1,11 @@
-.wpb_lunex_block .vc_element-icon, #lunex_block .vc_element-icon {
+.wpb_axero_block .vc_element-icon, #axero_block .vc_element-icon {
     font-family: dashicons;
     font-size: 30px;
     color: #54ab26;
 	font-weight: 400;
 	background-image: none;
 }
-#lunex_block .vc_element-icon.dashicons-clipboard:before {
+#axero_block .vc_element-icon.dashicons-clipboard:before {
     vertical-align: middle;
 }
 #available-widgets [class*="reusable_block"] .widget-title:before {

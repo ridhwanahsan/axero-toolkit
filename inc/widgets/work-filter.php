@@ -1,5 +1,5 @@
 <?php
-    namespace lunex_toolkit\Widgets;
+    namespace axero_toolkit\Widgets;
 
     use Elementor\Controls_Manager;
     use Elementor\Widget_Base;
@@ -8,17 +8,17 @@
         exit;
     }
 
-    class Lunex_work_filter extends Widget_Base
+    class Axero_work_filter extends Widget_Base
     {
 
         public function get_name()
         {
-            return 'Lunex-work-Post-grid';
+            return 'Axero-work-Post-grid';
         }
 
         public function get_title()
         {
-            return __('Wrok grid v2', 'lunex-toolkit');
+            return __('Wrok grid v2', 'axero-toolkit');
         }
 
         public function get_icon()
@@ -28,7 +28,7 @@
 
         public function get_categories()
         {
-            return ['Lunex'];
+            return ['Axero'];
         }
 
         protected function register_controls()
@@ -60,7 +60,7 @@
             $this->start_controls_section(
                 'section_selection',
                 [
-                    'label' => esc_html__('Section Selection', 'lunex-toolkit'),
+                    'label' => esc_html__('Section Selection', 'axero-toolkit'),
                     'tab'   => Controls_Manager::TAB_CONTENT,
                 ]
             );
@@ -68,12 +68,12 @@
             $this->add_control(
                 'style_selection',
                 [
-                    'label'   => esc_html__('Select Section', 'lunex-toolkit'),
+                    'label'   => esc_html__('Select Section', 'axero-toolkit'),
                     'type'    => Controls_Manager::SELECT,
                     'default' => 'style1',
                     'options' => [
-                        'style1' => esc_html__('Style 1', 'lunex-toolkit'),
-                      
+                        'style1' => esc_html__('Style 1', 'axero-toolkit'),
+
                     ],
                 ]
             );
@@ -84,7 +84,7 @@
             $this->start_controls_section(
                 'post_filter_section',
                 [
-                    'label' => esc_html__('Post Filter', 'lunex-toolkit'),
+                    'label' => esc_html__('Post Filter', 'axero-toolkit'),
                     'tab'   => Controls_Manager::TAB_CONTENT,
                 ]
             );
@@ -92,7 +92,7 @@
             $this->add_control(
                 'posts_per_page',
                 [
-                    'label'   => esc_html__('Posts Per Page', 'lunex-toolkit'),
+                    'label'   => esc_html__('Posts Per Page', 'axero-toolkit'),
                     'type'    => Controls_Manager::NUMBER,
                     'default' => 6,
                     'min'     => 1,
@@ -103,14 +103,14 @@
             $this->add_control(
                 'orderby',
                 [
-                    'label'   => esc_html__('Order By', 'lunex-toolkit'),
+                    'label'   => esc_html__('Order By', 'axero-toolkit'),
                     'type'    => Controls_Manager::SELECT,
                     'default' => 'date',
                     'options' => [
-                        'date'          => esc_html__('Date', 'lunex-toolkit'),
-                        'title'         => esc_html__('Title', 'lunex-toolkit'),
-                        'rand'          => esc_html__('Random', 'lunex-toolkit'),
-                        'comment_count' => esc_html__('Comment Count', 'lunex-toolkit'),
+                        'date'          => esc_html__('Date', 'axero-toolkit'),
+                        'title'         => esc_html__('Title', 'axero-toolkit'),
+                        'rand'          => esc_html__('Random', 'axero-toolkit'),
+                        'comment_count' => esc_html__('Comment Count', 'axero-toolkit'),
                     ],
                 ]
             );
@@ -118,12 +118,12 @@
             $this->add_control(
                 'order',
                 [
-                    'label'   => esc_html__('Order', 'lunex-toolkit'),
+                    'label'   => esc_html__('Order', 'axero-toolkit'),
                     'type'    => Controls_Manager::SELECT,
                     'default' => 'DESC',
                     'options' => [
-                        'ASC'  => esc_html__('Ascending', 'lunex-toolkit'),
-                        'DESC' => esc_html__('Descending', 'lunex-toolkit'),
+                        'ASC'  => esc_html__('Ascending', 'axero-toolkit'),
+                        'DESC' => esc_html__('Descending', 'axero-toolkit'),
                     ],
                 ]
             );
@@ -131,7 +131,7 @@
             $this->add_control(
                 'category_filter',
                 [
-                    'label'       => esc_html__('Filter by Category', 'lunex-toolkit'),
+                    'label'       => esc_html__('Filter by Category', 'axero-toolkit'),
                     'type'        => Controls_Manager::SELECT2,
                     'options'     => $this->get_custom_post_categories(),
                     'multiple'    => true,
@@ -142,9 +142,9 @@
             $this->add_control(
                 'exclude_posts',
                 [
-                    'label'       => esc_html__('Exclude Posts', 'lunex-toolkit'),
+                    'label'       => esc_html__('Exclude Posts', 'axero-toolkit'),
                     'type'        => Controls_Manager::TEXT,
-                    'description' => esc_html__('Enter post IDs separated by commas', 'lunex-toolkit'),
+                    'description' => esc_html__('Enter post IDs separated by commas', 'axero-toolkit'),
                 ]
             );
 
@@ -155,259 +155,257 @@
         protected function style_tab_content()
         {
             // content style controls tab
-        $this->start_controls_section(
-            'style_number_section',
-            [
-                'label' => esc_html__('Number Style', 'lunex-toolkit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
+            $this->start_controls_section(
+                'style_number_section',
+                [
+                    'label' => esc_html__('Number Style', 'axero-toolkit'),
+                    'tab'   => Controls_Manager::TAB_STYLE,
+                ]
+            );
 
-        $this->add_control(
-            'number_bg_color',
-            [
-                'label'     => esc_html__('Background Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .works-list .item .title .number' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'number_bg_color',
+                [
+                    'label'     => esc_html__('Background Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .works-list .item .title .number' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_control(
-            'number_color',
-            [
-                'label'     => esc_html__('Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .works-list .item .title .number' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'number_color',
+                [
+                    'label'     => esc_html__('Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .works-list .item .title .number' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'number_typography',
-                'selector' => '{{WRAPPER}} .works-list .item .title .number',
-            ]
-        );
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name'     => 'number_typography',
+                    'selector' => '{{WRAPPER}} .works-list .item .title .number',
+                ]
+            );
 
-        $this->add_control(
-            'number_hover_bg_color',
-            [
-                'label'     => esc_html__('Hover Background Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .works-list .item:hover .title .number' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'number_hover_bg_color',
+                [
+                    'label'     => esc_html__('Hover Background Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .works-list .item:hover .title .number' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_control(
-            'number_hover_color',
-            [
-                'label'     => esc_html__('Hover Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .works-list .item:hover .title .number' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'number_hover_color',
+                [
+                    'label'     => esc_html__('Hover Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .works-list .item:hover .title .number' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->end_controls_section();
+            $this->end_controls_section();
 
-        // Image Button Style
-        $this->start_controls_section(
-            'image_button_style',
-            [
-                'label' => esc_html__('Image Button Style', 'lunex-toolkit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
+            // Image Button Style
+            $this->start_controls_section(
+                'image_button_style',
+                [
+                    'label' => esc_html__('Image Button Style', 'axero-toolkit'),
+                    'tab'   => Controls_Manager::TAB_STYLE,
+                ]
+            );
 
-        $this->add_control(
-            'image_button_bg_color',
-            [
-                'label'     => esc_html__('Background Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .works-list .item .image .link-btn' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'image_button_bg_color',
+                [
+                    'label'     => esc_html__('Background Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .works-list .item .image .link-btn' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_control(
-            'image_button_color',
-            [
-                'label'     => esc_html__('Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .works-list .item .image .link-btn' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'image_button_color',
+                [
+                    'label'     => esc_html__('Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .works-list .item .image .link-btn' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_control(
-            'image_button_hover_bg_color',
-            [
-                'label'     => esc_html__('Hover Background Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .works-list .item .image .link-btn:hover' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'image_button_hover_bg_color',
+                [
+                    'label'     => esc_html__('Hover Background Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .works-list .item .image .link-btn:hover' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_control(
-            'image_button_hover_color',
-            [
-                'label'     => esc_html__('Hover Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .works-list .item .image .link-btn:hover' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'image_button_hover_color',
+                [
+                    'label'     => esc_html__('Hover Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .works-list .item .image .link-btn:hover' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->end_controls_section();
+            $this->end_controls_section();
 
-        // Title Style
-        $this->start_controls_section(
-            'title_style_section',
-            [
-                'label' => esc_html__('Title Style', 'lunex-toolkit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
+            // Title Style
+            $this->start_controls_section(
+                'title_style_section',
+                [
+                    'label' => esc_html__('Title Style', 'axero-toolkit'),
+                    'tab'   => Controls_Manager::TAB_STYLE,
+                ]
+            );
 
-        $this->add_control(
-            'title_color',
-            [
-                'label'     => esc_html__('Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .works-list .item .title h3 a' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'title_color',
+                [
+                    'label'     => esc_html__('Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .works-list .item .title h3 a' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_control(
-            'title_hover_color',
-            [
-                'label'     => esc_html__('Hover Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .works-list .item .title h3 a:hover' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'title_hover_color',
+                [
+                    'label'     => esc_html__('Hover Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .works-list .item .title h3 a:hover' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .works-list .item .title h3 a',
-            ]
-        );
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name'     => 'title_typography',
+                    'selector' => '{{WRAPPER}} .works-list .item .title h3 a',
+                ]
+            );
 
-        $this->end_controls_section();
+            $this->end_controls_section();
 
-        // Description Style
-        $this->start_controls_section(
-            'description_style_section',
-            [
-                'label' => esc_html__('Description Style', 'lunex-toolkit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
+            // Description Style
+            $this->start_controls_section(
+                'description_style_section',
+                [
+                    'label' => esc_html__('Description Style', 'axero-toolkit'),
+                    'tab'   => Controls_Manager::TAB_STYLE,
+                ]
+            );
 
-        $this->add_control(
-            'description_color',
-            [
-                'label'     => esc_html__('Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .works-list .item .content p' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'description_color',
+                [
+                    'label'     => esc_html__('Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .works-list .item .content p' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'description_typography',
-                'selector' => '{{WRAPPER}} .works-list .item .content p',
-            ]
-        );
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name'     => 'description_typography',
+                    'selector' => '{{WRAPPER}} .works-list .item .content p',
+                ]
+            );
 
-        $this->end_controls_section();
+            $this->end_controls_section();
 
-        // Categories Style
-        $this->start_controls_section(
-            'categories_style_section',
-            [
-                'label' => esc_html__('Categories Style', 'lunex-toolkit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
+            // Categories Style
+            $this->start_controls_section(
+                'categories_style_section',
+                [
+                    'label' => esc_html__('Categories Style', 'axero-toolkit'),
+                    'tab'   => Controls_Manager::TAB_STYLE,
+                ]
+            );
 
-        $this->add_control(
-            'categories_color',
-            [
-                'label'     => esc_html__('Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .works-list .item .content .categories li a' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'categories_color',
+                [
+                    'label'     => esc_html__('Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .works-list .item .content .categories li a' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_control(
-            'categories_bg_color',
-            [
-                'label'     => esc_html__('Background Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .works-list .item .content .categories li a' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'categories_bg_color',
+                [
+                    'label'     => esc_html__('Background Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .works-list .item .content .categories li a' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_control(
-            'categories_border_color',
-            [
-                'label'     => esc_html__('Border Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .works-list .item .content .categories li a' => 'border-color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'categories_border_color',
+                [
+                    'label'     => esc_html__('Border Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .works-list .item .content .categories li a' => 'border-color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_control(
-            'categories_hover_color',
-            [
-                'label'     => esc_html__('Hover Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .works-list .item .content .categories li a:hover' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+            $this->add_control(
+                'categories_hover_color',
+                [
+                    'label'     => esc_html__('Hover Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .works-list .item .content .categories li a:hover' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_control(
-            'categories_hover_bg_color',
-            [
-                'label'     => esc_html__('Hover Background Color', 'lunex-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .works-list .item .content .categories li a:hover' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-            
+            $this->add_control(
+                'categories_hover_bg_color',
+                [
+                    'label'     => esc_html__('Hover Background Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .works-list .item .content .categories li a:hover' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
 
         }
 
@@ -441,15 +439,15 @@
             <div class="container" data-cue="slideInUp">
                 <div class="works-shorting-menu">
                     <button class="filter active" data-filter="all">
-                        <?php echo esc_html__('All', 'lunex-toolkit'); ?>
+                        <?php echo esc_html__('All', 'axero-toolkit'); ?>
                         <span class="rounded-circle"></span>
                     </button>
-                    <?php 
-                    $categories = get_terms([
-                        'taxonomy' => 'works_category',
-                        'hide_empty' => true,
-                    ]);
-                    foreach ($categories as $category) : ?>
+                    <?php
+                        $categories = get_terms([
+                                        'taxonomy'   => 'works_category',
+                                        'hide_empty' => true,
+                                    ]);
+                                foreach ($categories as $category): ?>
                         <button class="filter" data-filter=".<?php echo esc_attr($category->slug); ?>">
                             <?php echo esc_html($category->name); ?>
                             <span class="rounded-circle"> </span>
@@ -457,37 +455,37 @@
                     <?php endforeach; ?>
                 </div>
                 <div class="works-list works-shorting">
-                    <?php while ($query->have_posts()) : $query->the_post(); 
-                        $post_terms = get_the_terms(get_the_ID(), 'works_category');
-                        $term_classes = '';
-                        if ($post_terms && !is_wp_error($post_terms)) {
-                            foreach ($post_terms as $term) {
-                                $term_classes .= ' ' . $term->slug;
-                            }
-                        }
-                    ?>
-                    <div class="item mix<?php echo esc_attr($term_classes); ?>">
-                        <div class="row align-items-center">
-                            <div class="col-lg-3 col-md-12">
-                                <div class="title position-relative">
-                                    <div class="number text-center rounded-circle">
-                                        <?php echo get_the_ID(); // Or use a counter if you want sequential numbers ?>
-                                    </div>
-                                    <h3 class="mb-0">
-                                        <a href="<?php the_permalink(); ?>">
-                                            <?php the_title(); ?>
-                                        </a>
-                                    </h3>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="image position-relative">
-                                    <?php if (has_post_thumbnail()) : ?>
-                                        <?php the_post_thumbnail('full', ['alt' => get_the_title()]); ?>
-                                    <?php endif; ?>
+                    <?php while ($query->have_posts()): $query->the_post();
+                                        $post_terms   = get_the_terms(get_the_ID(), 'works_category');
+                                        $term_classes = '';
+                                        if ($post_terms && ! is_wp_error($post_terms)) {
+                                            foreach ($post_terms as $term) {
+                                                $term_classes .= ' ' . $term->slug;
+                                            }
+                                        }
+                                    ?>
+			                    <div class="item mix<?php echo esc_attr($term_classes); ?>">
+			                        <div class="row align-items-center">
+			                            <div class="col-lg-3 col-md-12">
+			                                <div class="title position-relative">
+			                                    <div class="number text-center rounded-circle">
+			                                        <?php echo get_the_ID(); // Or use a counter if you want sequential numbers ?>
+			                                    </div>
+			                                    <h3 class="mb-0">
+			                                        <a href="<?php the_permalink(); ?>">
+			                                            <?php the_title(); ?>
+			                                        </a>
+			                                    </h3>
+			                                </div>
+			                            </div>
+			                            <div class="col-lg-6 col-md-12">
+			                                <div class="image position-relative">
+			                                    <?php if (has_post_thumbnail()): ?>
+<?php the_post_thumbnail('full', ['alt' => get_the_title()]); ?>
+<?php endif; ?>
                                     <a href="<?php the_permalink(); ?>" class="link-btn text-center d-inline-block rounded-circle">
-                                        <img src="<?php echo get_template_directory_uri()?>/assets/images/icons/primary-right-top-arrow.svg" alt="right-top-arrow">
-                                        <?php esc_html_e('Read More', 'lunex-toolkit'); ?>
+                                        <img src="<?php echo get_template_directory_uri() ?>/assets/images/icons/primary-right-top-arrow.svg" alt="right-top-arrow">
+                                        <?php esc_html_e('Read More', 'axero-toolkit'); ?>
                                     </a>
                                 </div>
                             </div>
@@ -498,41 +496,42 @@
                                     </p>
                                     <ul class="categories ps-0 mb-0 list-unstyled">
                                         <?php
-                                        if ($post_terms && !is_wp_error($post_terms)) :
-                                            foreach ($post_terms as $term) : ?>
-                                                <li class="d-inline-block">
-                                                    <a href="<?php echo esc_url(get_term_link($term)); ?>" class="d-block">
-                                                        <?php echo esc_html($term->name); ?>
-                                                    </a>
-                                                </li>
-                                            <?php endforeach;
-                                        endif;
-                                        ?>
+                                            if ($post_terms && ! is_wp_error($post_terms)):
+                                                        foreach ($post_terms as $term): ?>
+			                                                <li class="d-inline-block">
+			                                                    <a href="<?php echo esc_url(get_term_link($term)); ?>" class="d-block">
+			                                                        <?php echo esc_html($term->name); ?>
+			                                                    </a>
+			                                                </li>
+			                                            <?php endforeach;
+                                                                        endif;
+                                                                    ?>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <?php endwhile; wp_reset_postdata(); ?>
+                    <?php endwhile;
+                                wp_reset_postdata(); ?>
                 </div>
                 <div class="more-project-btn text-center">
-                    <?php if ($query->max_num_pages > 1) : ?>
+                    <?php if ($query->max_num_pages > 1): ?>
                         <a href="#" class="d-flex align-items-center justify-content-center load-more-works" data-page="1" data-max-pages="<?php echo esc_attr($query->max_num_pages); ?>">
                             <i class="ri-arrow-down-line"></i>
-                            <?php esc_html_e('More Works', 'lunex-toolkit'); ?>
+                            <?php esc_html_e('More Works', 'axero-toolkit'); ?>
                         </a>
                     <?php endif; ?>
                 </div>
             </div>
         </div>
-        
+
     <?php
         } elseif ($settings['style_selection'] === 'style2') {
                 ?>
 <!-- style 2 -->
 
-       
-       
+
+
 
 <?php
     } elseif ($settings['style_selection'] === 'style3') {
@@ -545,4 +544,4 @@
         }
     }
 
-$widgets_manager->register(new Lunex_work_filter());
+$widgets_manager->register(new Axero_work_filter());

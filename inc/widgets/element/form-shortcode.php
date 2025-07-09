@@ -1,5 +1,5 @@
 <?php
-    namespace lunex_toolkit\Widgets;
+    namespace axero_toolkit\Widgets;
 
     use Elementor\Controls_Manager;
     use Elementor\Widget_Base;
@@ -8,17 +8,17 @@
         exit;
     }
 
-    class lunex_form_shortcode extends Widget_Base
+    class axero_form_shortcode extends Widget_Base
     {
 
         public function get_name()
         {
-            return 'lunex_form_shortcode';
+            return 'axero_form_shortcode';
         }
 
         public function get_title()
         {
-            return __('Form Shortcode', 'lunex-toolkit');
+            return __('Form Shortcode', 'axero-toolkit');
         }
 
         public function get_icon()
@@ -28,7 +28,7 @@
 
         public function get_categories()
         {
-            return ['Lunex'];
+            return ['Axero'];
         }
 
         protected function register_controls()
@@ -43,7 +43,7 @@
             $this->start_controls_section(
                 'section_selection',
                 [
-                    'label' => esc_html__('Section Selection', 'lunex-toolkit'),
+                    'label' => esc_html__('Section Selection', 'axero-toolkit'),
                     'tab'   => Controls_Manager::TAB_CONTENT,
                 ]
             );
@@ -51,37 +51,37 @@
             $this->add_control(
                 'style_selection',
                 [
-                    'label'   => esc_html__('Select Section', 'lunex-toolkit'),
+                    'label'   => esc_html__('Select Section', 'axero-toolkit'),
                     'type'    => Controls_Manager::SELECT,
                     'default' => 'style1',
                     'options' => [
-                        'style1' => esc_html__('Style 1', 'lunex-toolkit'),
-                      
+                        'style1' => esc_html__('Style 1', 'axero-toolkit'),
+
                     ],
                 ]
             );
 
             $this->end_controls_section();
-         $this->start_controls_section(
-            'form_shortcode_section',
-            [
-                'label' => esc_html__('Form Shortcode', 'lunex-toolkit'),
-                'tab'   => Controls_Manager::TAB_CONTENT,
-            ]
-        );
+            $this->start_controls_section(
+                'form_shortcode_section',
+                [
+                    'label' => esc_html__('Form Shortcode', 'axero-toolkit'),
+                    'tab'   => Controls_Manager::TAB_CONTENT,
+                ]
+            );
 
-        $this->add_control(
-            'form_shortcode',
-            [
-                'label'       => esc_html__('Form Shortcode', 'lunex-toolkit'),
-                'type'        => Controls_Manager::TEXTAREA,
-                'default'     => '',
-                'placeholder' => esc_html__('Enter your form shortcode here', 'lunex-toolkit'),
-                'description' => esc_html__('Insert your contact form 7 or other form shortcode. Example: [contact-form-7 id="7673ce2" title="contact style1"]', 'lunex-toolkit'),
-            ]
-        );
+            $this->add_control(
+                'form_shortcode',
+                [
+                    'label'       => esc_html__('Form Shortcode', 'axero-toolkit'),
+                    'type'        => Controls_Manager::TEXTAREA,
+                    'default'     => '',
+                    'placeholder' => esc_html__('Enter your form shortcode here', 'axero-toolkit'),
+                    'description' => esc_html__('Insert your contact form 7 or other form shortcode. Example: [contact-form-7 id="7673ce2" title="contact style1"]', 'axero-toolkit'),
+                ]
+            );
 
-        $this->end_controls_section();
+            $this->end_controls_section();
 
         }
         /**
@@ -126,4 +126,4 @@
             }
         }
 
-    $widgets_manager->register(new lunex_form_shortcode());
+    $widgets_manager->register(new axero_form_shortcode());
