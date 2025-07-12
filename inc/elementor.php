@@ -179,6 +179,7 @@ final class Elementor_Axero_Extension
             'career-sidebar',
             'future-service',
             'logo-slider',
+            'logo-grid',
             'award-list',
             'video-pop',
             'tolpit',
