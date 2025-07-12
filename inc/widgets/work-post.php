@@ -13,12 +13,12 @@
 
         public function get_name()
         {
-            return 'Axero-work-post';
+            return 'Axero-Projects-post';
         }
 
         public function get_title()
         {
-            return __('Work post', 'axero-toolkit');
+            return __('Projects post', 'axero-toolkit');
         }
 
         public function get_icon()
@@ -111,11 +111,11 @@
 
             $this->end_controls_section();
 
-            // work Filter Controls
+            // Projects Filter Controls
             $this->start_controls_section(
                 'post_filter_section',
                 [
-                    'label' => esc_html__('work Filter', 'axero-toolkit'),
+                    'label' => esc_html__('Projects Filter', 'axero-toolkit'),
                     'tab'   => Controls_Manager::TAB_CONTENT,
                 ]
             );
@@ -123,7 +123,7 @@
             $this->add_control(
                 'posts_per_page',
                 [
-                    'label'   => esc_html__('works Per Page', 'axero-toolkit'),
+                    'label'   => esc_html__('Projects Per Page', 'axero-toolkit'),
                     'type'    => Controls_Manager::NUMBER,
                     'default' => 6,
                     'min'     => 1,
@@ -173,7 +173,7 @@
             $this->add_control(
                 'exclude_posts',
                 [
-                    'label'       => esc_html__('Exclude works', 'axero-toolkit'),
+                    'label'       => esc_html__('Exclude Projects', 'axero-toolkit'),
                     'type'        => Controls_Manager::TEXT,
                     'description' => esc_html__('Enter post IDs separated by commas', 'axero-toolkit'),
                 ]
@@ -1459,7 +1459,7 @@
         {
             $settings   = $this->get_settings_for_display();
             $query_args = [
-                'post_type'      => 'works',
+                'post_type'      => 'Projects',
                 'posts_per_page' => $settings['posts_per_page'] ? $settings['posts_per_page'] : 3,
                 'orderby'        => $settings['orderby'] ? $settings['orderby'] : 'date',
                 'order'          => $settings['order'] ? $settings['order'] : 'DESC',
@@ -1527,7 +1527,7 @@
 <?php endwhile;
                 wp_reset_postdata();
             else: ?>
-                <p><?php esc_html_e('No works found.', 'axero-toolkit'); ?></p>
+                <p><?php esc_html_e('No Projects found.', 'axero-toolkit'); ?></p>
             <?php endif; ?>
         </div>
     </div>
@@ -1560,7 +1560,7 @@
 								                                <?php endwhile;
                                                                                     wp_reset_postdata();
                                                                             else: ?>
-                                <p><?php esc_html_e('No works found.', 'axero-toolkit'); ?></p>
+                                <p><?php esc_html_e('No Projects found.', 'axero-toolkit'); ?></p>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -1569,19 +1569,21 @@
                             <div class="images position-relative">
                                 <?php
                                     if ($query->have_posts()):
-                                                while ($query->have_posts()): $query->the_post(); ?>
-								                                        <div class="image">
-								                                            <?php if (has_post_thumbnail()): ?>
-								                                                <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
-								                                            <?php endif; ?>
-				                                            <p>
-				                                                <?php echo get_the_excerpt(); ?>
-				                                            </p>
+                                        while ($query->have_posts()): $query->the_post(); ?>
+                                                <div class="image">
+                                                    <?php if (has_post_thumbnail()): ?>
+                                                        <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                                    <?php endif; ?>
+				                                            <div class="content">
+				                                                <p>
+				                                                    <?php echo get_the_excerpt(); ?>
+				                                                </p>
+				                                            </div>
 				                                        </div>
 				                                    <?php endwhile;
-                                                                    wp_reset_postdata();
-                                                                    endif;
-                                                                ?>
+                                            wp_reset_postdata();
+                                            endif;
+                                     ?>
                             </div>
                         </div>
                     </div>
@@ -1619,7 +1621,7 @@
 						                                        <div class="image text-center">
 						                                            <?php if (has_post_thumbnail()): ?>
 						                                                <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
-						                                            <?php endif; ?>
+						                                        <?php endif; ?>
 			                                        </div>
 			                                    </div>
 			                                    <div class="col-xl-5 col-lg-6 col-md-5">
@@ -1648,7 +1650,7 @@
                                                 endwhile;
                                                 wp_reset_postdata();
                                             else: ?>
-                        <p><?php esc_html_e('No works found.', 'axero-toolkit'); ?></p>
+                        <p><?php esc_html_e('No Projects found.', 'axero-toolkit'); ?></p>
                     <?php endif; ?>
                 </div>
             </div>
@@ -1664,18 +1666,18 @@
              <div class="row" data-cues="slideInUp">
                  <?php
                      $args = [
-                                     'post_type'      => 'post', // Change this to your custom post type if needed
-                                     'posts_per_page' => -1,     // Adjust the number of posts to display
+                            'post_type'      => 'post', // Change this to your custom post type if needed
+                            'posts_per_page' => -1,     // Adjust the number of posts to display
                                  ];
 
                                  if ($query->have_posts()):
                                  while ($query->have_posts()): $query->the_post(); ?>
-								                         <div class="col-lg-6 col-md-6">
-								                             <div class="single-case-study-item">
-								                                 <a href="<?php the_permalink(); ?>" class="image d-block">
-								                                     <?php if (has_post_thumbnail()): ?>
-								                                         <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
-								                                     <?php endif; ?>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="single-case-study-item">
+                                                <a href="<?php the_permalink(); ?>" class="image d-block">
+                                                    <?php if (has_post_thumbnail()): ?>
+                                                        <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                                    <?php endif; ?>
 				                                 </a>
 				                                 <div class="content">
 				                                     <span class="sub-title d-block">
@@ -1687,9 +1689,9 @@
 				                                         </a>
 				                                     </h3>
 				                                     <p>
-				                                         <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); // Display excerpt with 20 words ?>
+                                                        <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); // Display excerpt with 20 words ?>
 				                                     </p>
-				                                     <a href="<?php echo esc_url(get_permalink()); ?>" class="link-btn d-inline-block position-relative">
+                                                    <a href="<?php echo esc_url(get_permalink()); ?>" class="link-btn d-inline-block position-relative">
 				                                         <?php esc_html_e('Read more', 'axero-toolkit'); ?> <i class="ri-arrow-right-line"></i>
 				                                     </a>
 				                                 </div>
@@ -1698,12 +1700,11 @@
 				                     <?php endwhile;
                                                      wp_reset_postdata();
                                                  else: ?>
-                     <p><?php esc_html_e('No works found.', 'axero-toolkit'); ?></p>
-                 <?php endif; ?>
-             </div>
-         </div>
-     </div>
-
+                            <p><?php esc_html_e('No Projects found.', 'axero-toolkit'); ?></p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
 <?php
 } elseif ($settings['style_selection'] === 'style5') {?>
  <!-- style 5 -->
@@ -1711,43 +1712,43 @@
         <div class="awesome_works_list" data-cues="slideInUp" data-group="awesome_works_list">
             <?php
                 // Get vector image from Elementor controls, fallback to default if not set
-                            $vector_image = ! empty($settings['style5_vector_image']['url']) ? esc_url($settings['style5_vector_image']['url']) : get_template_directory_uri() . '/assets/images/icons/vector2.svg';
-                            if ($query->have_posts()):
-                                $post_number = 1;
-                                while ($query->have_posts()): $query->the_post();
-                                    $background_image = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'full') : get_template_directory_uri() . '/assets/images/works/work6.jpg';
-                                ?>
-								                    <div class="item_box position-relative z-1"
-								                        style="background-image: url('<?php echo esc_url($background_image); ?>');">
-								                        <div class="row">
-								                            <div class="col-lg-5">
-								                                <div class="title">
-								                                    <div class="number lh-1 fw-semibold">
-								                                        (<?php echo str_pad($post_number, 2, '0', STR_PAD_LEFT); ?>)
-								                                    </div>
-								                                    <h3 class="mb-0">
-								                                        <?php the_title(); ?>
-								                                    </h3>
-								                                </div>
-								                            </div>
-								                            <div class="col-lg-7">
-								                                <div class="content">
-								                                    <img src="<?php echo $vector_image; ?>" alt="vector">
-								                                    <p>
-								                                        <?php echo wp_trim_words(get_the_excerpt(), 25, '...'); ?>
-								                                    </p>
-								                                </div>
-								                            </div>
-								                        </div>
-								                        <a href="<?php the_permalink(); ?>" class="details_btn d-block position-absolute start-0 end-0 top-0 bottom-0 z-1"></a>
-								                    </div>
-								                    <?php
-                                                                $post_number++;
-                                                                        endwhile;
-                                                                        wp_reset_postdata();
-                                                                    else:
-                                                                ?>
-                <p><?php esc_html_e('No works found.', 'axero-toolkit'); ?></p>
+                $vector_image = ! empty($settings['style5_vector_image']['url']) ? esc_url($settings['style5_vector_image']['url']) : get_template_directory_uri() . '/assets/images/icons/vector2.svg';
+                if ($query->have_posts()):
+                    $post_number = 1;
+                    while ($query->have_posts()): $query->the_post();
+                        $background_image = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'full') : get_template_directory_uri() . '/assets/images/Projects/work6.jpg';
+                    ?>
+                            <div class="item_box position-relative z-1"
+                                style="background-image: url('<?php echo esc_url($background_image); ?>');">
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <div class="title">
+                                            <div class="number lh-1 fw-semibold">
+                                                (<?php echo str_pad($post_number, 2, '0', STR_PAD_LEFT); ?>)
+                                            </div>
+                                            <h3 class="mb-0">
+                                                <?php the_title(); ?>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="content">
+                                            <img src="<?php echo $vector_image; ?>" alt="vector">
+                                            <p>
+                                                <?php echo wp_trim_words(get_the_excerpt(), 25, '...'); ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="<?php the_permalink(); ?>" class="details_btn d-block position-absolute start-0 end-0 top-0 bottom-0 z-1"></a>
+                            </div>
+                            <?php
+                          $post_number++;
+                        endwhile;
+                        wp_reset_postdata();
+                    else:
+                ?>
+                <p><?php esc_html_e('No Projects found.', 'axero-toolkit'); ?></p>
             <?php endif; ?>
         </div>
     </div>
@@ -1757,15 +1758,15 @@
     <div class="container-fluid px-0">
         <div class="case_studies_slides owl-carousel owl-theme" data-cue="slideInUp">
             <?php if ($query->have_posts()):
-                                while ($query->have_posts()): $query->the_post();
-                                    $categories    = get_the_terms(get_the_ID(), 'works_category');
-                                    $category_name = ! empty($categories) ? esc_html($categories[0]->name) : '';
+                            while ($query->have_posts()): $query->the_post();
+                                $categories    = get_the_terms(get_the_ID(), 'works_category');
+                                $category_name = ! empty($categories) ? esc_html($categories[0]->name) : '';
                                 ?>
-								                <div class="case_study_box">
-								                    <div class="image overflow-hidden position-relative">
-								                        <?php if (has_post_thumbnail()): ?>
-								                            <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
-								                        <?php endif; ?>
+                                <div class="case_study_box">
+                                    <div class="image overflow-hidden position-relative">
+                                        <?php if (has_post_thumbnail()): ?>
+                                            <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                        <?php endif; ?>
 				                        <a href="<?php the_permalink(); ?>" class="details_link_btn">
 				                            <i class="ri-arrow-right-up-line"></i>
 				                        </a>
@@ -1776,18 +1777,17 @@
 				                                <?php echo $category_name; ?>
 				                            </span>
 				                        <?php endif; ?>
-                        <h3 class="mb-0 fw-semibold">
-                            <a href="<?php the_permalink(); ?>">
-                                <?php the_title(); ?>
-                            </a>
-                        </h3>
-                    </div>
-                </div>
-            <?php
-                endwhile;
+                                    <h3 class="mb-0 fw-semibold">
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php the_title(); ?>
+                                        </a>
+                                    </h3>
+                                </div>
+                            </div>
+                        <?php endwhile;
                             wp_reset_postdata();
                         else: ?>
-                <p><?php esc_html_e('No works found.', 'axero-toolkit'); ?></p>
+                <p><?php esc_html_e('No Projects found.','axero-toolkit'); ?></p>
             <?php endif; ?>
         </div>
     </div>
@@ -1798,25 +1798,25 @@
     <div class="row align-items-center" data-cues="slideInUp" data-group="portfolio_list">
         <div class="load_more_items_list">
             <?php if ($query->have_posts()):
-                                while ($query->have_posts()): $query->the_post();
-                                    $categories    = get_the_terms(get_the_ID(), 'works_category');
-                                    $category_name = ! empty($categories) ? esc_html($categories[0]->name) : '';
-                                ?>
-								                <div class="item position-relative z-1 d-flex align-items-center justify-content-between">
-								                    <h3 class="mb-0">
-								                        <a href="<?php the_permalink(); ?>">
-								                            <?php the_title(); ?>
-								                        </a>
-								                    </h3>
-								                    <?php if ($category_name): ?>
-								                        <span class="category d-inline-block">
-								                            <?php echo $category_name; ?>
-								                        </span>
-								                    <?php endif; ?>
-				                    <div class="image">
-				                        <?php if (has_post_thumbnail()): ?>
-				                            <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
-				                        <?php endif; ?>
+            while ($query->have_posts()): $query->the_post();
+                $categories    = get_the_terms(get_the_ID(), 'works_category');
+                $category_name = ! empty($categories) ? esc_html($categories[0]->name) : '';
+                ?>
+            <div class="item position-relative z-1 d-flex align-items-center justify-content-between">
+                <h3 class="mb-0">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_title(); ?>
+                    </a>
+                </h3>
+                <?php if ($category_name): ?>
+                    <span class="category d-inline-block">
+                        <?php echo $category_name; ?>
+                    </span>
+                    <?php endif; ?>
+                    <div class="image">
+                        <?php if (has_post_thumbnail()): ?>
+                            <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                        <?php endif; ?>
                     </div>
                     <a href="<?php the_permalink(); ?>" class="position-absolute z-1 start-0 end-0 top-0 bottom-0"></a>
                 </div>
@@ -1824,7 +1824,7 @@
                 endwhile;
                             wp_reset_postdata();
                         else: ?>
-                <p><?php esc_html_e('No works found.', 'axero-toolkit'); ?></p>
+                <p><?php esc_html_e('No Projects found.', 'axero-toolkit'); ?></p>
             <?php endif; ?>
         </div>
     </div>
@@ -1838,9 +1838,8 @@
 
             <?php
                 // Reset post data before starting first loop
-                            wp_reset_postdata();
-                        ?>
-
+                 wp_reset_postdata();
+                ?>
             <div class="images text-start">
                 <?php
                     if ($query->have_posts()):
@@ -1877,27 +1876,27 @@
             <div class="contents text-start">
                 <?php
                     if ($query->have_posts()):
-                                    while ($query->have_posts()): $query->the_post();
-                                    ?>
-						                    <div class="item">
-						                        <h3>
-						                            <a href="<?php the_permalink(); ?>">
-						                                <?php the_title(); ?>
-						                            </a>
-						                        </h3>
-						                        <p>
-						                            <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
-						                        </p>
-						                        <a href="<?php the_permalink(); ?>" class="link-btn d-flex align-items-center position-relative">
-						                            <?php esc_html_e('View Project', 'axero-toolkit'); ?>
-						                            <i class="ri-arrow-right-line"></i>
-						                        </a>
-						                    </div>
-						                <?php
-                                                endwhile;
-                                                        endif;
-                                                        wp_reset_postdata();
-                                                    ?>
+                    while ($query->have_posts()): $query->the_post();
+                    ?>
+                    <div class="item">
+                        <h3>
+                            <a href="<?php the_permalink(); ?>">
+                                <?php the_title(); ?>
+                            </a>
+                        </h3>
+                        <p>
+                            <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
+                        </p>
+                        <a href="<?php the_permalink(); ?>" class="link-btn d-flex align-items-center position-relative">
+                            <?php esc_html_e('View Project', 'axero-toolkit'); ?>
+                            <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </div>
+                    <?php
+                    endwhile;
+                        endif;
+                        wp_reset_postdata();
+                    ?>
             </div>
         </div>
     </div>

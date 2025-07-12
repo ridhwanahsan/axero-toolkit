@@ -352,7 +352,7 @@
                     'label'     => esc_html__('Color', 'axero-toolkit'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .text-animation > div' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .text-animation' => 'color: {{VALUE}}',
                     ],
                 ]
             );
@@ -361,7 +361,7 @@
                 \Elementor\Group_Control_Typography::get_type(),
                 [
                     'name'     => 'main_title_typography',
-                    'selector' => '{{WRAPPER}} .text-animation > div',
+                    'selector' => '{{WRAPPER}} .text-animation',
                 ]
             );
 
@@ -995,28 +995,23 @@
             <div class="main_home_banner_content" data-cues="slideInUp" data-group="main_home_banner_content">
                 <h1>
                     <?php
-
-                                    if ($main_title) {
-                                        echo $main_title . ' ';
-                                    }
-
-                                    if ($image_url) {
-                                    ?>
-                        <img src="<?php echo $image_url; ?>" alt="<?php echo esc_attr__('circle', 'axero-toolkit'); ?>">
-                        <?php
-                            }
-
-                                        if ($sub_title) {
-                                            echo ' ' . $sub_title;
-                                        }
-                                    ?>
+                    if ($main_title) {
+                        echo wp_kses_post($main_title) . ' ';
+                    }
+                    if ($image_url) {
+                        echo '<img src="' . esc_url($image_url) . '" alt="' . esc_attr__('circle', 'axero-toolkit') . '">';
+                    }
+                    if ($sub_title) {
+                        echo ' ' . wp_kses_post($sub_title);
+                    }   
+                    ?>
                 </h1>
             </div>
 
           <?php } elseif ($settings['style_selection'] === 'style5') {
-                          $main_title = ! empty($settings['style4_main_title']) ? esc_html($settings['style4_main_title']) : '';
-                          $image_url  = ! empty($settings['style4_image']['url']) ? esc_url($settings['style4_image']['url']) : '';
-                          $sub_title  = ! empty($settings['style4_sub_title']) ? esc_html($settings['style4_sub_title']) : '';
+            $main_title = ! empty($settings['style4_main_title']) ? esc_html($settings['style4_main_title']) : '';
+            $image_url  = ! empty($settings['style4_image']['url']) ? esc_url($settings['style4_image']['url']) : '';
+            $sub_title  = ! empty($settings['style4_sub_title']) ? esc_html($settings['style4_sub_title']) : '';
 
                       ?>
     <!-- style 5 -->

@@ -525,9 +525,8 @@
 
                     <p class="on-scroll-font-color-change">
                         <?php if (! empty($settings['description_text'])): ?>
-<?php echo esc_html($settings['description_text']); ?>
-<?php endif; ?>
-
+                        <?php echo esc_html($settings['description_text']); ?>
+                        <?php endif; ?>
                     </p>
                 </div>
             </div>
@@ -555,24 +554,24 @@
                 <div class="awesome_about_us_title text_animation">
                     <h2 class="mb-0">
                         <?php if (! empty($settings['style3_additional_text_1'])): ?>
-<?php echo esc_html($settings['style3_additional_text_1']); ?>
-<?php endif; ?>
+                        <?php echo esc_html($settings['style3_additional_text_1']); ?>
+                        <?php endif; ?>
 
                         <?php if (! empty($settings['style3_additional_text_2'])): ?>
                             <span><?php echo esc_html($settings['style3_additional_text_2']); ?></span>
                         <?php endif; ?>
 
                         <?php if (! empty($settings['style3_additional_text_3'])): ?>
-<?php echo esc_html($settings['style3_additional_text_3']); ?>
-<?php endif; ?>
+                        <?php echo esc_html($settings['style3_additional_text_3']); ?>
+                        <?php endif; ?>
 
                         <?php if (! empty($settings['style3_additional_text_4'])): ?>
                             <span><?php echo esc_html($settings['style3_additional_text_4']); ?></span>
                         <?php endif; ?>
 
                         <?php if (! empty($settings['style3_additional_text_5'])): ?>
-<?php echo esc_html($settings['style3_additional_text_5']); ?>
-<?php endif; ?>
+                        <?php echo esc_html($settings['style3_additional_text_5']); ?>
+                        <?php endif; ?>
                     </h2>
                 </div>
     <?php

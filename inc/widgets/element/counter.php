@@ -18,7 +18,7 @@
 
         public function get_title()
         {
-            return __('axero counter', 'axero-toolkit');
+            return __('Axero Counter', 'axero-toolkit');
         }
 
         public function get_icon()
@@ -56,6 +56,7 @@
                     'default' => 'style1',
                     'options' => [
                         'style1' => esc_html__('Style 1', 'axero-toolkit'),
+                        'style2' => esc_html__('Style 2', 'axero-toolkit'),
 
                     ],
                 ]
@@ -68,6 +69,9 @@
                 [
                     'label' => esc_html__('Counter', 'axero-toolkit'),
                     'tab'   => Controls_Manager::TAB_CONTENT,
+                    'condition' => [
+                        'style_selection' => 'style1',
+                    ],
                 ]
             );
 
@@ -134,6 +138,95 @@
 
             $this->end_controls_section();
 
+        // Start a new controls section for Style2 repeater controls
+        $this->start_controls_section(
+            'section_style2_items',
+            [
+                'label' => esc_html__('Style2 Items', 'axero-toolkit'),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+                'condition' => [
+                    'style_selection' => 'style2',
+                ],
+            ]
+        );
+
+        // Add repeater controls for style2 with prefix 'style2_'
+        $repeater2 = new \Elementor\Repeater();
+
+        $repeater2->add_control(
+            'style2_number',
+            [
+                'label'   => esc_html__('Number', 'axero-toolkit'),
+                'type'    => \Elementor\Controls_Manager::TEXT,
+                'default' => '15',
+            ]
+        );
+
+        $repeater2->add_control(
+            'style2_suffix',
+            [
+                'label'   => esc_html__('Suffix', 'axero-toolkit'),
+                'type'    => \Elementor\Controls_Manager::TEXT,
+                'default' => '',
+            ]
+        );
+
+        $repeater2->add_control(
+            'style2_title',
+            [
+                'label'   => esc_html__('Title', 'axero-toolkit'),
+                'type'    => \Elementor\Controls_Manager::TEXT,
+                'default' => 'Year Experience',
+            ]
+        );
+
+        $repeater2->add_control(
+            'style2_content',
+            [
+                'label'   => esc_html__('Content', 'axero-toolkit'),
+                'type'    => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => 'Gain access to a network of trusted recruitment agencies specializing in tech talent acquisition. Collaborate to find the perfect match for your team for a fixed price.',
+            ]
+        );
+
+        $this->add_control(
+            'style2_items',
+            [
+                'label'       => esc_html__('Style2 Items', 'axero-toolkit'),
+                'type'        => \Elementor\Controls_Manager::REPEATER,
+                'fields'      => $repeater2->get_controls(),
+                'default'     => [
+                    [
+                        'style2_number' => '15',
+                        'style2_suffix' => '',
+                        'style2_title'  => 'Year Experience',
+                        'style2_content' => 'Gain access to a network of trusted recruitment agencies specializing in tech talent acquisition. Collaborate to find the perfect match for your team for a fixed price.',
+                    ],
+                    [
+                        'style2_number' => '25',
+                        'style2_suffix' => 'K',
+                        'style2_title'  => '+ Happy Customer',
+                        'style2_content' => 'Gain access to a network of trusted recruitment agencies specializing in tech talent acquisition. Collaborate to find the perfect match for your team for a fixed price.',
+                    ],
+                    [
+                        'style2_number' => '8',
+                        'style2_suffix' => 'K',
+                        'style2_title'  => 'Project Completed',
+                        'style2_content' => 'Gain access to a network of trusted recruitment agencies specializing in tech talent acquisition. Collaborate to find the perfect match for your team for a fixed price.',
+                    ],
+                    [
+                        'style2_number' => '98',
+                        'style2_suffix' => '',
+                        'style2_title'  => 'Team Member',
+                        'style2_content' => 'Gain access to a network of trusted recruitment agencies specializing in tech talent acquisition. Collaborate to find the perfect match for your team for a fixed price.',
+                    ],
+                ],
+                'title_field' => '{{{ style2_title }}}',
+            ]
+        );
+
+        $this->end_controls_section();
+
         }
         /**
          * Style Tab Content Section
@@ -149,6 +242,9 @@
                 [
                     'label' => esc_html__('Number Style', 'axero-toolkit'),
                     'tab'   => Controls_Manager::TAB_STYLE,
+                    'condition' => [
+                        'style_selection' => 'style1',
+                    ],
                 ]
             );
 
@@ -250,7 +346,7 @@
                 <div class="container">
                     <div class="row" data-cues="slideInUp" data-group="funfacts_list">
                         <?php if (! empty($settings['counter_items']) && is_array($settings['counter_items'])): ?>
-<?php foreach ($settings['counter_items'] as $item): ?>
+                        <?php foreach ($settings['counter_items'] as $item): ?>
                                 <div class="col-sm-6">
                                     <div class="funfact_box">
                                         <div class="number lh-1 fw-bold ">
@@ -265,7 +361,7 @@
                                     </div>
                                 </div>
                             <?php endforeach; ?>
-<?php endif; ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -274,6 +370,44 @@
             } elseif ($settings['style_selection'] === 'style2') {
                     ?>
             <!-- style 2 -->
+                  <div class="awesome_funfacts_area">
+                      <div class="awesome_funfacts_inner">
+                          <div class="awesome_funfacts_list">
+                              <?php if (!empty($settings['style2_items']) && is_array($settings['style2_items'])): ?>
+                                  <?php foreach ($settings['style2_items'] as $item): ?>
+                                      <div class="item_box">
+                                          <div class="row align-items-center">
+                                              <div class="col-xxl-8 col-lg-6">
+                                                  <div class="number position-relative">
+                                                      <div class="d-flex align-items-center">
+                                                          <h3 class="mb-0 lh-1">
+                                                              <span class="counter_number">
+                                                                  <?php echo esc_html($item['style2_number']); ?>
+                                                              </span>
+                                                              <?php if (!empty($item['style2_suffix'])): ?>
+                                                                  <?php echo esc_html($item['style2_suffix']); ?>
+                                                              <?php endif; ?>
+                                                          </h3>
+                                                          <span class="sub_title d-block text-uppercase fw-medium">
+                                                              <?php echo esc_html($item['style2_title']); ?>
+                                                          </span>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-xxl-4 col-lg-6">
+                                                  <div class="content text_animation">
+                                                      <p>
+                                                          <?php echo esc_html($item['style2_content']); ?>
+                                                      </p>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  <?php endforeach; ?>
+                              <?php endif; ?>
+                          </div>
+                      </div>
+                  </div>
 
         <?php
             } elseif ($settings['style_selection'] === 'style3') {

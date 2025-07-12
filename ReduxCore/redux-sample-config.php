@@ -174,17 +174,10 @@ Redux::setSection($opt_name, [
     'icon'       => ' el el-home',
     'fields'     => [
         [
-            'id'    => 'main_logo',
-            'type'  => 'media',
-            'url'   => true,
-            'title' => esc_html__('Dark Logo', 'axero-toolkit'),
-            'desc'  => esc_html__('Recommended sizes - width: 100px, height: 30px with SVG format', 'axero-toolkit'),
-        ],
-        [
             'id'    => 'light_logo',
             'type'  => 'media',
             'url'   => true,
-            'title' => esc_html__('Light Logo', 'axero-toolkit'),
+            'title' => esc_html__('Main Logo', 'axero-toolkit'),
             'desc'  => esc_html__('Recommended sizes - width: 100px, height: 30px with SVG format', 'axero-toolkit'),
         ],
         [
@@ -317,38 +310,21 @@ Redux::setSection($opt_name, [
             'desc'    => esc_html__('', 'axero-toolkit'),
             'default' => '0',
         ],
-
-        [
-            'id'      => 'dark_mode_switch',
-            'type'    => 'switch',
-            'title'   => esc_html__('Dark Mode Toggle', 'axero-toolkit'),
-            'desc'    => esc_html__('Show/hide dark mode toggle button', 'axero-toolkit'),
-            'default' => '1',
-        ],
-
-        [
-            'id'      => 'enable_header_button',
-            'type'    => 'switch',
-            'title'   => esc_html__('Enable Header Button', 'axero-toolkit'),
-            'desc'    => esc_html__('Show/hide header button', 'axero-toolkit'),
-            'default' => '1',
-        ],
         [
             'id'   => 'divider_header1',
             'type' => 'divide',
         ],
-
         [
             'id'      => 'header_btn_text',
             'type'    => 'text',
             'title'   => esc_html__('Header Button Text', 'axero-toolkit'),
-            'default' => 'Talk to Us',
+            'default' => ' Lets Talk',
         ],
         [
             'id'          => 'header_btn_icon',
             'type'        => 'text',
             'title'       => esc_html__('Header Button Icon Class Name', 'axero-toolkit'),
-            'default'     => 'flaticon-right-arrow',
+            'default'     => 'ti ti-arrow-narrow-right',
             'description' => "You can use https://remixicon.com/ icons ex: ri-arrow-right-s-line",
         ],
         [

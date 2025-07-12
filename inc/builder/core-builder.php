@@ -1,22 +1,22 @@
 <?php
 
 // **
-// Register Works Custom Post Type
+// Register Projects Custom Post Type
 ////***
 function axero_register_works_post_type()
 {
     $labels = [
-        'name'               => __('Works', 'axero-toolkit'),
-        'singular_name'      => __('Works', 'axero-toolkit'),
-        'menu_name'          => __('Works', 'axero-toolkit'),
-        'add_new'            => __('Add New Works', 'axero-toolkit'),
-        'add_new_item'       => __('Add New Works', 'axero-toolkit'),
-        'edit_item'          => __('Edit Works', 'axero-toolkit'),
-        'new_item'           => __('New Works', 'axero-toolkit'),
-        'view_item'          => __('View Works', 'axero-toolkit'),
-        'search_items'       => __('Search Works', 'axero-toolkit'),
-        'not_found'          => __('No works found', 'axero-toolkit'),
-        'not_found_in_trash' => __('No works found in trash', 'axero-toolkit'),
+        'name'               => __('Projects', 'axero-toolkit'),
+        'singular_name'      => __('Projects', 'axero-toolkit'),
+        'menu_name'          => __('Projects', 'axero-toolkit'),
+        'add_new'            => __('Add New Projects', 'axero-toolkit'),
+        'add_new_item'       => __('Add New Projects', 'axero-toolkit'),
+        'edit_item'          => __('Edit Projects', 'axero-toolkit'),
+        'new_item'           => __('New Projects', 'axero-toolkit'),
+        'view_item'          => __('View Projects', 'axero-toolkit'),
+        'search_items'       => __('Search Projects', 'axero-toolkit'),
+        'not_found'          => __('No Projects found', 'axero-toolkit'),
+        'not_found_in_trash' => __('No Projects found in trash', 'axero-toolkit'),
     ];
 
     $args = [
@@ -28,7 +28,7 @@ function axero_register_works_post_type()
         'show_ui'            => true,
         'show_in_menu'       => true,
         'query_var'          => true,
-        'rewrite'            => ['slug' => 'works'],
+        'rewrite'            => ['slug' => 'Projects'],
         'capability_type'    => 'post',
         'supports'           => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'],
         'menu_position'      => 5,
@@ -36,34 +36,34 @@ function axero_register_works_post_type()
         'taxonomies'         => ['works_category'],
     ];
 
-    // Register Works Category Taxonomy
+    // Register Projects Category Taxonomy
     $category_labels = [
-        'name'              => __('Works Categories', 'axero-toolkit'),
-        'singular_name'     => __('Works Category', 'axero-toolkit'),
-        'search_items'      => __('Search Works Categories', 'axero-toolkit'),
-        'all_items'         => __('All Works Categories', 'axero-toolkit'),
-        'parent_item'       => __('Parent Works Category', 'axero-toolkit'),
-        'parent_item_colon' => __('Parent Works Category:', 'axero-toolkit'),
-        'edit_item'         => __('Edit Works Category', 'axero-toolkit'),
-        'update_item'       => __('Update Works Category', 'axero-toolkit'),
-        'add_new_item'      => __('Add New Works Category', 'axero-toolkit'),
-        'new_item_name'     => __('New Works Category Name', 'axero-toolkit'),
+        'name'              => __('Projects Categories', 'axero-toolkit'),
+        'singular_name'     => __('Projects Category', 'axero-toolkit'),
+        'search_items'      => __('Search Projects Categories', 'axero-toolkit'),
+        'all_items'         => __('All Projects Categories', 'axero-toolkit'),
+        'parent_item'       => __('Parent Projects Category', 'axero-toolkit'),
+        'parent_item_colon' => __('Parent Projects Category:', 'axero-toolkit'),
+        'edit_item'         => __('Edit Projects Category', 'axero-toolkit'),
+        'update_item'       => __('Update Projects Category', 'axero-toolkit'),
+        'add_new_item'      => __('Add New Projects Category', 'axero-toolkit'),
+        'new_item_name'     => __('New Projects Category Name', 'axero-toolkit'),
         'menu_name'         => __('Categories', 'axero-toolkit'),
     ];
 
-    register_taxonomy('works_category', ['works'], [
+    register_taxonomy('works_category', ['Projects'], [
         'hierarchical'       => true,
         'labels'             => $category_labels,
         'show_ui'            => true,
         'show_in_rest'       => true,
         'show_admin_column'  => true,
         'query_var'          => true,
-        'rewrite'            => ['slug' => 'works-category'],
+        'rewrite'            => ['slug' => 'Projects-category'],
         'show_in_quick_edit' => true,
         'meta_box_cb'        => null,
     ]);
 
-    register_post_type('works', $args);
+    register_post_type('Projects', $args);
 }
 add_action('init', 'axero_register_works_post_type');
 

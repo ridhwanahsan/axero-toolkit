@@ -326,7 +326,34 @@
                     ],
                 ]
             );
-
+            // Alignment Control
+            $this->add_responsive_control(
+                'button_alignment_style2',
+                [
+                    'label' => esc_html__('Alignment', 'axero-toolkit'),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => esc_html__('Left', 'axero-toolkit'),
+                            'icon' => 'eicon-text-align-left',
+                        ],
+                        'center' => [
+                            'title' => esc_html__('Center', 'axero-toolkit'),
+                            'icon' => 'eicon-text-align-center',
+                        ],
+                        'right' => [
+                            'title' => esc_html__('Right', 'axero-toolkit'),
+                            'icon' => 'eicon-text-align-right',
+                        ],
+                    ],
+                    'default' => 'left',
+                    'selectors' => [
+                        '{{WRAPPER}} .primary_btn3' => 'text-align: {{VALUE}};',
+                        '{{WRAPPER}} .primary_btn3 a' => 'justify-content: {{VALUE}};',
+                    ],
+                    'prefix_class' => 'elementor-align-',
+                ]
+            );
             // Text Color
             $this->add_control(
                 'button_text_color_style2',

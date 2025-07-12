@@ -13,12 +13,12 @@
 
         public function get_name()
         {
-            return 'Axero-work-Post-grid';
+            return 'Axero-Projects-Post-grid';
         }
 
         public function get_title()
         {
-            return __('Wrok grid v2', 'axero-toolkit');
+            return __('Projects grid v2', 'axero-toolkit');
         }
 
         public function get_icon()
@@ -518,7 +518,7 @@
                     <?php if ($query->max_num_pages > 1): ?>
                         <a href="#" class="d-flex align-items-center justify-content-center load-more-works" data-page="1" data-max-pages="<?php echo esc_attr($query->max_num_pages); ?>">
                             <i class="ri-arrow-down-line"></i>
-                            <?php esc_html_e('More Works', 'axero-toolkit'); ?>
+                            <?php esc_html_e('More Projectss', 'axero-toolkit'); ?>
                         </a>
                     <?php endif; ?>
                 </div>
