@@ -276,6 +276,9 @@
                 [
                     'label' => esc_html__('Quote Style', 'axero-toolkit'),
                     'tab'   => Controls_Manager::TAB_STYLE,
+                    'condition' => [
+                        'style_selection' => 'style1',
+                    ],
                 ]
             );
 
@@ -307,6 +310,9 @@
                 [
                     'label' => esc_html__('Title Style', 'axero-toolkit'),
                     'tab'   => Controls_Manager::TAB_STYLE,
+                    'condition' => [
+                        'style_selection' => 'style1',
+                    ],
                 ]
             );
 
@@ -331,6 +337,137 @@
             );
 
             $this->end_controls_section();
+        // Style2 Tab Style Controls Section
+        $this->start_controls_section(
+            'style2_style',
+            [
+                'label' => esc_html__('Style 2 Styling', 'axero-toolkit'),
+                'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'style_selection' => 'style2',
+                ],
+            ]
+        );
+
+        // Style2 Dot Background Color
+        $this->add_control(
+            'style2_dot_bg_color',
+            [
+                'label' => esc_html__('Dot Background Color', 'axero-toolkit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .awesome_funfacts_inner .awesome_funfacts_list .item_box .number::before' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Style2 Number Symbol Color & Typography
+        $this->add_control(
+            'style2_number_color',
+            [
+                'label' => esc_html__('Number Color', 'axero-toolkit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .awesome_funfacts_inner .awesome_funfacts_list .item_box .number h3' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'style2_number_typography',
+                'selector' => '{{WRAPPER}} .awesome_funfacts_inner .awesome_funfacts_list .item_box .number h3',
+            ]
+        );
+
+        // Style2 Sub Title Color & Typography
+        $this->add_control(
+            'style2_subtitle_color',
+            [
+                'label' => esc_html__('Sub Title Color', 'axero-toolkit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .awesome_funfacts_inner .awesome_funfacts_list .item_box .number .sub_title' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'style2_subtitle_typography',
+                'selector' => '{{WRAPPER}} .awesome_funfacts_inner .awesome_funfacts_list .item_box .number .sub_title',
+            ]
+        );
+
+        // Style2 Description Color & Typography
+        $this->add_control(
+            'style2_description_color',
+            [
+                'label' => esc_html__('Description Color', 'axero-toolkit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .awesome_funfacts_inner .awesome_funfacts_list .item_box .content p' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'style2_description_typography',
+                'selector' => '{{WRAPPER}} .awesome_funfacts_inner .awesome_funfacts_list .item_box .content p',
+            ]
+        );
+
+        // Style2 Background Controls
+        $this->add_group_control(
+            \Elementor\Group_Control_Background::get_type(),
+            [
+                'name' => 'style2_background',
+                'label' => esc_html__('Background', 'axero-toolkit'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .awesome_funfacts_inner',
+            ]
+        );
+
+        // Style2 Border Controls
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'style2_border',
+                'selector' => '{{WRAPPER}} .awesome_funfacts_inner',
+            ]
+        );
+
+        // Style2 Padding Controls
+        $this->add_responsive_control(
+            'style2_padding',
+            [
+                'label' => esc_html__('Padding', 'axero-toolkit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .awesome_funfacts_inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        // Style2 Margin Controls
+        $this->add_responsive_control(
+            'style2_margin',
+            [
+                'label' => esc_html__('Margin', 'axero-toolkit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .awesome_funfacts_inner' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
 
         }
 
