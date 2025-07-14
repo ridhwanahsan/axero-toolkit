@@ -58,6 +58,7 @@
                     'options' => [
                         'style1' => esc_html__('Style 1', 'axero-toolkit'),
                         'style2' => esc_html__('Style 2', 'axero-toolkit'),
+                        'style3' => esc_html__('Style 3', 'axero-toolkit'),
 
                     ],
                 ]
@@ -160,6 +161,56 @@
             );
 
             $this->end_controls_section();
+
+        /**
+         * Style3 Tab Content Section
+         * -------------------------
+         */
+        $this->start_controls_section(
+            'button_content_style3',
+            [
+                'label'     => esc_html__('Button Content (Style 3)', 'axero-toolkit'),
+                'tab'       => Controls_Manager::TAB_CONTENT,
+                'condition' => [
+                    'style_selection' => 'style3',
+                ],
+            ]
+        );
+        $this->add_control(
+            'button_text_style3',
+            [
+                'label'       => esc_html__('Text', 'axero-toolkit'),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => esc_html__('Get in Touch', 'axero-toolkit'),
+                'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'button_icon_style3',
+            [
+                'label'   => esc_html__('Icon', 'axero-toolkit'),
+                'type'    => Controls_Manager::ICONS,
+                'default' => [
+                    'value'   => 'ri-arrow-right-long-line',
+                    'library' => 'remix',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'button_link_style3',
+            [
+                'label'       => esc_html__('Link', 'axero-toolkit'),
+                'type'        => Controls_Manager::URL,
+                'placeholder' => esc_html__('https://your-link.com', 'axero-toolkit'),
+                'default'     => [
+                    'url' => '#',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
 
         }
         /**
@@ -511,6 +562,165 @@
 
             $this->end_controls_section();
 
+        /**
+         * Style3 Tab Style Controls Section
+         * -------------------------------
+         */
+        $this->start_controls_section(
+            'button_style3',
+            [
+                'label'     => esc_html__('Button Styling (Style 3)', 'axero-toolkit'),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'style_selection' => 'style3',
+                ],
+            ]
+        );
+
+        // Text Color
+        $this->add_control(
+            'button_text_color_style3',
+            [
+                'label'     => esc_html__('Text Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .secondary_btn.style_three' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        // Typography
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'button_typography_style3',
+                'selector' => '{{WRAPPER}} .secondary_btn.style_three',
+            ]
+        );
+
+        // Background Color
+        $this->add_control(
+            'button_bg_color_style3',
+            [
+                'label'     => esc_html__('Background Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .secondary_btn.style_three' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        // Icon Size
+        $this->add_responsive_control(
+            'button_icon_size_style3',
+            [
+                'label'      => esc_html__('Icon Size', 'axero-toolkit'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', 'rem'],
+                'selectors'  => [
+                    '{{WRAPPER}} .btn.style_three span i' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        // Icon Color
+        $this->add_control(
+            'button_icon_color_style3',
+            [
+                'label'     => esc_html__('Icon Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .btn.style_three span i' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Text Hover Color
+        $this->add_control(
+            'button_text_hover_color_style3',
+            [
+                'label'     => esc_html__('Text Hover Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .secondary_btn.style_three:hover' => 'color: {{VALUE}} !important',
+                ],
+            ]
+        );
+
+        // Hover Background Color
+        $this->add_control(
+            'button_bg_hover_color_style3',
+            [
+                'label'     => esc_html__('Hover Background Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .secondary_btn.style_three:hover' => 'background-color: {{VALUE}} !important',
+                ],
+            ]
+        );
+
+        // Icon Hover Color
+        $this->add_control(
+            'button_icon_hover_color_style3',
+            [
+                'label'     => esc_html__('Icon Hover Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .btn.style_three:hover span i' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Border
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name'     => 'button_border_style3',
+                'selector' => '{{WRAPPER}} .secondary_btn.style_three',
+            ]
+        );
+
+        // Border Radius
+        $this->add_control(
+            'button_border_radius_style3',
+            [
+                'label'      => esc_html__('Border Radius', 'axero-toolkit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .secondary_btn.style_three' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        // Padding
+        $this->add_responsive_control(
+            'button_padding_style3',
+            [
+                'label'      => esc_html__('Padding', 'axero-toolkit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .secondary_btn.style_three' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        // Margin
+        $this->add_responsive_control(
+            'button_margin_style3',
+            [
+                'label'      => esc_html__('Margin', 'axero-toolkit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .secondary_btn.style_three' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
         }
 
         protected function render()
@@ -522,7 +732,7 @@
             <!-- style 1 -->
             <a href="<?php echo esc_url($settings['button_link']['url']); ?>" class="default-btn">
                 <?php echo esc_html($settings['button_text']); ?>
-<?php \Elementor\Icons_Manager::render_icon($settings['button_icon'], ['aria-hidden' => 'true']); ?>
+                <?php \Elementor\Icons_Manager::render_icon($settings['button_icon'], ['aria-hidden' => 'true']); ?>
             </a>
 
 
@@ -543,16 +753,21 @@
         <a href="<?php echo $button_link; ?>" class="btn primary_btn3">
             <span class="d-inline-block position-relative">
                 <?php echo $button_text; ?>
-<?php \Elementor\Icons_Manager::render_icon($button_icon, ['aria-hidden' => 'true']); ?>
+                <?php \Elementor\Icons_Manager::render_icon($button_icon, ['aria-hidden' => 'true']); ?>
             </span>
         </a>
-
-
         <?php
             } elseif ($settings['style_selection'] === 'style3') {
                     ?>
-            <!-- style 3 -->
-
+            <!-- style 3 -->        
+    <a href="<?php echo esc_url($settings['button_link_style3']['url']); ?>" class="btn secondary_btn style_three">
+        <span class="d-inline-block position-relative">
+            <?php echo esc_html($settings['button_text_style3']); ?>
+            <?php if (!empty($settings['button_icon_style3']['value'])): ?>
+                <i class="<?php echo esc_attr($settings['button_icon_style3']['value']); ?>"></i>
+            <?php endif; ?>
+        </span>
+    </a>
     <?php
         }
             }

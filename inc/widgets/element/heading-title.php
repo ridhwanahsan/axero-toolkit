@@ -594,6 +594,31 @@
                     ],
                 ]
             );
+            $this->add_responsive_control(
+                'style4_text_align',
+                [
+                    'label'     => esc_html__('Text Alignment', 'axero-toolkit'),
+                    'type'      => Controls_Manager::CHOOSE,
+                    'options'   => [
+                        'left'   => [
+                            'title' => esc_html__('Left', 'axero-toolkit'),
+                            'icon'  => 'eicon-text-align-left',
+                        ],
+                        'center' => [
+                            'title' => esc_html__('Center', 'axero-toolkit'),
+                            'icon'  => 'eicon-text-align-center',
+                        ],
+                        'right'  => [
+                            'title' => esc_html__('Right', 'axero-toolkit'),
+                            'icon'  => 'eicon-text-align-right',
+                        ],
+                    ],
+                    'default'   => 'left',
+                    'selectors' => [
+                        '{{WRAPPER}} .main_home_banner_content h1' => 'text-align: {{VALUE}};',
+                    ],
+                ]
+            );
 
             $this->add_control(
                 'style4_main_title_color',
@@ -902,15 +927,14 @@
              <div class="services-area">
             <div class="creative-agency-section-title text-white">
                 <div class="row align-items-center">
-
                         <div class="left-side">
                             <h2 class="text-animation">
                                 <?php echo wp_kses_post($settings['main_title']); ?> <span><?php echo wp_kses_post($settings['sub_title']); ?></span>
                             </h2>
                         </div>
+                    </div>
                 </div>
             </div>
-    </div>
 
 
 
@@ -924,17 +948,17 @@
                         <div class="h1 fw-normal">
                             <div class="one">
                                 <span class="d-block gsap-target">
-                                    <?php echo esc_html($settings['text_one']); ?>
+                                    <?php echo wp_kses_post($settings['text_one']); ?>
                                 </span>
                             </div>
                             <div class="two position-relative">
                                 <span class="d-block gsap-target">
-                                    <?php echo esc_html($settings['text_two']); ?>
+                                    <?php echo wp_kses_post($settings['text_two']); ?>
                                 </span>
                             </div>
                             <div class="three">
                                 <span class="d-block gsap-target">
-                                    <?php echo esc_html($settings['text_three']); ?>
+                                    <?php echo wp_kses_post($settings['text_three']); ?>
                                 </span>
                             </div>
                         </div>
@@ -961,33 +985,28 @@
             } elseif ($settings['style_selection'] === 'style3') {
                     ?>
             <!-- style 3 -->
-    <div class="video-area">
-        <div class="container">
-            <div class="video-content position-relative z-1 text-center" data-cues="slideInUp">
-
-        <?php if (! empty($settings['style3_main_title'])): ?>
-            <h2 >
-                    <?php echo esc_html($settings['style3_main_title']); ?>
-<?php endif; ?>
-
-         <?php if (! empty($settings['style3_background_image'])): ?>
-             <img src="<?php echo esc_url($settings['style3_background_image']['url']); ?>">
-              <span>
-                                <?php endif; ?>
-
-                                <?php if (! empty($settings['style3_sub_title'])): ?>
-<?php echo esc_html($settings['style3_sub_title']); ?></span>
-                                <?php endif; ?>
-
-                            </h2>
-                        </div>
+            <div class="video-area">
+                <div class="container">
+                    <div class="video-content position-relative z-1 text-center" data-cues="slideInUp">
+                    <?php if (! empty($settings['style3_main_title'])): ?>
+                        <h2>
+                            <?php echo wp_kses_post($settings['style3_main_title']); ?>
+                            <?php endif; ?>
+                            <?php if (! empty($settings['style3_background_image'])): ?>
+                            <img src="<?php echo esc_url($settings['style3_background_image']['url']); ?>">
+                            <?php endif; ?>
+                            <?php if (! empty($settings['style3_sub_title'])): ?>
+                            <span><?php echo wp_kses_post($settings['style3_sub_title']); ?></span>
+                            <?php endif; ?>
+                        </h2>
                     </div>
                 </div>
+            </div>
 
     <?php } elseif ($settings['style_selection'] === 'style4') {
-                    $main_title = ! empty($settings['style4_main_title']) ? esc_html($settings['style4_main_title']) : '';
-                    $image_url  = ! empty($settings['style4_image']['url']) ? esc_url($settings['style4_image']['url']) : '';
-                    $sub_title  = ! empty($settings['style4_sub_title']) ? esc_html($settings['style4_sub_title']) : '';
+                    $main_title = ! empty($settings['style4_main_title']) ? $settings['style4_main_title'] : '';
+                    $image_url  = ! empty($settings['style4_image']['url']) ? $settings['style4_image']['url'] : '';
+                    $sub_title  = ! empty($settings['style4_sub_title']) ? $settings['style4_sub_title'] : '';
 
                 ?>
          <!-- style 4 -->
@@ -999,7 +1018,7 @@
                         echo wp_kses_post($main_title) . ' ';
                     }
                     if ($image_url) {
-                        echo '<img src="' . esc_url($image_url) . '" alt="' . esc_attr__('circle', 'axero-toolkit') . '">';
+                        echo wp_kses_post('<img src="' . esc_url($image_url) . '" alt="' . esc_attr__('circle', 'axero-toolkit') . '">');
                     }
                     if ($sub_title) {
                         echo ' ' . wp_kses_post($sub_title);
@@ -1018,19 +1037,16 @@
        <div class="hero_banner_content text-center mx-auto position-relative z-1" data-cues="slideInUp" data-group="hero_banner_content">
             <h1 class="fw-bold">
                 <?php
-
-                                if ($main_title) {
-                                    echo $main_title . ' ';
-                                }
-
-                                if ($image_url) {
-                                    echo '<img src="' . $image_url . '" alt="' . esc_attr__('inline-image', 'axero-toolkit') . '"> ';
-                                }
-
-                                if ($sub_title) {
-                                    echo $sub_title;
-                                }
-                            ?>
+                    if ($main_title) {
+                        echo wp_kses_post($main_title) . ' ';
+                    }
+                    if ($image_url) {
+                        echo '<img src="' . esc_url($image_url) . '" alt="' . esc_attr__('inline-image', 'axero-toolkit') . '"> ';
+                    }
+                    if ($sub_title) {
+                        echo wp_kses_post($sub_title);
+                    }
+                ?>
             </h1>
         </div>
     <?php } elseif ($settings['style_selection'] === 'style6') {?>
@@ -1040,15 +1056,15 @@
             <h2 class="mb-0">
                 <?php
                     if (! empty($settings['style6_title1'])) {
-                                echo esc_html($settings['style6_title1']) . ' ';
+                                echo wp_kses_post($settings['style6_title1']) . ' ';
                             }
-                                if (! empty($settings['style6_image']['url'])) {
-                                    echo '<img src="' . esc_url($settings['style6_image']['url']) . '" class="rounded-circle" alt="' . esc_attr__('user-image', 'axero-toolkit') . '"> ';
-                                }
-                                if (! empty($settings['style6_title2'])) {
-                                    echo '<span>' . esc_html($settings['style6_title2']) . '</span>';
-                                }
-                            ?>
+                        if (! empty($settings['style6_image']['url'])) {
+                            echo '<img src="' . esc_url($settings['style6_image']['url']) . '" class="rounded-circle" alt="' . esc_attr__('user-image', 'axero-toolkit') . '"> ';
+                        }
+                        if (! empty($settings['style6_title2'])) {
+                            echo '<span>' . wp_kses_post($settings['style6_title2']) . '</span>';
+                        }
+                 ?>
             </h2>
         </div>
     </footer>

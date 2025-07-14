@@ -273,6 +273,18 @@
             } elseif ($settings['style_selection'] === 'style3') {
                     ?>
             <!-- style 3 -->
+            <div class="about_us_area ptb_150 position-relative z-1">
+            <div class="container-fluid max_w_1560px">
+                <div class="about_video_box position-relative" data-cue="slideInUp">
+                    <img src="assets/images/about/about4.jpg" alt="about4">
+                    <a href="https://www.youtube.com/watch?v=ObKsCs5mYGQ" class="video_btn popup_video">
+                        <i class="ri-play-fill"></i>
+                    </a>
+                </div>
+              
+            </div>
+   
+        </div>
 
     <?php
         }
