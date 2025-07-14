@@ -56,6 +56,7 @@
                     'default' => 'style1',
                     'options' => [
                         'style1' => esc_html__('Style 1', 'axero-toolkit'),
+                        'style2' => esc_html__('Style 2', 'axero-toolkit'),
 
                     ],
                 ]
@@ -68,6 +69,9 @@
                 [
                     'label' => esc_html__('Image', 'axero-toolkit'),
                     'tab'   => Controls_Manager::TAB_CONTENT,
+                    'condition' => [
+                        'style_selection' => 'style1',
+                    ],
                 ]
             );
 
@@ -89,6 +93,35 @@
                     'type'        => Controls_Manager::TEXT,
                     'default'     => esc_html__('Banner Image', 'axero-toolkit'),
                     'label_block' => true,
+                ]
+            );
+
+            $this->end_controls_section();
+            // Style 2 Content Tab
+            $this->start_controls_section(
+                'style2_content_section',
+                [
+                    'label' => esc_html__('Content', 'axero-toolkit'),
+                    'tab'   => Controls_Manager::TAB_CONTENT,
+                    'condition' => [
+                        'style_selection' => 'style2',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'style2_object5_image',
+                [
+                    'label'   => esc_html__('Object 5 Image', 'axero-toolkit'),
+                    'type'    => Controls_Manager::MEDIA,
+                ]
+            );
+
+            $this->add_control(
+                'style2_object6_image',
+                [
+                    'label'   => esc_html__('Object 6 Image', 'axero-toolkit'),
+                    'type'    => Controls_Manager::MEDIA,
                 ]
             );
 
@@ -124,6 +157,14 @@
             } elseif ($settings['style_selection'] === 'style2') {
                     ?>
             <!-- style 2 -->
+        <div class="about_us_area z-1">
+            <div class="object5">
+                <img src="<?php echo esc_url($settings['style2_object5_image']['url']); ?>" alt="<?php echo esc_attr($settings['style2_object5_image']['alt']); ?>">
+            </div>
+            <div class="object6">
+                <img src="<?php echo esc_url($settings['style2_object6_image']['url']); ?>" alt="<?php echo esc_attr($settings['style2_object6_image']['alt']); ?>">
+            </div>
+        </div>
 
         <?php
             } elseif ($settings['style_selection'] === 'style3') {

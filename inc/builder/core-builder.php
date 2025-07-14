@@ -68,22 +68,22 @@ function axero_register_works_post_type()
 add_action('init', 'axero_register_works_post_type');
 
 // **
-// Register Careers Custom Post Type
+// Register Teams Custom Post Type
 ////***
-function axero_register_careers_post_type()
+function axero_register_teams_post_type()
 {
     $labels = [
-        'name'               => __('Careers', 'axero-toolkit'),
-        'singular_name'      => __('Career', 'axero-toolkit'),
-        'menu_name'          => __('Careers', 'axero-toolkit'),
-        'add_new'            => __('Add New Career', 'axero-toolkit'),
-        'add_new_item'       => __('Add New Career', 'axero-toolkit'),
-        'edit_item'          => __('Edit Career', 'axero-toolkit'),
-        'new_item'           => __('New Career', 'axero-toolkit'),
-        'view_item'          => __('View Career', 'axero-toolkit'),
-        'search_items'       => __('Search Careers', 'axero-toolkit'),
-        'not_found'          => __('No careers found', 'axero-toolkit'),
-        'not_found_in_trash' => __('No careers found in trash', 'axero-toolkit'),
+        'name'               => __('Teams', 'axero-toolkit'),
+        'singular_name'      => __('Team', 'axero-toolkit'),
+        'menu_name'          => __('Teams', 'axero-toolkit'),
+        'add_new'            => __('Add New Team', 'axero-toolkit'),
+        'add_new_item'       => __('Add New Team', 'axero-toolkit'),
+        'edit_item'          => __('Edit Team', 'axero-toolkit'),
+        'new_item'           => __('New Team', 'axero-toolkit'),
+        'view_item'          => __('View Team', 'axero-toolkit'),
+        'search_items'       => __('Search Teams', 'axero-toolkit'),
+        'not_found'          => __('No teams found', 'axero-toolkit'),
+        'not_found_in_trash' => __('No teams found in trash', 'axero-toolkit'),
     ];
 
     $args = [
@@ -95,44 +95,44 @@ function axero_register_careers_post_type()
         'show_ui'            => true,
         'show_in_menu'       => true,
         'query_var'          => true,
-        'rewrite'            => ['slug' => 'careers'],
+        'rewrite'            => ['slug' => 'teams'],
         'capability_type'    => 'post',
         'supports'           => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'],
         'menu_position'      => 5,
-        'menu_icon'          => 'dashicons-businessperson',
-        'taxonomies'         => ['careers_category'],
+        'menu_icon'          => 'dashicons-groups',
+        'taxonomies'         => ['teams_category'],
     ];
 
-    // Register Careers Category Taxonomy
+    // Register Teams Category Taxonomy
     $category_labels = [
-        'name'              => __('Careers Categories', 'axero-toolkit'),
-        'singular_name'     => __('Careers Category', 'axero-toolkit'),
-        'search_items'      => __('Search Careers Categories', 'axero-toolkit'),
-        'all_items'         => __('All Careers Categories', 'axero-toolkit'),
-        'parent_item'       => __('Parent Careers Category', 'axero-toolkit'),
-        'parent_item_colon' => __('Parent Careers Category:', 'axero-toolkit'),
-        'edit_item'         => __('Edit Careers Category', 'axero-toolkit'),
-        'update_item'       => __('Update Careers Category', 'axero-toolkit'),
-        'add_new_item'      => __('Add New Careers Category', 'axero-toolkit'),
-        'new_item_name'     => __('New Careers Category Name', 'axero-toolkit'),
+        'name'              => __('Teams Categories', 'axero-toolkit'),
+        'singular_name'     => __('Teams Category', 'axero-toolkit'),
+        'search_items'      => __('Search Teams Categories', 'axero-toolkit'),
+        'all_items'         => __('All Teams Categories', 'axero-toolkit'),
+        'parent_item'       => __('Parent Teams Category', 'axero-toolkit'),
+        'parent_item_colon' => __('Parent Teams Category:', 'axero-toolkit'),
+        'edit_item'         => __('Edit Teams Category', 'axero-toolkit'),
+        'update_item'       => __('Update Teams Category', 'axero-toolkit'),
+        'add_new_item'      => __('Add New Teams Category', 'axero-toolkit'),
+        'new_item_name'     => __('New Teams Category Name', 'axero-toolkit'),
         'menu_name'         => __('Categories', 'axero-toolkit'),
     ];
 
-    register_taxonomy('careers_category', ['careers'], [
+    register_taxonomy('teams_category', ['teams'], [
         'hierarchical'       => true,
         'labels'             => $category_labels,
         'show_ui'            => true,
         'show_in_rest'       => true,
         'show_admin_column'  => true,
         'query_var'          => true,
-        'rewrite'            => ['slug' => 'careers-category'],
+        'rewrite'            => ['slug' => 'teams-category'],
         'show_in_quick_edit' => true,
         'meta_box_cb'        => null,
     ]);
 
-    register_post_type('careers', $args);
+    register_post_type('teams', $args);
 }
-add_action('init', 'axero_register_careers_post_type');
+add_action('init', 'axero_register_teams_post_type');
 
 // **
 // Register Services Custom Post Type

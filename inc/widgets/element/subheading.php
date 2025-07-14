@@ -60,6 +60,7 @@
                         'style3' => esc_html__('Style 3', ' axero-toolkit'),
                         'style4' => esc_html__('Style 4', ' axero-toolkit'),
                         'style5' => esc_html__('Style 5', ' axero-toolkit'),
+                        'style6' => esc_html__('Style 6', ' axero-toolkit'),
                     ],
                 ]
             );
@@ -195,6 +196,52 @@
                     'type'    => Controls_Manager::MEDIA,
                     'default' => [
                         'url' => get_template_directory_uri() . '/assets/images/icons/vector.svg',
+                    ],
+                ]
+            );
+            $this->end_controls_section();
+
+            $this->start_controls_section(
+                'title_section_style6',
+                [
+                    'label'     => esc_html__('Title Style 6', 'axero-toolkit'),
+                    'tab'       => Controls_Manager::TAB_CONTENT,
+                    'condition' => [
+                        'style_selection' => 'style6',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'title_text_style6',
+                [
+                    'label'       => esc_html__('Title Text', 'axero-toolkit'),
+                    'type'        => Controls_Manager::TEXT,
+                    'default'     => esc_html__('About Axero', 'axero-toolkit'),
+                    'label_block' => true,
+                ]
+            );
+
+            $this->add_control(
+                'style6_image',
+                [
+                    'label'   => esc_html__('Arrow Image', 'axero-toolkit'),
+                    'type'    => Controls_Manager::MEDIA,
+                    'default' => [
+                        'url' => get_template_directory_uri() . '/assets/images/icons/left_down_arrow.svg',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'style6_image_position',
+                [
+                    'label' => esc_html__('Arrow Position', 'axero-toolkit'),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'order-md-1',
+                    'options' => [
+                        'order-md-2' => esc_html__('Left', 'axero-toolkit'),
+                        'order-md-1' => esc_html__('Right', 'axero-toolkit'),
                     ],
                 ]
             );
@@ -588,6 +635,41 @@
 
             $this->end_controls_section();
 
+        $this->start_controls_section(
+            'title_section_style6_style',
+            [
+                'label'     => esc_html__('Title Style 6', 'axero-toolkit'),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'style_selection' => 'style6',
+                ],
+            ]
+        );
+
+        // Text Color Control
+        $this->add_control(
+            'style6_title_color',
+            [
+                'label'     => esc_html__('Text Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .section_title.style_four h2' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Typography Control
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'style6_title_typography',
+                'label'    => esc_html__('Typography', 'axero-toolkit'),
+                'selector' => '{{WRAPPER}} .section_title.style_four h2',
+            ]
+        );
+
+        $this->end_controls_section();
+
         }
 
         protected function render()
@@ -599,11 +681,11 @@
             <!-- style 1 -->
                 <div class="creative-agency-section-title">
                         <div class="left-side">
-             <?php if (! empty($settings['title_number'])): ?>
+            <?php if (! empty($settings['title_number'])): ?>
                             <div class="number d-flex align-items-center">
                             <div><?php echo esc_html($settings['title_number']); ?></div>
                             <?php endif; ?>
-<?php echo esc_html($settings['title_text']); ?>
+                        <?php echo esc_html($settings['title_text']); ?>
                             </div>
                         </div>
                     </div>
@@ -643,7 +725,7 @@
                 ?>
             <!-- style 5 -->
 
-            <div class="section_title position-relative style_three text_animation                                                                                                                                                                                                                                                        <?php echo esc_attr($settings['style5_switch_sides'] === 'yes' ? 'right_side' : ''); ?>">
+            <div class="section_title position-relative style_three text_animation                                                                                                                                 <?php echo esc_attr($settings['style5_switch_sides'] === 'yes' ? 'right_side' : ''); ?>">
                 <div class="title position-relative d-inline-block">
                     <h2 class="mb-0 fw-black text-uppercase">
                         <?php echo esc_html($settings['title_text_style5']); ?>
@@ -653,6 +735,21 @@
                     <?php endif; ?>
                 </div>
             </div>
+    <?php } elseif ($settings['style_selection'] === 'style6') {
+                ?>
+            <!-- style 6 -->
+       
+        <div class="section_title style_four position-relative ">
+            <h2 class="mb-0 fw-semibold text_animation <?php echo esc_attr($settings['style6_image_position']); ?>">
+                <?php echo esc_html($settings['title_text_style6']); ?>
+            </h2>
+            <?php if (!empty($settings['style6_image']['url'])): ?>
+                <img src="<?php echo esc_url($settings['style6_image']['url']); ?>" class="order-md-1" alt="<?php echo esc_attr__('left_down_arrow', 'axero-toolkit'); ?>">
+            <?php endif; ?>
+        </div>
+        
+        
+          
 
              <?php
                  }

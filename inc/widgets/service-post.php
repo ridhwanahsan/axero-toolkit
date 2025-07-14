@@ -79,6 +79,7 @@
                         'style3' => esc_html__('Style 3', 'axero-toolkit'),
                         'style4' => esc_html__('Style 4', 'axero-toolkit'),
                         'style5' => esc_html__('Style 5', 'axero-toolkit'),
+                        'style6' => esc_html__('Style 6', 'axero-toolkit'),
                     ],
                 ]
             );
@@ -1164,6 +1165,160 @@
             );
 
             $this->end_controls_section();
+
+        // Style 6 Controls
+        $this->start_controls_section(
+            'style6_services_style',
+            [
+                'label'     => esc_html__('Style 6 Services', 'axero-toolkit'),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'style_selection' => 'style6',
+                ],
+            ]
+        );
+
+        // Number Color
+        $this->add_control(
+            'style6_number_color',
+            [
+                'label'     => esc_html__('Number Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .services_items_list .item .number' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Number Typography
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'style6_number_typography',
+                'label'    => esc_html__('Number Typography', 'axero-toolkit'),
+                'selector' => '{{WRAPPER}} .services_items_list .item .number',
+            ]
+        );
+
+        // Post Title Color
+        $this->add_control(
+            'style6_title_color',
+            [
+                'label'     => esc_html__('Title Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .services_items_list .item h3 a' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Post Title Hover Color
+        $this->add_control(
+            'style6_title_hover_color',
+            [
+                'label'     => esc_html__('Title Hover Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .services_items_list .item h3 a:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Post Title Typography
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'style6_title_typography',
+                'label'    => esc_html__('Title Typography', 'axero-toolkit'),
+                'selector' => '{{WRAPPER}} .services_items_list .item h3',
+            ]
+        );
+
+        // Border Bottom Line Color
+        $this->add_control(
+            'style6_border_line_color',
+            [
+                'label'     => esc_html__('Border Line Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .services_items_list .item::before' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Button Background Color
+        $this->add_control(
+            'style6_button_bg_color',
+            [
+                'label'     => esc_html__('Button Background', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .services_items_list .item .btn.secondary_btn' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Button Hover Background Color
+        $this->add_control(
+            'style6_button_hover_bg_color',
+            [
+                'label'     => esc_html__('Button Hover Background', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .services_items_list .item .btn.secondary_btn:hover, {{WRAPPER}} .services_items_list .item .btn.secondary_btn:focus, {{WRAPPER}} .services_items_list .item .btn.secondary_btn:active' => 'background-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        // Button Text Color
+        $this->add_control(
+            'style6_button_text_color',
+            [
+                'label'     => esc_html__('Button Text Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .services_items_list .item .btn.secondary_btn' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Button Hover Text Color
+        $this->add_control(
+            'style6_button_hover_text_color',
+            [
+                'label'     => esc_html__('Button Hover Text Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .services_items_list .item:hover .btn.secondary_btn' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Button Icon Color
+        $this->add_control(
+            'style6_button_icon_color',
+            [
+                'label'     => esc_html__('Button Icon Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .services_items_list .item .btn.secondary_btn i' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Button Hover Icon Color
+        $this->add_control(
+            'style6_button_hover_icon_color',
+            [
+                'label'     => esc_html__('Button Hover Icon Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .services_items_list .item:hover .btn.secondary_btn i' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
         }
 
         protected function render()
@@ -1421,19 +1576,65 @@
 						                                </div>
 						                                <div class="image">
 						                                    <?php if (has_post_thumbnail()): ?>
-<?php the_post_thumbnail(); ?>
-<?php endif; ?>
+                                                    <?php the_post_thumbnail(); ?>
+                                                    <?php endif; ?>
 			                                </div>
 			                            </div>
 			                            <a href="<?php the_permalink(); ?>" class="position-absolute z-1 start-0 end-0 top-0 bottom-0"></a>
 			                        </div>
-			                    <?php endwhile;
-                                                wp_reset_postdata();
-                                            else: ?>
+			                    <?php endwhile; wp_reset_postdata(); else: ?>
                     <p><?php esc_html_e('No services found.', 'axero-toolkit'); ?></p>
                 <?php endif; ?>
             </div>
         </div>
+    <?php } elseif ($settings['style_selection'] === 'style6') {
+                ?>
+        <!-- style 6 -->
+         <div class="services_area">
+            <div class="container-fluid max_w_1560px">
+                <div class="services_items_list" data-cues="slideInUp" data-group="services_items_list">
+                    <?php
+
+                    if ($query->have_posts()):
+                        $count = 1;
+                        while ($query->have_posts()): $query->the_post();
+                            $service_number = sprintf('(%02d)', $count);
+                            ?>
+                            <div class="item position-relative">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-3">
+                                        <div class="number fw-semibold lh-1">
+                                            <?php echo esc_html($service_number); ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h3 class="mb-0 fw-semibold">
+                                            <a href="<?php the_permalink(); ?>">
+                                                <?php the_title(); ?>
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <div class="col-lg-3 text-lg-end">
+                                        <a href="<?php the_permalink(); ?>" class="btn secondary_btn style_three">
+                                            <span class="d-inline-block position-relative">
+                                                <?php esc_html_e('View Service', 'axero-toolkit'); ?> <i class="ti ti-arrow-up-right"></i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                            $count++;
+                        endwhile;
+                        wp_reset_postdata();
+                    else:
+                        ?>
+                        <p><?php esc_html_e('No services found.', 'axero-toolkit'); ?></p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+       
     <?php
         }
             }

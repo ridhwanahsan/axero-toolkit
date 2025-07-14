@@ -57,6 +57,7 @@
                     'options' => [
                         'style1' => esc_html__('Style 1', 'axero-toolkit'),
                         'style2' => esc_html__('Style 2', 'axero-toolkit'),
+                        'style3' => esc_html__('Style 3', 'axero-toolkit'),
 
                     ],
                 ]
@@ -222,6 +223,81 @@
                     ],
                 ],
                 'title_field' => '{{{ style2_title }}}',
+            ]
+        );
+
+        $this->end_controls_section();
+       
+        // Style3 Content Controls Tab
+        $this->start_controls_section(
+            'style3_content_section',
+            [
+                'label' => esc_html__('Style 3 Content', 'axero-toolkit'),
+                'tab'   => Controls_Manager::TAB_CONTENT,
+                'condition' => [
+                    'style_selection' => 'style3',
+                ],
+            ]
+        );
+
+        $repeater3 = new \Elementor\Repeater();
+
+        $repeater3->add_control(
+            'style3_number',
+            [
+                'label'   => esc_html__('Number', 'axero-toolkit'),
+                'type'    => \Elementor\Controls_Manager::TEXT,
+                'default' => '50',
+            ]
+        );
+
+        $repeater3->add_control(
+            'style3_suffix',
+            [
+                'label'   => esc_html__('Suffix', 'axero-toolkit'),
+                'type'    => \Elementor\Controls_Manager::TEXT,
+                'default' => '+',
+            ]
+        );
+
+        $repeater3->add_control(
+            'style3_title',
+            [
+                'label'   => esc_html__('Title', 'axero-toolkit'),
+                'type'    => \Elementor\Controls_Manager::TEXT,
+                'default' => 'Projects Completed',
+            ]
+        );
+
+        $this->add_control(
+            'style3_items',
+            [
+                'label'       => esc_html__('Style3 Items', 'axero-toolkit'),
+                'type'        => \Elementor\Controls_Manager::REPEATER,
+                'fields'      => $repeater3->get_controls(),
+                'default'     => [
+                    [
+                        'style3_number' => '50',
+                        'style3_suffix' => '+',
+                        'style3_title'  => 'Projects Completed',
+                    ],
+                    [
+                        'style3_number' => '90',
+                        'style3_suffix' => '+',
+                        'style3_title'  => 'CREATIVE MINDS',
+                    ],
+                    [
+                        'style3_number' => '20',
+                        'style3_suffix' => '+',
+                        'style3_title'  => 'YEARS OF EXPERIENCE',
+                    ],
+                    [
+                        'style3_number' => '30',
+                        'style3_suffix' => '+',
+                        'style3_title'  => 'AWWARDS & RECOGNITION',
+                    ],
+                ],
+                'title_field' => '{{{ style3_title }}}',
             ]
         );
 
@@ -468,6 +544,89 @@
         );
 
         $this->end_controls_section();
+        // Style3 Content Style
+        $this->start_controls_section(
+            'style3_content_style',
+            [
+                'label' => esc_html__('Style 3 Content', 'axero-toolkit'),
+                'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'style_selection' => 'style3',
+                ],
+            ]
+        );
+
+        // Item Background Color
+        $this->add_control(
+            'style3_item_bg_color',
+            [
+                'label' => esc_html__('Item Background Color', 'axero-toolkit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .funfact_item' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Number Style
+        $this->add_control(
+            'style3_number_heading',
+            [
+                'label' => esc_html__('Number', 'axero-toolkit'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'style3_number_color',
+            [
+                'label' => esc_html__('Color', 'axero-toolkit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .funfact_item .number' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'style3_number_typography',
+                'selector' => '{{WRAPPER}} .funfact_item .number',
+            ]
+        );
+
+        // Title Style
+        $this->add_control(
+            'style3_title_heading',
+            [
+                'label' => esc_html__('Title', 'axero-toolkit'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'style3_title_color',
+            [
+                'label' => esc_html__('Color', 'axero-toolkit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .funfact_item .title' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'style3_title_typography',
+                'selector' => '{{WRAPPER}} .funfact_item .title',
+            ]
+        );
+
+        
 
         }
 
@@ -550,6 +709,32 @@
             } elseif ($settings['style_selection'] === 'style3') {
                     ?>
             <!-- style 3 -->
+
+            <div class="funfacts_area_two pb_125">
+                <div class="container-fluid max_w_1560px">
+                    <div class="row" data-cues="slideInUp" data-group="funfacts_list">
+                        <?php if (!empty($settings['style3_items']) && is_array($settings['style3_items'])): ?>
+                            <?php foreach ($settings['style3_items'] as $item): ?>
+                                <div class="col-sm-6">
+                                    <div class="funfact_item">
+                                        <div class="number lh-1 fw-black">
+                                            <span class="counter_number">
+                                                <?php echo esc_html($item['style3_number']); ?>
+                                            </span>
+                                            <?php if (!empty($item['style3_suffix'])): ?>
+                                                <?php echo esc_html($item['style3_suffix']); ?>
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="title text-lg-end text-uppercase fw-semibold">
+                                            <?php echo esc_html($item['style3_title']); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
 
     <?php
         }

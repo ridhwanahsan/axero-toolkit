@@ -58,6 +58,7 @@
                         'style1' => esc_html__('Style 1', 'axero-toolkit'),
                         'style2' => esc_html__('Style 2', 'axero-toolkit'),
                         'style3' => esc_html__('Style 3', 'axero-toolkit'),
+                        'style4' => esc_html__('Style 4', 'axero-toolkit'),
                     ],
                 ]
             );
@@ -229,6 +230,67 @@
             );
 
             $this->end_controls_section();
+        // Style 4 Content Tab
+        $this->start_controls_section(
+            'style4_content_section',
+            [
+                'label' => esc_html__('Style 4 Content', 'axero-toolkit'),
+                'tab'   => Controls_Manager::TAB_CONTENT,
+                'condition' => [
+                    'style_selection' => 'style4',
+                ],
+            ]
+        );
+
+        $repeater = new \Elementor\Repeater();
+
+        $repeater->add_control(
+            'slide_text',
+            [
+                'label'       => esc_html__('Slide Text', 'axero-toolkit'),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => esc_html__('IDEAS INTO REALITY', 'axero-toolkit'),
+                'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'style4_slides',
+            [
+                'label'       => esc_html__('Slides', 'axero-toolkit'),
+                'type'        => Controls_Manager::REPEATER,
+                'fields'      => $repeater->get_controls(),
+                'default'     => [
+                    [
+                        'slide_text' => esc_html__('IDEAS INTO REALITY', 'axero-toolkit'),
+                    ],
+                    [
+                        'slide_text' => esc_html__('HOW IT WORKS', 'axero-toolkit'),
+                    ],
+                    [
+                        'slide_text' => esc_html__('IDEAS INTO REALITY', 'axero-toolkit'),
+                    ],
+                    [
+                        'slide_text' => esc_html__('HOW IT WORKS', 'axero-toolkit'),
+                    ],
+                    [
+                        'slide_text' => esc_html__('IDEAS INTO REALITY', 'axero-toolkit'),
+                    ],
+                    [
+                        'slide_text' => esc_html__('HOW IT WORKS', 'axero-toolkit'),
+                    ],
+                    [
+                        'slide_text' => esc_html__('IDEAS INTO REALITY', 'axero-toolkit'),
+                    ],
+                    [
+                        'slide_text' => esc_html__('HOW IT WORKS', 'axero-toolkit'),
+                    ],
+                ],
+                'title_field' => '{{{ slide_text }}}',
+            ]
+        );
+
+        $this->end_controls_section();
 
         }
         /**
@@ -456,6 +518,53 @@
 
             $this->end_controls_section();
 
+        // Style 4 Content Style
+        $this->start_controls_section(
+            'style4_content_style',
+            [
+                'label'     => esc_html__('Style 4 Content', 'axero-toolkit'),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'style_selection' => 'style4',
+                ],
+            ]
+        );
+
+        // Text Color Control
+        $this->add_control(
+            'style4_text_color',
+            [
+                'label'     => esc_html__('Text Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .text_scroll_area .scroll_text_marquee h3' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Typography Control
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'style4_text_typography',
+                'selector' => '{{WRAPPER}} .text_scroll_area .scroll_text_marquee h3',
+            ]
+        );
+
+        // Bar Background Color Control
+        $this->add_control(
+            'style4_bar_bg_color',
+            [
+                'label'     => esc_html__('Bar Background Color', 'axero-toolkit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .text_scroll_area .scroll_text_marquee .bar' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
         }
 
         protected function render()
@@ -504,7 +613,7 @@
                 <a href="<?php echo esc_url($settings['style2_link_url']['url']); ?>"
                    class="d-block position-absolute start-0 top-0 bottom-0 end-0"
                    <?php echo($settings['style2_link_url']['is_external'] ? 'target="_blank"' : ''); ?>
-<?php echo($settings['style2_link_url']['nofollow'] ? 'rel="nofollow"' : ''); ?>>
+                    <?php echo($settings['style2_link_url']['nofollow'] ? 'rel="nofollow"' : ''); ?>>
                 </a>
 
             <?php endif; ?>
@@ -514,11 +623,7 @@
             } elseif ($settings['style_selection'] === 'style3') {
                     ?>
             <!-- style 3 -->
-
-
-
             <div class="scroll_text_area overflow-hidden position-relative z-1">
-
                     <div class="scroll_text_marquee d-flex align-items-center justify-content-center">
                         <?php foreach ($settings['style2_slides'] as $slide): ?>
                             <h3 class="mb-0 text-uppercase fw-semibold  lh-1">
@@ -528,11 +633,40 @@
                                  class="w-auto d-inline-block"
                                  alt="<?php echo esc_attr($slide['slide_text']); ?>">
                         <?php endforeach; ?>
-                    </div>
+                        </div>
+                </div>
 
+          <?php  } elseif ($settings['style_selection'] === 'style4') {
+                    ?>
+            <!-- style 4 -->
+
+             <div class="text_scroll_area ptb_150 overflow-hidden">
+                <div class="container-fluid px-0">
+                    <?php if (!empty($settings['style3_slides']) && is_array($settings['style3_slides'])): ?>
+                        <div class="scroll_text_marquee d-flex align-items-center justify-content-center">
+                            <?php foreach ($settings['style3_slides'] as $index => $slide): ?>
+                                <h3 class="mb-0 text-uppercase fw-black lh-1">
+                                    <?php echo esc_html($slide['slide_text']); ?>
+                                </h3>
+                                <?php if ($index !== array_key_last($settings['style3_slides'])): ?>
+                                    <div class="bar"></div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="scroll_text_marquee d-flex align-items-center justify-content-center">
+                            <?php foreach ($settings['style3_slides'] as $index => $slide): ?>
+                                <h3 class="mb-0 text-uppercase fw-black lh-1">
+                                    <?php echo esc_html($slide['slide_text']); ?>
+                                </h3>
+                                <?php if ($index !== array_key_last($settings['style3_slides'])): ?>
+                                    <div class="bar"></div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
-
-
+            
     <?php
         }
             }
