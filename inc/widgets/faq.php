@@ -83,7 +83,7 @@
                     'label_on'     => esc_html__('Yes', 'axero-toolkit'),
                     'label_off'    => esc_html__('No', 'axero-toolkit'),
                     'return_value' => 'yes',
-                    'default'      => 'no',
+                    'default'      => 'yes',
                     'description'  => esc_html__('Make the first FAQ item open by default', 'axero-toolkit'),
                 ]
             );
@@ -95,7 +95,7 @@
                 [
                     'label'       => esc_html__('Question', 'axero-toolkit'),
                     'type'        => Controls_Manager::TEXT,
-                    'default'     => esc_html__('What services do you offer?', 'axero-toolkit'),
+                    'default'     => esc_html__('What is the difference between SEO and PPC?', 'axero-toolkit'),
                     'label_block' => true,
                 ]
             );
@@ -105,7 +105,7 @@
                 [
                     'label'      => esc_html__('Answer', 'axero-toolkit'),
                     'type'       => Controls_Manager::WYSIWYG,
-                    'default'    => esc_html__('We offer a wide range of services...', 'axero-toolkit'),
+                    'default'    => esc_html__('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid unt ut labo magna.', 'axero-toolkit'),
                     'show_label' => false,
                 ]
             );
@@ -130,8 +130,16 @@
                     'fields'      => $repeater->get_controls(),
                     'default'     => [
                         [
-                            'faq_question' => esc_html__('What services do you offer?', 'axero-toolkit'),
-                            'faq_answer'   => esc_html__('We offer a wide range of services...', 'axero-toolkit'),
+                            'faq_question' => esc_html__('What is the difference between SEO and PPC?', 'axero-toolkit'),
+                            'faq_answer'   => esc_html__('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid unt ut labo magna.', 'axero-toolkit'),
+                        ],
+                        [
+                            'faq_question' => esc_html__('What is included in your SEO services?', 'axero-toolkit'),
+                            'faq_answer'   => esc_html__('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid unt ut labo magna.', 'axero-toolkit'),
+                        ],
+                        [
+                            'faq_question' => esc_html__('Do you provide support after the campaign ends?', 'axero-toolkit'),
+                            'faq_answer'   => esc_html__('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid unt ut labo magna.', 'axero-toolkit'),
                         ],
                     ],
                     'title_field' => '{{{ faq_question }}}',
@@ -631,30 +639,32 @@
             if ($settings['style_selection'] === 'style1') {
             ?>
             <!-- style 1 -->
-               <div class="faq-area">
-                <div class="creative-agency-faq-accordion accordion" id="creativeAgencyFaqAccordion" data-cues="slideInUp">
-                    <?php foreach ($settings['faq_items'] as $index => $item):
-                                        $collapsed     = ($index === 0 && $settings['first_item_open'] === 'yes') ? '' : ($item['faq_default_open'] === 'yes' ? '' : 'collapsed');
-                                        $show          = ($index === 0 && $settings['first_item_open'] === 'yes') ? 'show' : ($item['faq_default_open'] === 'yes' ? 'show' : '');
-                                        $aria_expanded = ($index === 0 && $settings['first_item_open'] === 'yes') ? 'true' : ($item['faq_default_open'] === 'yes' ? 'true' : 'false');
-                                    ?>
-			                    <div class="accordion-item">
-			                        <button class="accordion-button			                                                       		                                                       	                                                        <?php echo esc_attr($collapsed); ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo esc_attr($index); ?>" aria-expanded="<?php echo esc_attr($aria_expanded); ?>" aria-controls="collapse<?php echo esc_attr($index); ?>">
-			                            <?php echo esc_html($item['faq_question']); ?>
-			                            <i class="ri-add-line"></i>
-			                        </button>
-			                        <div id="collapse<?php echo esc_attr($index); ?>" class="accordion-collapse collapse<?php echo esc_attr($show); ?>" data-bs-parent="#creativeAgencyFaqAccordion">
-			                            <div class="accordion-body">
-			                                <?php echo wp_kses_post($item['faq_answer']); ?>
-			                            </div>
-			                        </div>
-			                    </div>
-			                    <?php endforeach; ?>
+           <div class="faq_area">
+            <div class="container">
+                <div class="row align-items-center">
+                        <div class="faq_content">
+                            <div class="accordion style_two" id="faqAccordion" data-cues="slideInUp" data-group="faq_content">
+                                <?php foreach ($settings['faq_items'] as $index => $item):
+                                    $collapsed = ($index === 0 && $settings['first_item_open'] === 'yes') ? '' : 'collapsed';
+                                    $show = ($index === 0 && $settings['first_item_open'] === 'yes') ? 'show' : '';
+                                    $aria_expanded = ($index === 0 && $settings['first_item_open'] === 'yes') ? 'true' : 'false';
+                                ?>
+                                <div class="accordion-item rounded-0 bg-transparent">
+                                    <button class="accordion-button d-block text-start p-0 fw-semibold bg-transparent shadow-none <?php echo esc_attr($collapsed); ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo esc_attr($index); ?>" aria-expanded="<?php echo esc_attr($aria_expanded); ?>" aria-controls="collapse<?php echo esc_attr($index); ?>">
+                                        <?php echo esc_html($item['faq_question']); ?>
+                                    </button>
+                                    <div id="collapse<?php echo esc_attr($index); ?>" class="accordion-collapse collapse <?php echo esc_attr($show); ?>" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body px-0 pb-0">
+                                            <?php echo wp_kses_post($item['faq_answer']); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
                 </div>
-        </div>
-
-
-
+            </div>
+            </div>
         <?php
             } elseif ($settings['style_selection'] === 'style2') {
                     ?>

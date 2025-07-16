@@ -472,7 +472,6 @@
             );
 
             $this->end_controls_section();
-
             $this->start_controls_section(
                 'style4_controls',
                 [
@@ -484,102 +483,104 @@
                 ]
             );
 
-            // H3 Color Control
+            // Category Text Color
             $this->add_control(
-                'style4_h3_color',
+                'style4_category_color',
                 [
-                    'label'     => esc_html__('H3 Color', 'axero-toolkit'),
+                    'label'     => esc_html__('Category Color', 'axero-toolkit'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .single-case-study-item .content h3 a' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .portfolio_item .content span' => 'color: {{VALUE}};',
                     ],
                 ]
             );
 
-            // H3 Hover Color Control
-            $this->add_control(
-                'style4_h3_hover_color',
-                [
-                    'label'     => esc_html__('H3 Hover Color', 'axero-toolkit'),
-                    'type'      => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .single-case-study-item .content h3 a:hover' => 'color: {{VALUE}} !important;',
-                    ],
-                ]
-            );
-
-            // H3 Typography Control
+            // Category Typography
             $this->add_group_control(
                 \Elementor\Group_Control_Typography::get_type(),
                 [
-                    'name'     => 'style4_h3_typography',
-                    'selector' => '{{WRAPPER}} .single-case-study-item .content h3 a',
+                    'name'     => 'style4_category_typography',
+                    'selector' => '{{WRAPPER}} .portfolio_item .content span',
                 ]
             );
 
-            // Paragraph Color Control
+            // Post Title Color
             $this->add_control(
-                'style4_paragraph_color',
+                'style4_title_color',
                 [
-                    'label'     => esc_html__('Paragraph Color', 'axero-toolkit'),
+                    'label'     => esc_html__('Title Color', 'axero-toolkit'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .single-case-study-item .content p' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .portfolio_item .content h3 a' => 'color: {{VALUE}};',
                     ],
                 ]
             );
 
-            // Paragraph Typography Control
+            // Post Title Hover Color
+            $this->add_control(
+                'style4_title_hover_color',
+                [
+                    'label'     => esc_html__('Title Hover Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .portfolio_item .content h3 a:hover' => 'color: {{VALUE}} !important;',
+                    ],
+                ]
+            );
+
+            // Post Title Typography
             $this->add_group_control(
                 \Elementor\Group_Control_Typography::get_type(),
                 [
-                    'name'     => 'style4_paragraph_typography',
-                    'selector' => '{{WRAPPER}} .single-case-study-item .content p',
+                    'name'     => 'style4_title_typography',
+                    'selector' => '{{WRAPPER}} .portfolio_item .content h3 a',
                 ]
             );
 
-            // Read More Button Color Control
+            // Icon Color
             $this->add_control(
-                'style4_readmore_color',
+                'style4_icon_color',
                 [
-                    'label'     => esc_html__('Read More Color', 'axero-toolkit'),
+                    'label'     => esc_html__('Icon Color', 'axero-toolkit'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .single-case-study-item .link-btn' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .portfolio_item .content .details_link_btn' => 'color: {{VALUE}};',
                     ],
                 ]
             );
 
-            // Read More Button Hover Color Control
+            // Icon Background Color
             $this->add_control(
-                'style4_readmore_hover_color',
+                'style4_icon_bg_color',
                 [
-                    'label'     => esc_html__('Read More Hover Color', 'axero-toolkit'),
+                    'label'     => esc_html__('Icon Background Color', 'axero-toolkit'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .single-case-study-item .link-btn:hover' => 'color: {{VALUE}} !important;',
+                        '{{WRAPPER}} .portfolio_item .content .details_link_btn' => 'background-color: {{VALUE}};',
                     ],
                 ]
             );
 
-            // Read More Button Icon Color Control
+            // Icon Hover Color
             $this->add_control(
-                'style4_readmore_icon_color',
+                'style4_icon_hover_color',
                 [
-                    'label'     => esc_html__('Read More Icon Color', 'axero-toolkit'),
+                    'label'     => esc_html__('Icon Hover Color', 'axero-toolkit'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .single-case-study-item .link-btn i' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .portfolio_item .content .details_link_btn:hover' => 'color: {{VALUE}};',
                     ],
                 ]
             );
+
+            // Icon Hover Background Color
             $this->add_control(
-                'style4_readmore_icon_hover_bg_color',
+                'style4_icon_hover_bg_color',
                 [
-                    'label'     => esc_html__('Read More Icon Hover Background Color', 'axero-toolkit'),
+                    'label'     => esc_html__('Icon Hover Background Color', 'axero-toolkit'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .single-case-study-item .link-btn i:hover' => 'background-color: {{VALUE}};',
+                        '{{WRAPPER}} .portfolio_item .content .details_link_btn:hover' => 'background-color: {{VALUE}};',
                     ],
                 ]
             );
@@ -1494,14 +1495,14 @@
             <?php if ($query->have_posts()):
                                 $count = 1;
                             while ($query->have_posts()): $query->the_post(); ?>
-								                    <div class="item">
-								                        <div class="row">
-								                            <div class="col-lg-5 col-md-12">
-								                                <?php if (has_post_thumbnail()): ?>
-								                                    <a href="<?php the_permalink(); ?>" class="image d-block">
-								                                        <?php the_post_thumbnail('full', ['alt' => get_the_title()]); ?>
-								                                    </a>
-								                                <?php endif; ?>
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-12">
+                                            <?php if (has_post_thumbnail()): ?>
+                                                <a href="<?php the_permalink(); ?>" class="image d-block">
+                                                    <?php the_post_thumbnail('full', ['alt' => get_the_title()]); ?>
+                                                </a>
+                                            <?php endif; ?>
 				                            </div>
 				                            <div class="col-lg-7 col-md-12">
 				                                <div class="content position-relative">
@@ -1524,9 +1525,9 @@
 				                        </div>
 				                    </div>
 				                    <?php $count++; ?>
-<?php endwhile;
-                wp_reset_postdata();
-            else: ?>
+                                <?php endwhile;
+                                                wp_reset_postdata();
+                                            else: ?>
                 <p><?php esc_html_e('No Projects found.', 'axero-toolkit'); ?></p>
             <?php endif; ?>
         </div>
@@ -1543,23 +1544,23 @@
                         <div class="case-studies-list" data-cues="slideInUp">
                             <?php if ($query->have_posts()):
                                             while ($query->have_posts()): $query->the_post(); ?>
-								                                    <div class="item position-relative">
-								                                        <h3>
-								                                            <a href="<?php the_permalink(); ?>">
-								                                                <?php the_title(); ?>
-								                                            </a>
-								                                        </h3>
-								                                        <span class="d-block date">
-								                                            <?php echo get_the_date('d M Y'); ?>
-								                                        </span>
-								                                        <a href="<?php the_permalink(); ?>" class="link-btn d-inline-block rounded-circle text-center">
-								                                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icons/big-right-top-arrow2.svg" alt="big-right-top-arrow">
-								                                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icons/white-right-top-arrow3.svg" alt="big-right-top-arrow">
-								                                        </a>
-								                                    </div>
-								                                <?php endwhile;
-                                                                                    wp_reset_postdata();
-                                                                            else: ?>
+                            <div class="item position-relative">
+                                <h3>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <?php the_title(); ?>
+                                    </a>
+                                </h3>
+                                <span class="d-block date">
+                                    <?php echo get_the_date('d M Y'); ?>
+                                </span>
+                                <a href="<?php the_permalink(); ?>" class="link-btn d-inline-block rounded-circle text-center">
+                                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icons/big-right-top-arrow2.svg" alt="big-right-top-arrow">
+                                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icons/white-right-top-arrow3.svg" alt="big-right-top-arrow">
+                                </a>
+                            </div>
+                        <?php endwhile;
+                                            wp_reset_postdata();
+                                    else: ?>
                                 <p><?php esc_html_e('No Projects found.', 'axero-toolkit'); ?></p>
                             <?php endif; ?>
                         </div>
@@ -1568,21 +1569,21 @@
                         <div class="case-studies-image" data-cue="slideInUp">
                             <div class="images position-relative">
                                 <?php
-                                    if ($query->have_posts()):
-                                        while ($query->have_posts()): $query->the_post(); ?>
-                                                <div class="image">
-                                                    <?php if (has_post_thumbnail()): ?>
-                                                        <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
-                                                    <?php endif; ?>
-				                                            <div class="content">
-				                                                <p>
-				                                                    <?php echo get_the_excerpt(); ?>
-				                                                </p>
-				                                            </div>
-				                                        </div>
-				                                    <?php endwhile;
-                                            wp_reset_postdata();
-                                            endif;
+                            if ($query->have_posts()):
+                                while ($query->have_posts()): $query->the_post(); ?>
+                                        <div class="image">
+                                            <?php if (has_post_thumbnail()): ?>
+                                                <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                            <?php endif; ?>
+                                                    <div class="content">
+                                                        <p>
+                                                            <?php echo get_the_excerpt(); ?>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            <?php endwhile;
+                                    wp_reset_postdata();
+                                    endif;
                                      ?>
                             </div>
                         </div>
@@ -1661,50 +1662,54 @@
     } elseif ($settings['style_selection'] === 'style4') {
             ?>
         <!-- style 4 -->
-     <div class="case-studies-area">
+     <div class="portfolio_area">
          <div class="container">
-             <div class="row" data-cues="slideInUp">
+             <div class="row load_more_items" id="load_more_items">
                  <?php
-                     $args = [
-                            'post_type'      => 'post', // Change this to your custom post type if needed
-                            'posts_per_page' => -1,     // Adjust the number of posts to display
-                                 ];
-
                                  if ($query->have_posts()):
-                                 while ($query->have_posts()): $query->the_post(); ?>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-case-study-item">
-                                                <a href="<?php the_permalink(); ?>" class="image d-block">
+                                 while ($query->have_posts()): $query->the_post(); 
+                                 $categories = get_the_terms(get_the_ID(), 'works_category');
+                                 ?>
+                                        <div class="col-sm-6">
+                                            <div class="portfolio_item">
+                                                <a href="<?php the_permalink(); ?>" class="image d-block overflow-hidden">
                                                     <?php if (has_post_thumbnail()): ?>
-                                                        <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                                        <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
                                                     <?php endif; ?>
-				                                 </a>
-				                                 <div class="content">
-				                                     <span class="sub-title d-block">
-				                                         <?php echo get_the_category_list(', '); // Display categories ?>
-				                                     </span>
-				                                     <h3>
-				                                         <a href="<?php the_permalink(); ?>">
-				                                             <?php the_title(); ?>
-				                                         </a>
-				                                     </h3>
-				                                     <p>
-                                                        <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); // Display excerpt with 20 words ?>
-				                                     </p>
-                                                    <a href="<?php echo esc_url(get_permalink()); ?>" class="link-btn d-inline-block position-relative">
-				                                         <?php esc_html_e('Read more', 'axero-toolkit'); ?> <i class="ri-arrow-right-line"></i>
-				                                     </a>
-				                                 </div>
-				                             </div>
-				                         </div>
-				                     <?php endwhile;
-                                                     wp_reset_postdata();
-                                                 else: ?>
-                            <p><?php esc_html_e('No Projects found.', 'axero-toolkit'); ?></p>
-                        <?php endif; ?>
-                    </div>
-                </div>
+                                                </a>
+                                                <div class="content d-flex align-items-center justify-content-between">
+                                                    <div>
+                                                        <span class="d-block fw-medium text-uppercase">
+                                                            <?php 
+                                                            if ($categories && !is_wp_error($categories)) {
+                                                                $category_names = array();
+                                                                foreach ($categories as $category) {
+                                                                    $category_names[] = $category->name;
+                                                                }
+                                                                echo implode(', ', $category_names);
+                                                            }
+                                                            ?>
+                                                        </span>
+                                                        <h3 class="mb-0">
+                                                            <a href="<?php the_permalink(); ?>">
+                                                                <?php the_title(); ?>
+                                                            </a>
+                                                        </h3>
+                                                    </div>
+                                                    <a href="<?php the_permalink(); ?>" class="details_link_btn">
+                                                        <i class="ti ti-arrow-up-right"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endwhile;
+                                    wp_reset_postdata();
+                                else: ?>
+                    <p><?php esc_html_e('No Projects found.', 'axero-toolkit'); ?></p>
+                <?php endif; ?>
             </div>
+        </div>
+    </div>
 <?php
 } elseif ($settings['style_selection'] === 'style5') {?>
  <!-- style 5 -->
