@@ -43,7 +43,7 @@
                 $c = 0;
 
             while ($query->have_posts()): $query->the_post(); ?>
-<?php
+        <?php
             $class      = 'item';
                     $post_id    = get_the_ID();
                     $thumb_size = 'axero_widget_thumb';

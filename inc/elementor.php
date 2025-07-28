@@ -151,50 +151,26 @@ final class Elementor_Axero_Extension
     public function Axero_widget_list()
     {
         return [
-            'banner01',
-            'service-card',
-            'blog-post',
-            'client-review',
-            'faq',
-            'work-filter',
-            'service-post',
-            'work-post',
-            'price-table',
-            'team-slider',
+            'banner-1',
+            'awesome-work',
+            'awesome-about',
+            'awesome-service',
+            'awesome-testimonial',
+            'awesome-blog',
             // Add more widget names here as needed
         ];
     }
     public function Axero_widget__element_list()
     {
         return [
-            'text-animate',
-            'subheading',
-            'heading-title',
+            // 'text-animate',
             'button',
-            'circle-tag',
-            'image-shape',
-            'dynamic-cat',
-            'work-short',
-            'future-service',
-            'logo-slider',
-            'logo-grid',
-            'board-list',
-            'video-pop',
-            'tolpit',
-            'troggle-scroll',
-            'text-slide',
-            'team-card',
-            'team-post',
-            'team-profile',
-            'work-slider',
-            'sachedule',
-            'support-hub',
-            'form-shortcode',
-            'bottom-top',
-            'list-repeat',
             'counter',
-            'news-form',
-            'skill-bar',
+            'video-area',
+            'brands-area',
+            'awesome-team',
+            'awards-area',
+            'text-slide',
             // Add more widget names here as needed
         ];
     }
@@ -204,14 +180,10 @@ final class Elementor_Axero_Extension
      *
      * @return The function `Axero_header_footer_widget_list()` is returning an array with one
      */
-    public function Axero_header_footer_widget_list()
-    {
+    public function Axero_header_footer_widget_list(){
         return [
-
-            'header01',
-            'header03',
-            'header04',
-
+            // 'header01',
+            
             // Add more header footer widget names here as needed
         ];
     }
