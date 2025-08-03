@@ -63,7 +63,7 @@
                             </a>
                         </div>
                         <div class="section_title style_four position-relative justify-content-md-end">
-                            <h2 class="mb-0 text-uppercase fw-semibold order-md-2 text_animation">
+                            <h2 class="mb-0 text-white text-uppercase fw-semibold order-md-2 text_animation">
                                 About Axero
                             </h2>
                             <img src="<?php echo get_template_directory_uri()?>/assets/images/icons/left_down_arrow.svg" class="order-md-1" alt="left_down_arrow">
@@ -72,24 +72,24 @@
                             <p>
                                 We are a full-service digital agency that empowers businesses to achieve their online goals. We are passionate about helping our clients succeed in the ever-evolving digital landscape. Our mission is to provide our clients with high-quality, results-driven digital marketing solutions that help them grow their businesses and achieve their desired outcomes.
                             </p>
-                            <p>
+                            <p style="color: #8A8A8A;">
                                 Our vision is to be the leading digital agency in the industry, recognized for our innovative strategies, exceptional client service, and measurable results. We believe that every business has the potential to succeed online, and we are committed to helping our clients reach their full potential.
                             </p>
                             <div class="funafcts_list">
                                 <div class="row">
                                     <div class="col-6">
-                                        <div class="number lh-1 fw-medium">
+                                        <div class="number text-white lh-1 fw-medium">
                                             <span class="counter_number">19</span>+
                                         </div>
-                                        <div class="title text-uppercase fw-medium">
+                                        <div class="title text-white text-uppercase fw-medium">
                                             Featured Work
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <div class="number lh-1 fw-medium">
+                                        <div class="number text-white lh-1 fw-medium">
                                             <span class="counter_number">350</span>+
                                         </div>
-                                        <div class="title text-uppercase fw-medium">
+                                        <div class="title text-white text-uppercase fw-medium">
                                             Projected Completed
                                         </div>
                                     </div>

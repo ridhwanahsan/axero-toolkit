@@ -160,6 +160,9 @@ final class Elementor_Axero_Extension
             'awesome-blog',
             'blog-area',
             'blog-area-2',
+            'blog-area-3',
+            'featured-works',
+          
             // Add more widget names here as needed
         ];
     }
@@ -180,6 +183,7 @@ final class Elementor_Axero_Extension
             'partner-logo',
             'services-area',
             'services-area-2',
+            'services-area-3',
             'features-area',
             'our-process',
             'choose-us',
@@ -188,6 +192,7 @@ final class Elementor_Axero_Extension
             'feedback-area',
             'team-area',
             'team-area-2',
+            'team-area-3',
             'faq-area',
             'text-slider',
             'success-stories',
@@ -195,6 +200,11 @@ final class Elementor_Axero_Extension
             'portfolio-area',
             'testimonials-area',
             'partners-area',
+            'text-scroll',
+            'funfacts-area',
+            'reviews-area',
+            'clients-area',
+            'cta',
             // Add more widget names here as needed
         ];
     }
