@@ -152,11 +152,14 @@ final class Elementor_Axero_Extension
     {
         return [
             'banner-1',
+            'banner-2',
             'awesome-work',
             'awesome-about',
             'awesome-service',
             'awesome-testimonial',
             'awesome-blog',
+            'blog-area',
+            'blog-area-2',
             // Add more widget names here as needed
         ];
     }
@@ -171,6 +174,27 @@ final class Elementor_Axero_Extension
             'awesome-team',
             'awards-area',
             'text-slide',
+            'about-us',
+            'about-us-2',
+            'about-us-3',
+            'partner-logo',
+            'services-area',
+            'services-area-2',
+            'features-area',
+            'our-process',
+            'choose-us',
+            'choose-us-2',
+            'case-studies',
+            'feedback-area',
+            'team-area',
+            'team-area-2',
+            'faq-area',
+            'text-slider',
+            'success-stories',
+            'work-process',
+            'portfolio-area',
+            'testimonials-area',
+            'partners-area',
             // Add more widget names here as needed
         ];
     }
