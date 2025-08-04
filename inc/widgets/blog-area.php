@@ -164,7 +164,54 @@
 
         protected function style_tab_content()
         {
+            $this->start_controls_section(
+                'style6_item_bg_style',
+                [
+                    'label' => esc_html__('Blog Item Background', 'lunex-toolkit'),
+                    'tab'   => Controls_Manager::TAB_STYLE,
+                     
+                ]
+            );
 
+            // Odd Item Background Color
+            $this->add_control(
+                'style6_item_bg_color_odd',
+                [
+                    'label' => esc_html__('Odd Item Background Color', 'lunex-toolkit'),
+                    'type' => Controls_Manager::COLOR,
+                    'default' => '#FFFFFF',
+                    'selectors' => [
+                        '{{WRAPPER}} .blog_articles_posts .blog_article_post:nth-child(odd) .inner::after' => 'background-color: {{VALUE}} !important;',
+                    ],
+                ]
+            );
+
+            // Even Item Background Color
+            $this->add_control(
+                'style6_item_bg_color_even',
+                [
+                    'label' => esc_html__('Even Item Background Color', 'lunex-toolkit'),
+                    'type' => Controls_Manager::COLOR,
+                    'default' => '#F8F8F8',
+                    'selectors' => [
+                        '{{WRAPPER}} .blog_articles_posts .blog_article_post:nth-child(even) .inner::after' => 'background-color: {{VALUE}} !important;',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'style6_hover_bg_color',
+                [
+                    'label' => esc_html__('Hover Background Color', 'lunex-toolkit'),
+                    'type' => Controls_Manager::COLOR,
+                    'default' => 'rgba(0,0,0,0.6)',
+                    'selectors' => [
+                        '{{WRAPPER}} .blog_articles_posts .blog_article_post .inner:hover::after' => 'background-color: {{VALUE}} !important;',
+                    ],
+                ]
+            );
+
+            $this->end_controls_section();
         }
 
         protected function render()

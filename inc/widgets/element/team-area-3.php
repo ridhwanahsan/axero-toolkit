@@ -68,7 +68,7 @@
                                 <p class="mb-0">
                                     We are a full-service digital agency that empowers businesses to achieve their online goals. We are passionate about helping our clients succeed in the ever-evolving digital landscape. Our mission is to provide our clients with high-quality, results-driven digital marketing solutions that help them grow their businesses and achieve their desired outcomes
                                 </p>
-                                <a href="team.html" class="btn secondary_btn style_three">
+                                <a href="<?php echo esc_url( home_url( '/team/' ) ); ?>" class="btn secondary_btn style_three">
                                     <span class="d-inline-block position-relative">
                                         Meet the Team <i class="ti ti-arrow-up-right"></i>
                                     </span>

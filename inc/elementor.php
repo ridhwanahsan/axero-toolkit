@@ -184,6 +184,7 @@ final class Elementor_Axero_Extension
             'services-area',
             'services-area-2',
             'services-area-3',
+            'services-area-4',
             'features-area',
             'our-process',
             'choose-us',
@@ -194,10 +195,12 @@ final class Elementor_Axero_Extension
             'team-area-2',
             'team-area-3',
             'faq-area',
+            'faq-area-2',
             'text-slider',
             'success-stories',
             'work-process',
             'portfolio-area',
+            'portfolio-area-2',
             'testimonials-area',
             'partners-area',
             'text-scroll',
@@ -205,6 +208,7 @@ final class Elementor_Axero_Extension
             'reviews-area',
             'clients-area',
             'cta',
+            'service-box',
             // Add more widget names here as needed
         ];
     }

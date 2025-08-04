@@ -199,60 +199,44 @@
                             <img src="<?echo get_template_directory_uri()?>/assets/images/icons/right_down_arrow.svg" alt="right_down_arrow">
                         </div>
                         <div class="row justify-content-center" data-cues="slideInUp" data-group="blog_list">
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="single_blog_post">
-                                    <div class="image position-relative overflow-hidden">
-                                        <img src="<?echo get_template_directory_uri()?>/assets/images/blogs/blog7.jpg" alt="blog7">
-                                        <a href="blog-details.html" class="details_link_btn d-flex align-items-center justify-content-center fw-medium rounded-circle">
-                                            View
-                                        </a>
+                            <?php
+                            if ( $query->have_posts() ) :
+                                while ( $query->have_posts() ) : $query->the_post();
+                                    $post_id    = get_the_ID();
+                                    $post_title = get_the_title();
+                                    $post_link  = get_permalink();
+                                    $post_image = get_the_post_thumbnail_url( $post_id, 'large' );
+                                    $categories = get_the_category();
+                                    $category_name = !empty($categories) ? esc_html($categories[0]->name) : '';
+                                    ?>
+                                    <div class="col-lg-4 col-sm-6">
+                                        <div class="single_blog_post">
+                                            <div class="image position-relative overflow-hidden">
+                                                <?php if ( $post_image ) : ?>
+                                                    <img src="<?php echo esc_url( $post_image ); ?>" alt="<?php echo esc_attr( $post_title ); ?>">
+                                                <?php endif; ?>
+                                                <a href="<?php echo esc_url( $post_link ); ?>" class="details_link_btn text-white d-flex align-items-center justify-content-center fw-medium rounded-circle">
+                                                    <?php echo wp_kses_post( $settings['read_more_text'] ); ?>
+                                                </a>
+                                            </div>
+                                            <?php if ( $category_name ) : ?>
+                                                <span class="category block text-uppercase fw-medium">
+                                                    <?php echo $category_name; ?>
+                                                </span>
+                                            <?php endif; ?>
+                                            <h3 class="mb-0">
+                                                <a href="<?php echo esc_url( $post_link ); ?>">
+                                                    <?php echo esc_html( $post_title ); ?>
+                                                </a>
+                                            </h3>
+                                        </div>
                                     </div>
-                                    <span class="category block text-uppercase fw-medium">
-                                        Artificial intelligence
-                                    </span>
-                                    <h3 class="mb-0">
-                                        <a href="blog-details.html">
-                                            Optimized Design Sets the Foundation for Growth
-                                        </a>
-                                    </h3>
+                                <?php
+                                endwhile; wp_reset_postdata();  else : ?>
+                                <div class="col">
+                                    <p class="text-white"><?php esc_html_e('No blog posts found.', 'lunex-toolkit'); ?></p>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="single_blog_post">
-                                    <div class="image position-relative overflow-hidden">
-                                        <img src="<?echo get_template_directory_uri()?>/assets/images/blogs/blog8.jpg" alt="blog8">
-                                        <a href="blog-details.html" class="details_link_btn d-flex align-items-center justify-content-center fw-medium rounded-circle">
-                                            View
-                                        </a>
-                                    </div>
-                                    <span class="category block text-uppercase fw-medium">
-                                        Marketing
-                                    </span>
-                                    <h3 class="mb-0">
-                                        <a href="blog-details.html">
-                                            Intelligent Design Opens Doors to New Opportunities
-                                        </a>
-                                    </h3>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="single_blog_post">
-                                    <div class="image position-relative overflow-hidden">
-                                        <img src="<?echo get_template_directory_uri()?>/assets/images/blogs/blog9.jpg" alt="blog9">
-                                        <a href="blog-details.html" class="details_link_btn d-flex align-items-center justify-content-center fw-medium rounded-circle">
-                                            View
-                                        </a>
-                                    </div>
-                                    <span class="category block text-uppercase fw-medium">
-                                        Design
-                                    </span>
-                                    <h3 class="mb-0">
-                                        <a href="blog-details.html">
-                                            Transformative Design Drives Growth Potential
-                                        </a>
-                                    </h3>
-                                </div>
-                            </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

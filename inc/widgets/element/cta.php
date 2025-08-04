@@ -38,7 +38,26 @@
 
         protected function register_controls_section()
         {
+            $this->start_controls_section(
+                'cta_form_section',
+                [
+                    'label' => esc_html__('Form Shortcode', 'lunex-toolkit'),
+                    'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+                ]
+            );
 
+            $this->add_control(
+                'cta_form_shortcode',
+                [
+                    'label'       => esc_html__('Form Shortcode', 'lunex-toolkit'),
+                    'type'        => \Elementor\Controls_Manager::TEXT,
+                    'placeholder' => esc_html__('[your_form_shortcode]', 'lunex-toolkit'),
+                    'description' => esc_html__('Paste your form shortcode here. Example: [contact-form-7 id="123" title="Contact form"]', 'lunex-toolkit'),
+                    'label_block' => true,
+                ]
+            );
+
+            $this->end_controls_section();
         }
 
         /**
@@ -73,14 +92,12 @@
                     <h3 class="text-white text_animation">
                         Newsletter for updates
                     </h3>
-                    <form data-cue="slideInUp">
-                        <input type="text" class="form-control" placeholder="Enter your email">
-                        <button type="button" class="btn secondary_btn style_three">
-                            <span class="d-inline-block position-relative">
-                                Subscribe <i class="ti ti-arrow-up-right"></i>
-                            </span>
-                        </button>
-                    </form>
+                <?php
+                 
+                if ( !empty( $settings['cta_form_shortcode'])):
+                    echo do_shortcode( $settings['cta_form_shortcode'] );
+                endif;
+                ?>
                 </div>
             </div>
             <div class="object8">

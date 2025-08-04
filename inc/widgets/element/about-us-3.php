@@ -95,7 +95,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="contact.html" class="btn black_btn style_three">
+                            <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn black_btn style_three">
                                 <span class="d-inline-block position-relative">
                                     Get in Touch <i class="ti ti-arrow-up-right"></i>
                                 </span>

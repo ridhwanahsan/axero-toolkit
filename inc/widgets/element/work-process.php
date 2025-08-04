@@ -70,7 +70,7 @@
                                     </p>
                                 </div>
                                 <div class="col-lg-5 order-2 order-lg-1 text-md-end text-lg-start">
-                                    <a href="services.html" class="btn black_btn style_two with_border">
+                                    <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>" class="btn black_btn style_two with_border">
                                         <span class="d-inline-block position-relative">
                                             View All Services <i class="ti ti-arrow-up-right"></i>
                                         </span>

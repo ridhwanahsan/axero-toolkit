@@ -49,24 +49,166 @@
         protected function style_tab_content()
         {
 
+             $this->start_controls_section(
+                'faq_title_style_section',
+                [
+                    'label' => esc_html__('Title Style', 'axero-toolkit'),
+                    'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+                ]
+            );
+
+            // Sub Title Style
+            $this->add_control(
+                'sub_title_heading',
+                [
+                    'label' => esc_html__('Sub Title', 'axero-toolkit'),
+                    'type'  => \Elementor\Controls_Manager::HEADING,
+                    'separator' => 'before',
+                ]
+            );
+
+            $this->add_control(
+                'sub_title_color',
+                [
+                    'label'     => esc_html__('Color', 'axero-toolkit'),
+                    'type'      => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .faq_content .sub_title span' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name'     => 'sub_title_typography',
+                    'label'    => esc_html__('Typography', 'axero-toolkit'),
+                    'selector' => '{{WRAPPER}} .faq_content .sub_title span',
+                ]
+            );
+
+            $this->add_group_control(
+                \Elementor\Group_Control_Border::get_type(),
+                [
+                    'name'     => 'sub_title_border',
+                    'label'    => esc_html__('Border', 'axero-toolkit'),
+                    'selector' => '{{WRAPPER}} .faq_content .sub_title span',
+                ]
+            );
+
+            // Main Title Style
+            $this->add_control(
+                'main_title_heading',
+                [
+                    'label' => esc_html__('Main Title', 'axero-toolkit'),
+                    'type'  => \Elementor\Controls_Manager::HEADING,
+                    'separator' => 'before',
+                ]
+            );
+
+            $this->add_control(
+                'main_title_color',
+                [
+                    'label'     => esc_html__('Color', 'axero-toolkit'),
+                    'type'      => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .faq_content h2' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name'     => 'main_title_typography',
+                    'label'    => esc_html__('Typography', 'axero-toolkit'),
+                    'selector' => '{{WRAPPER}} .faq_content h2',
+                ]
+            );
+
+            $this->end_controls_section();
+
+             $this->start_controls_section(
+                'faq_area_style_section',
+                [
+                    'label' => esc_html__('Faq section', 'lunex-toolkit'),
+                    'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+                ]
+            );
+
+            $this->add_control(
+                'show_top_rectangle',
+                [
+                    'label'        => esc_html__('Show Top Rectangle', 'lunex-toolkit'),
+                    'type'         => \Elementor\Controls_Manager::SWITCHER,
+                    'label_on'     => esc_html__('Show', 'lunex-toolkit'),
+                    'label_off'    => esc_html__('Hide', 'lunex-toolkit'),
+                    'return_value' => 'yes',
+                    'default'      => 'yes',
+                ]
+            );
+
+            $this->add_control(
+                'top_rectangle_bg_color',
+                [
+                    'label'     => esc_html__('Top Rectangle Background Color', 'lunex-toolkit'),
+                    'type'      => \Elementor\Controls_Manager::COLOR,
+                    'default'   => '#fff',
+                    'selectors' => [
+                        '{{WRAPPER}} .white_top_rectangle' => 'background-color: {{VALUE}};',
+                    ],
+                    'condition' => [
+                        'show_top_rectangle' => 'yes',
+                    ],
+                ]
+            );
+            $this->add_control(
+                'show_bottom_rectangle',
+                [
+                    'label'        => esc_html__('Show Bottom Rectangle', 'lunex-toolkit'),
+                    'type'         => \Elementor\Controls_Manager::SWITCHER,
+                    'label_on'     => esc_html__('Show', 'lunex-toolkit'),
+                    'label_off'    => esc_html__('Hide', 'lunex-toolkit'),
+                    'return_value' => 'yes',
+                    'default'      => 'yes',
+                ]
+            );
+
+            $this->add_control(
+                'bottom_rectangle_bg_color',
+                [
+                    'label'     => esc_html__('Bottom Rectangle Background Color', 'lunex-toolkit'),
+                    'type'      => \Elementor\Controls_Manager::COLOR,
+                    'default'   => '#fff',
+                    'selectors' => [
+                        '{{WRAPPER}} .white_bottom_rectangle' => 'background-color: {{VALUE}};',
+                    ],
+                    'condition' => [
+                        'show_bottom_rectangle' => 'yes',
+                    ],
+                ]
+            );
+            $this->end_controls_section();
         }
 
         protected function render()
         {
             $settings = $this->get_settings_for_display(); ?>
                 <div class="faq_area bg_image">
-                    <div class="white_top_rectangle"></div>
+                    <?php if ( ! empty( $settings['show_top_rectangle'] ) && $settings['show_top_rectangle'] === 'yes' ) : ?>
+                        <div class="white_top_rectangle"></div>
+                    <?php endif; ?>
                     <div class="container ptb_150">
                         <div class="row align-items-center">
                             <div class="col-lg-6">
                                 <div class="faq_content">
-                                     <div class="sub_title d-inline-block text-white">
+                                     <div class="sub_title d-inline-block  ">
                                     <span class="d-flex align-items-center text-uppercase">
                                         FAQ
                                         <img src="<?php echo get_template_directory_uri();?>/assets/images/icons/white_arrow_long_right.svg" alt="white_arrow_long_right">
                                     </span>
                                     </div>
-                                    <h2 class="text-white text_animation">
+                                    <h2 class="  text_animation">
                                         Have Questions? We’ve got Answers
                                     </h2>
                                     <div class="accordion" id="faqAccordion" data-cues="slideInUp" data-group="faq_content">
@@ -116,7 +258,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="white_bottom_rectangle"></div>
+                    <?php if ('yes' === $settings['show_bottom_rectangle']) : ?>
+                        <div class="white_bottom_rectangle"></div>
+                    <?php endif; ?>
                 </div>
             <?php
         }

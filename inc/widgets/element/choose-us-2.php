@@ -62,7 +62,7 @@
                                     <h2 class="text-uppercase fw-black text_animation">
                                         Watch the video to discover more
                                     </h2>
-                                    <a href="contact.html" class="btn black_btn style_two with_border" data-cue="slideInUp">
+                                    <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn black_btn style_two with_border" data-cue="slideInUp">
                                         <span class="d-inline-block position-relative">
                                             Contact Us <i class="ti ti-arrow-up-right"></i>
                                         </span>
