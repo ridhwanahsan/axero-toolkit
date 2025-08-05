@@ -392,286 +392,51 @@
             }
             $query    = new \WP_Query($query_args);
             ?>
-              <div class="portfolio_area pt_150">
-            <div class="container">
-                <div class="row load_more_items" id="load_more_items">
-                    <div class="col-sm-6">
-                        <div class="portfolio_item">
-                            <a href="portfolio-details.html" class="image d-block overflow-hidden">
-                                <img src="assets/images/portfolio/portfolio6.jpg" alt="portfolio6">
-                            </a>
-                            <div class="content d-flex align-items-center justify-content-between">
-                                <div>
-                                    <span class="d-block fw-medium text-uppercase">
-                                        Affiliate
-                                    </span>
-                                    <h3 class="mb-0">
-                                        <a href="portfolio-details.html">
-                                            SEO Website
-                                        </a>
-                                    </h3>
+                <div class="portfolio_area pt_150">
+                    <div class="container">
+                        <div class="row load_more_items" id="load_more_items">
+                            <?php if ( $query->have_posts() ) : ?>
+                                <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+                                    <div class="col-sm-6">
+                                        <div class="portfolio_item">
+                                            <a href="<?php the_permalink(); ?>" class="image d-block overflow-hidden">
+                                                <?php if ( has_post_thumbnail() ) : ?>
+                                                    <?php the_post_thumbnail( 'large', array( 'alt' => get_the_title() ) ); ?> 
+                                                <?php endif; ?>
+                                            </a>
+                                            <div class="content d-flex align-items-center justify-content-between">
+                                                <div>
+                                                    <?php
+                                                    $terms = get_the_terms( get_the_ID(), 'works_category' );
+                                                    if ( $terms && ! is_wp_error( $terms ) ) :
+                                                        $first_term = array_shift( $terms );
+                                                        ?>
+                                                        <span class="d-block fw-medium text-uppercase">
+                                                            <?php echo esc_html( $first_term->name ); ?>
+                                                        </span>
+                                                    <?php endif; ?>
+                                                    <h3 class="mb-0">
+                                                        <a href="<?php the_permalink(); ?>">
+                                                            <?php the_title(); ?>
+                                                        </a>
+                                                    </h3>
+                                                </div>
+                                                <a href="<?php the_permalink(); ?>" class="details_link_btn">
+                                                    <i class="ti ti-arrow-up-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endwhile; wp_reset_postdata(); ?>
+                            <?php else : ?>
+                                <div class="col-12">
+                                    <p><?php esc_html_e( 'No portfolio items found.', 'lunex-toolkit' ); ?></p>
                                 </div>
-                                <a href="portfolio-details.html" class="details_link_btn">
-                                    <i class="ti ti-arrow-up-right"></i>
-                                </a>
-                            </div>
+                            <?php endif; ?>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="portfolio_item">
-                            <a href="portfolio-details.html" class="image d-block overflow-hidden">
-                                <img src="assets/images/portfolio/portfolio7.jpg" alt="portfolio7">
-                            </a>
-                            <div class="content d-flex align-items-center justify-content-between">
-                                <div>
-                                    <span class="d-block fw-medium text-uppercase">
-                                        Branding
-                                    </span>
-                                    <h3 class="mb-0">
-                                        <a href="portfolio-details.html">
-                                            Income Growth
-                                        </a>
-                                    </h3>
-                                </div>
-                                <a href="portfolio-details.html" class="details_link_btn">
-                                    <i class="ti ti-arrow-up-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="portfolio_item">
-                            <a href="portfolio-details.html" class="image d-block overflow-hidden">
-                                <img src="assets/images/portfolio/portfolio8.jpg" alt="portfolio8">
-                            </a>
-                            <div class="content d-flex align-items-center justify-content-between">
-                                <div>
-                                    <span class="d-block fw-medium text-uppercase">
-                                        Branding
-                                    </span>
-                                    <h3 class="mb-0">
-                                        <a href="portfolio-details.html">
-                                            Social Media Marketing
-                                        </a>
-                                    </h3>
-                                </div>
-                                <a href="portfolio-details.html" class="details_link_btn">
-                                    <i class="ti ti-arrow-up-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="portfolio_item">
-                            <a href="portfolio-details.html" class="image d-block overflow-hidden">
-                                <img src="assets/images/portfolio/portfolio9.jpg" alt="portfolio9">
-                            </a>
-                            <div class="content d-flex align-items-center justify-content-between">
-                                <div>
-                                    <span class="d-block fw-medium text-uppercase">
-                                        Affiliate
-                                    </span>
-                                    <h3 class="mb-0">
-                                        <a href="portfolio-details.html">
-                                            Technical Agency
-                                        </a>
-                                    </h3>
-                                </div>
-                                <a href="portfolio-details.html" class="details_link_btn">
-                                    <i class="ti ti-arrow-up-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="portfolio_item">
-                            <a href="portfolio-details.html" class="image d-block overflow-hidden">
-                                <img src="assets/images/portfolio/portfolio10.jpg" alt="portfolio10">
-                            </a>
-                            <div class="content d-flex align-items-center justify-content-between">
-                                <div>
-                                    <span class="d-block fw-medium text-uppercase">
-                                        Cyber
-                                    </span>
-                                    <h3 class="mb-0">
-                                        <a href="portfolio-details.html">
-                                            Network Security
-                                        </a>
-                                    </h3>
-                                </div>
-                                <a href="portfolio-details.html" class="details_link_btn">
-                                    <i class="ti ti-arrow-up-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="portfolio_item">
-                            <a href="portfolio-details.html" class="image d-block overflow-hidden">
-                                <img src="assets/images/portfolio/portfolio11.jpg" alt="portfolio11">
-                            </a>
-                            <div class="content d-flex align-items-center justify-content-between">
-                                <div>
-                                    <span class="d-block fw-medium text-uppercase">
-                                        Data
-                                    </span>
-                                    <h3 class="mb-0">
-                                        <a href="portfolio-details.html">
-                                            Cloud Migration
-                                        </a>
-                                    </h3>
-                                </div>
-                                <a href="portfolio-details.html" class="details_link_btn">
-                                    <i class="ti ti-arrow-up-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 d-none">
-                        <div class="portfolio_item">
-                            <a href="portfolio-details.html" class="image d-block overflow-hidden">
-                                <img src="assets/images/portfolio/portfolio6.jpg" alt="portfolio6">
-                            </a>
-                            <div class="content d-flex align-items-center justify-content-between">
-                                <div>
-                                    <span class="d-block fw-medium text-uppercase">
-                                        Affiliate
-                                    </span>
-                                    <h3 class="mb-0">
-                                        <a href="portfolio-details.html">
-                                            SEO Website
-                                        </a>
-                                    </h3>
-                                </div>
-                                <a href="portfolio-details.html" class="details_link_btn">
-                                    <i class="ti ti-arrow-up-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 d-none">
-                        <div class="portfolio_item">
-                            <a href="portfolio-details.html" class="image d-block overflow-hidden">
-                                <img src="assets/images/portfolio/portfolio7.jpg" alt="portfolio7">
-                            </a>
-                            <div class="content d-flex align-items-center justify-content-between">
-                                <div>
-                                    <span class="d-block fw-medium text-uppercase">
-                                        Branding
-                                    </span>
-                                    <h3 class="mb-0">
-                                        <a href="portfolio-details.html">
-                                            Income Growth
-                                        </a>
-                                    </h3>
-                                </div>
-                                <a href="portfolio-details.html" class="details_link_btn">
-                                    <i class="ti ti-arrow-up-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 d-none">
-                        <div class="portfolio_item">
-                            <a href="portfolio-details.html" class="image d-block overflow-hidden">
-                                <img src="assets/images/portfolio/portfolio8.jpg" alt="portfolio8">
-                            </a>
-                            <div class="content d-flex align-items-center justify-content-between">
-                                <div>
-                                    <span class="d-block fw-medium text-uppercase">
-                                        Branding
-                                    </span>
-                                    <h3 class="mb-0">
-                                        <a href="portfolio-details.html">
-                                            Social Media Marketing
-                                        </a>
-                                    </h3>
-                                </div>
-                                <a href="portfolio-details.html" class="details_link_btn">
-                                    <i class="ti ti-arrow-up-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 d-none">
-                        <div class="portfolio_item">
-                            <a href="portfolio-details.html" class="image d-block overflow-hidden">
-                                <img src="assets/images/portfolio/portfolio9.jpg" alt="portfolio9">
-                            </a>
-                            <div class="content d-flex align-items-center justify-content-between">
-                                <div>
-                                    <span class="d-block fw-medium text-uppercase">
-                                        Affiliate
-                                    </span>
-                                    <h3 class="mb-0">
-                                        <a href="portfolio-details.html">
-                                            Technical Agency
-                                        </a>
-                                    </h3>
-                                </div>
-                                <a href="portfolio-details.html" class="details_link_btn">
-                                    <i class="ti ti-arrow-up-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 d-none">
-                        <div class="portfolio_item">
-                            <a href="portfolio-details.html" class="image d-block overflow-hidden">
-                                <img src="assets/images/portfolio/portfolio10.jpg" alt="portfolio10">
-                            </a>
-                            <div class="content d-flex align-items-center justify-content-between">
-                                <div>
-                                    <span class="d-block fw-medium text-uppercase">
-                                        Cyber
-                                    </span>
-                                    <h3 class="mb-0">
-                                        <a href="portfolio-details.html">
-                                            Network Security
-                                        </a>
-                                    </h3>
-                                </div>
-                                <a href="portfolio-details.html" class="details_link_btn">
-                                    <i class="ti ti-arrow-up-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 d-none">
-                        <div class="portfolio_item">
-                            <a href="portfolio-details.html" class="image d-block overflow-hidden">
-                                <img src="assets/images/portfolio/portfolio11.jpg" alt="portfolio11">
-                            </a>
-                            <div class="content d-flex align-items-center justify-content-between">
-                                <div>
-                                    <span class="d-block fw-medium text-uppercase">
-                                        Data
-                                    </span>
-                                    <h3 class="mb-0">
-                                        <a href="portfolio-details.html">
-                                            Cloud Migration
-                                        </a>
-                                    </h3>
-                                </div>
-                                <a href="portfolio-details.html" class="details_link_btn">
-                                    <i class="ti ti-arrow-up-right"></i>
-                                </a>
-                            </div>
-                        </div>
+ 
                     </div>
                 </div>
-                <div class="text-center">
-                    <button class="btn secondary_btn" type="button" id="loadMore">
-                        <span class="d-inline-block position-relative">
-                            Load More <i class="ti ti-arrow-up-right"></i>
-                        </span>
-                    </button>
-                    <p id="allLoadedMessage" style="display: none;">
-                        All items are loaded!
-                    </p>
-                </div>
-            </div>
-        </div>
                  
             <?php
         }

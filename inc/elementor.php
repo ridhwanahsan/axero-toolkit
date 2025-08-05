@@ -180,6 +180,7 @@ final class Elementor_Axero_Extension
             'about-us',
             'about-us-2',
             'about-us-3',
+            'about-us-4',
             'partner-logo',
             'services-area',
             'services-area-2',
@@ -194,8 +195,10 @@ final class Elementor_Axero_Extension
             'team-area',
             'team-area-2',
             'team-area-3',
+            'team-area-4',
             'faq-area',
             'faq-area-2',
+            'faq-area-3',
             'text-slider',
             'success-stories',
             'work-process',
@@ -209,6 +212,14 @@ final class Elementor_Axero_Extension
             'clients-area',
             'cta',
             'service-box',
+            'pricing-area',
+            'privacy-policy',
+            'terms-conditions',
+            'contact-area',
+            'reach-us-area',
+            'service-details',
+            'portfolio-details',
+            'team-details',
             // Add more widget names here as needed
         ];
     }
