@@ -56,7 +56,7 @@
                 'default'     => esc_html__('We prioritize excellence over volume.', 'axero-toolkit'),
                 'label_block' => true,
             ]
-        );
+        );      
 
         $this->end_controls_section();
 
@@ -339,6 +339,24 @@
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .btn.primary_btn:hover' => 'color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'style6_button_border',
+                'selector' => '{{WRAPPER}} .btn.primary_btn',
+            ]
+        );
+        $this->add_control(
+            'style6_button_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'lunex-toolkit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .btn.primary_btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );

@@ -84,7 +84,7 @@
                                                 <p>
                                                     Axero is a creative agency offering marketing, development, design, and a range of digital solutions. We’ve secured over $15M in funding.
                                                 </p>
-                                                <a href="about.html" class="btn primary_btn">
+                                                <a href="<?php echo esc_url( home_url( 'about-us' ) ); ?>" class="btn primary_btn">
                                                     <span class="d-inline-block position-relative">
                                                         Know More <i class="ti ti-arrow-up-right"></i>
                                                     </span>

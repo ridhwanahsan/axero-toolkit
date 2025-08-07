@@ -808,6 +808,39 @@
                     ],
                 ]
             );
+
+            $this->add_control(
+                'style1_button_border',
+                [
+                    'label' => esc_html__('Button Border', 'axero-toolkit'),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => ['px', 'em', '%'],
+                    'selectors' => [
+                        '{{WRAPPER}} .main_home_banner_area .btn.primary_btn' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; border-style: solid;',
+                    ],
+                ]
+            );
+            $this->add_control(
+                'style1_button_border_color',
+                [
+                    'label' => esc_html__('Border Color', 'axero-toolkit'),
+                    'type' => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .main_home_banner_area .btn.primary_btn' => 'border-color: {{VALUE}};',
+                    ],
+                ]
+            );
+            $this->add_control(
+                'style1_button_border_radius',
+                [
+                    'label' => esc_html__('Border Radius', 'axero-toolkit'),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => ['px', '%', 'em'],
+                    'selectors' => [
+                        '{{WRAPPER}} .main_home_banner_area .btn.primary_btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
             $this->end_controls_tab();
             $this->start_controls_tab(
                 'style1_button_hover',
@@ -831,7 +864,7 @@
                     'label'     => esc_html__('Background Color', 'axero-toolkit'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .main_home_banner_area .btn.primary_btn:hover' => 'background-color: {{VALUE}} !important;',
+                        '{{WRAPPER}} .btn.primary_btn:hover, {{WRAPPER}} .btn.primary_btn:focus, {{WRAPPER}} .btn.primary_btn:active' => 'background-color: {{VALUE}} !important;',
                     ],
                 ]
             );
@@ -1043,6 +1076,13 @@
                     'selectors' => [
                         '{{WRAPPER}} .btn.primary_btn' => 'color: {{VALUE}} !important;',
                     ],
+                ]
+            );
+            $this->add_group_control(
+                \Elementor\Group_Control_Border::get_type(),
+                [
+                    'name' => 'style6_button_border',
+                    'selector' => '{{WRAPPER}} .btn.primary_btn',
                 ]
             );
             $this->add_control(

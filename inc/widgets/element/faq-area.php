@@ -1,10 +1,10 @@
 <?php
     namespace axero_toolkit\Widgets;
-
+    use Elementor\Controls_Manager;
     use Elementor\Widget_Base;
 
-    if (! defined('ABSPATH')) {
-        exit;
+    if (!defined('ABSPATH')) {
+        exit; // Exit if accessed directly
     }
 
     class axero_faq_area extends Widget_Base
@@ -48,12 +48,11 @@
 
         protected function style_tab_content()
         {
-
-             $this->start_controls_section(
+            $this->start_controls_section(
                 'faq_title_style_section',
                 [
                     'label' => esc_html__('Title Style', 'axero-toolkit'),
-                    'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+                    'tab'   => Controls_Manager::TAB_STYLE,
                 ]
             );
 
@@ -62,7 +61,7 @@
                 'sub_title_heading',
                 [
                     'label' => esc_html__('Sub Title', 'axero-toolkit'),
-                    'type'  => \Elementor\Controls_Manager::HEADING,
+                    'type'  => Controls_Manager::HEADING,
                     'separator' => 'before',
                 ]
             );
@@ -71,7 +70,7 @@
                 'sub_title_color',
                 [
                     'label'     => esc_html__('Color', 'axero-toolkit'),
-                    'type'      => \Elementor\Controls_Manager::COLOR,
+                    'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .faq_content .sub_title span' => 'color: {{VALUE}};',
                     ],
@@ -87,21 +86,12 @@
                 ]
             );
 
-            $this->add_group_control(
-                \Elementor\Group_Control_Border::get_type(),
-                [
-                    'name'     => 'sub_title_border',
-                    'label'    => esc_html__('Border', 'axero-toolkit'),
-                    'selector' => '{{WRAPPER}} .faq_content .sub_title span',
-                ]
-            );
-
             // Main Title Style
             $this->add_control(
                 'main_title_heading',
                 [
                     'label' => esc_html__('Main Title', 'axero-toolkit'),
-                    'type'  => \Elementor\Controls_Manager::HEADING,
+                    'type'  => Controls_Manager::HEADING,
                     'separator' => 'before',
                 ]
             );
@@ -110,7 +100,7 @@
                 'main_title_color',
                 [
                     'label'     => esc_html__('Color', 'axero-toolkit'),
-                    'type'      => \Elementor\Controls_Manager::COLOR,
+                    'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .faq_content h2' => 'color: {{VALUE}};',
                     ],
@@ -128,21 +118,21 @@
 
             $this->end_controls_section();
 
-             $this->start_controls_section(
+            $this->start_controls_section(
                 'faq_area_style_section',
                 [
-                    'label' => esc_html__('Faq section', 'lunex-toolkit'),
-                    'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+                    'label' => esc_html__('FAQ Section', 'axero-toolkit'),
+                    'tab'   => Controls_Manager::TAB_STYLE,
                 ]
             );
 
             $this->add_control(
                 'show_top_rectangle',
                 [
-                    'label'        => esc_html__('Show Top Rectangle', 'lunex-toolkit'),
-                    'type'         => \Elementor\Controls_Manager::SWITCHER,
-                    'label_on'     => esc_html__('Show', 'lunex-toolkit'),
-                    'label_off'    => esc_html__('Hide', 'lunex-toolkit'),
+                    'label'        => esc_html__('Show Top Rectangle', 'axero-toolkit'),
+                    'type'         => Controls_Manager::SWITCHER,
+                    'label_on'     => esc_html__('Show', 'axero-toolkit'),
+                    'label_off'    => esc_html__('Hide', 'axero-toolkit'),
                     'return_value' => 'yes',
                     'default'      => 'yes',
                 ]
@@ -151,8 +141,8 @@
             $this->add_control(
                 'top_rectangle_bg_color',
                 [
-                    'label'     => esc_html__('Top Rectangle Background Color', 'lunex-toolkit'),
-                    'type'      => \Elementor\Controls_Manager::COLOR,
+                    'label'     => esc_html__('Top Rectangle Background Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
                     'default'   => '#fff',
                     'selectors' => [
                         '{{WRAPPER}} .white_top_rectangle' => 'background-color: {{VALUE}};',
@@ -162,13 +152,14 @@
                     ],
                 ]
             );
+
             $this->add_control(
                 'show_bottom_rectangle',
                 [
-                    'label'        => esc_html__('Show Bottom Rectangle', 'lunex-toolkit'),
-                    'type'         => \Elementor\Controls_Manager::SWITCHER,
-                    'label_on'     => esc_html__('Show', 'lunex-toolkit'),
-                    'label_off'    => esc_html__('Hide', 'lunex-toolkit'),
+                    'label'        => esc_html__('Show Bottom Rectangle', 'axero-toolkit'),
+                    'type'         => Controls_Manager::SWITCHER,
+                    'label_on'     => esc_html__('Show', 'axero-toolkit'),
+                    'label_off'    => esc_html__('Hide', 'axero-toolkit'),
                     'return_value' => 'yes',
                     'default'      => 'yes',
                 ]
@@ -177,8 +168,8 @@
             $this->add_control(
                 'bottom_rectangle_bg_color',
                 [
-                    'label'     => esc_html__('Bottom Rectangle Background Color', 'lunex-toolkit'),
-                    'type'      => \Elementor\Controls_Manager::COLOR,
+                    'label'     => esc_html__('Bottom Rectangle Background Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
                     'default'   => '#fff',
                     'selectors' => [
                         '{{WRAPPER}} .white_bottom_rectangle' => 'background-color: {{VALUE}};',
@@ -188,6 +179,7 @@
                     ],
                 ]
             );
+
             $this->end_controls_section();
         }
 
@@ -203,12 +195,12 @@
                             <div class="col-lg-6">
                                 <div class="faq_content">
                                      <div class="sub_title d-inline-block  ">
-                                    <span class="d-flex align-items-center text-uppercase">
+                                    <span class="d-flex text-white align-items-center text-uppercase">
                                         FAQ
                                         <img src="<?php echo get_template_directory_uri();?>/assets/images/icons/white_arrow_long_right.svg" alt="white_arrow_long_right">
                                     </span>
                                     </div>
-                                    <h2 class="  text_animation">
+                                    <h2 class="text-white  text_animation">
                                         Have Questions? We’ve got Answers
                                     </h2>
                                     <div class="accordion" id="faqAccordion" data-cues="slideInUp" data-group="faq_content">

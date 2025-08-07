@@ -231,7 +231,10 @@ final class Elementor_Axero_Extension
      */
     public function Axero_header_footer_widget_list(){
         return [
-            // 'header01',
+            'footer-1',
+            'footer-2',
+            'footer-3',
+            'footer-4',
             
             // Add more header footer widget names here as needed
         ];

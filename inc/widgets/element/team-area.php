@@ -140,7 +140,35 @@
                     'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
                 ]
             );
+            // Position Color & Typography for .team_member .content span
+            $this->add_control(
+                'team_member_position_heading',
+                [
+                    'label' => esc_html__('Position', 'axero-toolkit'),
+                    'type'  => \Elementor\Controls_Manager::HEADING,
+                    'separator' => 'before',
+                ]
+            );
 
+            $this->add_control(
+                'team_member_position_color',
+                [
+                    'label'     => esc_html__('Position Color', 'axero-toolkit'),
+                    'type'      => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .team_member .content span' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name'     => 'team_member_position_typography',
+                    'label'    => esc_html__('Position Typography', 'axero-toolkit'),
+                    'selector' => '{{WRAPPER}} .team_member .content span',
+                ]
+            );
             $this->add_responsive_control(
                 'team_area_padding',
                 [
@@ -254,7 +282,7 @@
                                             <div class="team_member position-relative">
                                                 <img src="<?php echo esc_url($image_url); ?>" alt="team">
                                                 <div class="content">
-                                                    <span class="d-block text-white">
+                                                    <span class="d-block  ">
                                                         <?php echo esc_html($position ? $position : ''); ?>
                                                     </span>
                                                     <h3 class="mb-0 text-white">
@@ -289,12 +317,10 @@
                                         </div>
                                         <div class="col-lg-8">
                                             <div class="row">
-                                    <?php }
-                                    if ($post_count == 2) { ?>
+                                            <?php } if ($post_count == 2) { ?>
                                                 <div class="col-lg-6 col-sm-6">
                                                     <div class="row">
-                                    <?php }
-                                    if ($post_count == 2 || $post_count == 3) { ?>
+                                                    <?php } if ($post_count == 2 || $post_count == 3) { ?>
                                                         <div class="col-lg-12">
                                                             <div class="team_member position-relative">
                                                                 <img src="<?php echo esc_url($image_url); ?>" alt="team">
@@ -332,12 +358,10 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                    <?php }
-                                    if ($post_count == 3) { ?>
+                                                    <?php } if ($post_count == 3) { ?>
                                                     </div>
                                                 </div>
-                                    <?php }
-                                    if ($post_count == 4) { ?>
+                                                <?php } if ($post_count == 4) { ?>
                                                 <div class="col-lg-6 col-sm-6">
                                                     <div class="row">
                                                         <div class="col-lg-12">
@@ -377,8 +401,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                    <?php }
-                                    if ($post_count == 5) { ?>
+                                                    <?php } if ($post_count == 5) { ?>
                                                         <div class="col-lg-12">
                                                             <div class="team_member position-relative">
                                                                 <img src="<?php echo esc_url($image_url); ?>" alt="team">
@@ -418,9 +441,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                    <?php }
-                                endwhile;
-                                // Close opened divs
+                                    <?php }  endwhile; // Close opened divs
                                 if ($post_count >= 1) {
                                     echo '</div></div></div>';
                                 }
