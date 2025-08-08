@@ -235,6 +235,10 @@ final class Elementor_Axero_Extension
             'footer-2',
             'footer-3',
             'footer-4',
+            'header-1',
+            'header-2',
+            'header-3',
+            'header-4',
             
             // Add more header footer widget names here as needed
         ];

@@ -1,5 +1,5 @@
 <?php
-class defult_Custom_Nav_Walker extends Walker_Nav_Menu
+class Axero_Nav_Walker extends Walker_Nav_Menu
 {
     public $tree_type = ['post_type', 'taxonomy', 'custom'];
     public $db_fields = [
@@ -10,13 +10,13 @@ class defult_Custom_Nav_Walker extends Walker_Nav_Menu
     public function start_lvl(&$output, $depth = 0, $args = null)
     {
         $indent = str_repeat("\t", $depth);
-        $output .= "\n$indent<ul class=\"dropdown-menu\">\n";
+        $output .= "\n{$indent}<ul class=\"dropdown-menu border-0 d-block text-start rounded-0\">\n";
     }
 
     public function end_lvl(&$output, $depth = 0, $args = null)
     {
         $indent = str_repeat("\t", $depth);
-        $output .= "$indent</ul>\n";
+        $output .= "{$indent}</ul>\n";
     }
 
     public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
@@ -24,7 +24,7 @@ class defult_Custom_Nav_Walker extends Walker_Nav_Menu
         $indent  = ($depth) ? str_repeat("\t", $depth) : '';
         $classes = empty($item->classes) ? [] : (array) $item->classes;
         $classes[] = 'menu-item-' . $item->ID;
-        $classes[] = 'nav-item';
+        $classes[] = 'nav-item position-relative';
 
         $has_children = in_array('menu-item-has-children', $classes);
         if ($has_children) {
@@ -34,27 +34,34 @@ class defult_Custom_Nav_Walker extends Walker_Nav_Menu
         $class_names = implode(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args, $depth));
         $id = apply_filters('nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth);
 
-        // Make parent <li> clickable by adding 'dropdown-parent-clickable' class
+        // Add 'dropdown-parent-clickable' class for parent items
         $li_extra = $has_children ? ' dropdown-parent-clickable' : '';
 
         $output .= $indent . '<li class="' . esc_attr($class_names . $li_extra) . '">';
+
+        $link_classes = 'nav-link position-relative fw-medium';
+        if ($item->current) {
+            $link_classes .= ' active';
+        }
+        // Add .dropdown-toggle class to <a> if has sub menu
+        if ($has_children) {
+            $link_classes .= ' dropdown-toggle';
+        }
 
         $attributes_arr = [
             'title'  => !empty($item->attr_title) ? $item->attr_title : '',
             'target' => !empty($item->target) ? $item->target : '',
             'rel'    => !empty($item->xfn) ? $item->xfn : '',
-            'class'  => 'nav-link' . ($item->current ? ' active' : ''),
+            'class'  => $link_classes,
         ];
 
         // Always use the item's URL, even for parents with children
-        $attributes_arr['href'] = !empty($item->url) ? $item->url : '';
+        $attributes_arr['href'] = !empty($item->url) ? $item->url : 'javascript:void(0)';
 
         if ($has_children) {
-            $attributes_arr['class'] .= ' dropdown-toggle';
             $attributes_arr['role'] = 'button';
             $attributes_arr['data-bs-toggle'] = 'dropdown';
             $attributes_arr['aria-expanded'] = 'false';
-            // No event.preventDefault(); so link works as normal
         }
 
         $attributes = '';
