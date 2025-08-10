@@ -195,6 +195,21 @@
                     'label_block' => true,
                 ]
             );
+            // Scroll Down Link
+            $this->add_control(
+                'style1_scroll_link',
+                [
+                    'label'       => esc_html__('Scroll Down Link', 'axero-toolkit'),
+                    'type'        => Controls_Manager::URL,
+                    'placeholder' => esc_html__('https://your-link.com', 'axero-toolkit'),
+                    'default'     => [
+                        'url'         => '#',
+                        'is_external' => false,
+                        'nofollow'    => false,
+                    ],
+                    'label_block' => true,
+                ]
+            );
 
             $this->end_controls_section();
             
@@ -1963,14 +1978,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="scroll_down_text">
+                    <a href="<?php echo !empty($settings['style1_scroll_link']['url']) ? esc_url($settings['style1_scroll_link']['url']) : '#'; ?>"<?php echo !empty($settings['style1_scroll_link']['is_external']) ? ' target="_blank"' : ''; ?><?php echo !empty($settings['style1_scroll_link']['nofollow']) ? ' rel="nofollow"' : ''; ?>>
+                        <div class="scroll_down_text">
                         <div class="dot"></div>
                         <?php if (!empty($settings['style1_scroll_text'])) : ?>
                             <span class="d-block fw-medium text-uppercase">
                                 <?php echo wp_kses_post($settings['style1_scroll_text']); ?>
                             </span>
                         <?php endif; ?>
-                    </div>
+                        </div>
+                    </a>
+                    
                 </div>
         
             <?php } elseif ($settings['style_selection'] === 'style2') { ?>

@@ -865,7 +865,7 @@
         protected function render()
         {
           $settings = $this->get_settings_for_display(); ?>
-            <footer class="main_footer_area position-relative z-1 pt-150">
+            <footer class="main_footer_area position-relative z-1 pt_150">
                 <div class="container-fluid max_w_1905px">
                     <div class="main_footer_top">
                         <div class="row align-items-center justify-content-between">

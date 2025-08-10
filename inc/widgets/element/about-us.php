@@ -1,8 +1,7 @@
 <?php
     namespace axero_toolkit\Widgets;
-
+    use Elementor\Controls_Manager;
     use Elementor\Widget_Base;
-
     if (! defined('ABSPATH')) {
         exit;
     }

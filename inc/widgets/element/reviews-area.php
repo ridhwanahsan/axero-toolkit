@@ -1,6 +1,5 @@
 <?php
     namespace axero_toolkit\Widgets;
-
     use Elementor\Controls_Manager;
     use Elementor\Widget_Base;
 
@@ -36,6 +35,8 @@
             $this->register_controls_section();
             $this->style_tab_content();
         }
+
+        
 
         protected function register_controls_section() 
         {
