@@ -284,32 +284,7 @@
                     'label' => esc_html__('Header Navigation', 'axero-toolkit'),
                     'tab' => Controls_Manager::TAB_STYLE,
                 ]
-            );
-
-            $this->add_control(
-                'header_style_type',
-                [
-                    'label' => esc_html__('Style Type', 'axero-toolkit'),
-                    'type' => Controls_Manager::SELECT,
-                    'default' => '',
-                    'options' => [
-                        'style_three' => esc_html__('Style Three', 'axero-toolkit'),
-                        '' => esc_html__('Default', 'axero-toolkit'),
-                    ],
-                ]
-            );
-            $this->add_control(
-                'header_style_type_margin',
-                [
-                    'label' => esc_html__('Margin Type', 'axero-toolkit'),
-                    'type' => Controls_Manager::SELECT,
-                    'default' => '',
-                    'options' => [
-                        'mx-auto' => esc_html__('Margin Auto', 'axero-toolkit'),
-                        '' => esc_html__('Default', 'axero-toolkit'),
-                    ],
-                ]
-            );
+            ); 
              // Header Container Margin
             $this->add_responsive_control(
                 'header_container_padding',
@@ -475,6 +450,32 @@
             
             $this->end_controls_section();
 
+            // Sticky Header Style
+            $this->start_controls_section(
+                'sticky_header_style',
+                [
+                    'label' => esc_html__('Mobile Header', 'axero-toolkit'),
+                    'tab' => Controls_Manager::TAB_STYLE,
+                ]
+            );
+
+             
+            // Non Sticky Toggle Color
+            $this->add_control(
+                'non_sticky_toggle_color',
+                [
+                    'label' => esc_html__('Toggle Color', 'axero-toolkit'),
+                    'type' => Controls_Manager::COLOR,
+                    'default' => '#ffffff',
+                    'selectors' => [
+                        '{{WRAPPER}} .navbar_area.style_three .navbar .navbar-toggler .burger_menu span' => 'background-color: {{VALUE}};',
+                    ],
+                    'separator' => 'before',
+                ]
+            );
+            $this->end_controls_section();
+
+
             // Mobile Navigation Style
             $this->start_controls_section(
                 'mobile_nav_style',
@@ -596,9 +597,9 @@
         protected function render() 
         {
             $settings = $this->get_settings_for_display(); ?>
-                <div class="navbar_area <?php echo esc_attr($settings['header_style_type']); ?> top-0 start-0 end-0 h-auto p-0">
+                <div class="navbar_area style_three top-0 start-0 end-0 h-auto ">
                     <div class="container-fluid">
-                        <nav class="navbar p-0 navbar-expand-lg">
+                        <nav class="navbar  navbar-expand-lg">
                             <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
                                 <?php if ( !empty( $settings['main_logo']['url'] ) ) : ?>
                                     <img src="<?php echo esc_url( $settings['main_logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
@@ -614,7 +615,7 @@
                                 </span>
                             </button>
                             <div class="collapse navbar-collapse">
-                                <ul class="navbar-nav <?php echo esc_attr($settings['header_style_type_margin']); ?>">
+                                <ul class="navbar-nav  mx-auto">
                                 <?php
                                 // Get the selected menu from widget settings
                                 $selected_menu = $settings['selected_menu'] ?? '';

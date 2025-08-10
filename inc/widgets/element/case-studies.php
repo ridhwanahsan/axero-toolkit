@@ -39,7 +39,7 @@
         protected function get_post_categories()
         {
             $categories = get_terms([
-                'taxonomy' => 'works_category',
+                'taxonomy' => 'projects_category',
                 'hide_empty' => false,
             ]);
             $options = [];
@@ -108,7 +108,7 @@
                 [
                     'label'       => esc_html__('Filter by Category', 'lunex-toolkit'),
                     'type'        => Controls_Manager::SELECT2,
-                    'options'     => $this->get_post_categories('works_category'),
+                    'options'     => $this->get_post_categories('projects_category'),
                     'multiple'    => true,
                     'label_block' => true,
                 ]
@@ -151,7 +151,7 @@
             if (! empty($settings['category_filter'])) {
                 $query_args['tax_query'] = [
                     [
-                        'taxonomy' => 'works_category',
+                        'taxonomy' => 'projects_category',
                         'field'    => 'term_id',
                         'terms'    => $settings['category_filter'],
                     ],
@@ -191,7 +191,7 @@
                          <div class="case_studies_slides owl-carousel owl-theme" data-cue="slideInUp">
                             <?php if ($query->have_posts()):
                             while ($query->have_posts()): $query->the_post();
-                                $categories    = get_the_terms(get_the_ID(), 'works_category');
+                                $categories    = get_the_terms(get_the_ID(), 'projects_category');
                                 $category_name = ! empty($categories) ? esc_html($categories[0]->name) : '';
                             ?>
                             <div class="case_study_box">

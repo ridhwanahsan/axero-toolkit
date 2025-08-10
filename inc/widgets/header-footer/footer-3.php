@@ -572,7 +572,7 @@
         protected function render()
         {
           $settings = $this->get_settings_for_display(); ?>
-             <footer class="footer_area_two pt-150 position-relative z-1">
+             <footer class="footer_area_two pt_150 position-relative z-1">
                 <div class="container-fluid max_w_1560px">
                     <div class="row" data-cues="slideInUp" data-group="footer_list">
                         <div class="col-lg-6">

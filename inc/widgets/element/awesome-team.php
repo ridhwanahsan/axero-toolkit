@@ -1,6 +1,5 @@
 <?php
     namespace lunex_toolkit\Widgets;
-
     use Elementor\Controls_Manager;
     use Elementor\Widget_Base;
 
@@ -146,118 +145,14 @@
                 );
 
                 $this->end_controls_section();
+        }
+        /**
+         * Style Tab Content Section
+         * ------------------------
+         */
 
-                // Style 1 Content Controls
-                $this->start_controls_section(
-                    'style1_content_section',
-                    [
-                        'label' => esc_html__('Team Content', 'lunex-toolkit'),
-                        'tab' => Controls_Manager::TAB_CONTENT,
-                        
-                    ]
-                );
-
-                $repeater = new \Elementor\Repeater();
-
-                $repeater->add_control(
-                    'member_image',
-                    [
-                        'label' => esc_html__('Member Image', 'lunex-toolkit'),
-                        'type' => Controls_Manager::MEDIA,
-                        
-                    ]
-                );
-
-                $repeater->add_control(
-                    'member_name',
-                    [
-                        'label' => esc_html__('Name', 'lunex-toolkit'),
-                        'type' => Controls_Manager::TEXT,
-                        'default' => esc_html__('Michael Carter', 'lunex-toolkit'),
-                        'label_block' => true,
-                    ]
-                );
-
-                $repeater->add_control(
-                    'member_position',
-                    [
-                        'label' => esc_html__('Position', 'lunex-toolkit'),
-                        'type' => Controls_Manager::TEXT,
-                        'default' => esc_html__('Junior Executive', 'lunex-toolkit'),
-                        'label_block' => true,
-                    ]
-                );
-
-                $repeater->add_control(
-                    'member_description',
-                    [
-                        'label' => esc_html__('Description', 'lunex-toolkit'),
-                        'type' => Controls_Manager::TEXTAREA,
-                        'default' => esc_html__('In cursus quam consequat non tortor tristique dolor pellentesque.', 'lunex-toolkit'),
-                    ]
-                );
-
-                // Add team link text and URL controls
-                $repeater->add_control(
-                    'member_link',
-                    [
-                        'label' => esc_html__('Team Link', 'lunex-toolkit'),
-                        'type' => \Elementor\Controls_Manager::URL,
-                        'placeholder' => 'https://your-link.com',
-                        'default' => [
-                            'url' => '#',
-                            'is_external' => false,
-                            'nofollow' => false,
-                        ],
-                        'show_external' => true,
-                    ]
-                );
-
-                $repeater->add_control(
-                    'member_link_text',
-                    [
-                        'label' => esc_html__('Link Text', 'lunex-toolkit'),
-                        'type' => Controls_Manager::TEXT,
-                        'default' => esc_html__('Learn more', 'lunex-toolkit'),
-                        'label_block' => true,
-                    ]
-                );
-
-                $this->add_control(
-                    'team_members_list',
-                    [
-                        'label' => esc_html__('Team Members', 'lunex-toolkit'),
-                        'type' => Controls_Manager::REPEATER,
-                        'fields' => $repeater->get_controls(),
-                        'default' => [
-                            [
-                                'member_name' => esc_html__('Michael Carter', 'lunex-toolkit'),
-                                'member_position' => esc_html__('Junior Executive', 'lunex-toolkit'),
-                                'member_description' => esc_html__('In cursus quam consequat non tortor tristique dolor pellentesque.', 'lunex-toolkit'),
-                                'member_image' => [
-                                    'url' => get_template_directory_uri() . '/assets/images/teams/team7.jpg',
-                                ],
-                                'member_link' => [
-                                    'url' => 'team-details.html',
-                                    'is_external' => false,
-                                    'nofollow' => false,
-                                ],
-                                'member_link_text' => esc_html__('Learn more', 'lunex-toolkit'),
-                            ],
-                        ],
-                        'title_field' => '{{{ member_name }}}',
-                    ]
-                );
-
-                $this->end_controls_section();
-            }
-            /**
-             * Style Tab Content Section
-             * ------------------------
-             */
-
-            protected function style_tab_content()
-            {
+        protected function style_tab_content()
+        {
         
                 //  Section Title Tab
                 $this->start_controls_section(
@@ -473,70 +368,67 @@
             $query    = new \WP_Query($query_args);
             ?>
 
-           <div class="awesome_team_area ptb_150">
-                <div class="container-fluid max_w_1905px">
-                    <div class="section_title style_five">
-                        <?php if (!empty($settings['section_title'])) : ?>
-                            <h2 class="mb-0 text_animation">
-                                <?php echo wp_kses_post($settings['section_title']); ?>
-                            </h2>
-                        <?php endif; ?>
+                <div class="awesome_team_area ptb_150">
+                    <div class="container-fluid max_w_1905px">
+                        <div class="section_title style_five">
+                            <?php if (!empty($settings['section_title'])) : ?>
+                                <h2 class="mb-0 text_animation">
+                                    <?php echo wp_kses_post($settings['section_title']); ?>
+                                </h2>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="border_bottom_style"></div>
+                    <div class="container-fluid style_two max_w_1905px">
+                        <div class="awesome_team_slides owl-carousel owl-theme" data-cue="slideInUp">
+                            <?php if ( $query->have_posts() ) : 
+                                $post_count = 0;
+                                while ( $query->have_posts() ) : $query->the_post();
+                                $post_count++;
+                                // Get team member meta
+                                $categories = get_the_terms(get_the_ID(), 'teams_category');
+                                $position  = !empty($categories) ? esc_html($categories[0]->name) : '';
+                                $description = get_the_excerpt();
+                                $link_url = get_post_meta(get_the_ID(), 'link_url', true) ?: get_permalink();
+                                $link_text = get_post_meta(get_the_ID(), 'link_text', true) ?: __('Learn more', 'lunex-toolkit');
+                                $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                                if (!$image_url) {
+                                    $image_url = get_template_directory_uri() . '/assets/images/team/team' . $post_count . '.jpg';
+                                }
+                            ?>
+                                <div class="single_awesome_team_member">
+                                    <div class="image position-relative">
+                                        <?php if ( $image_url ) : ?>
+                                            <img src="<?php echo esc_url( $image_url ); ?>"
+                                                alt="<?php the_title_attribute(); ?>"
+                                                class="team-member-image"
+                                                loading="lazy">
+                                        <?php endif; ?>
+                                        <h3 class="mb-0">
+                                            <?php the_title(); ?>
+                                        </h3>
+                                    </div>
+                                    <div class="content">
+                                        <?php if ( $position ) : ?>
+                                            <h4><?php echo esc_html( $position ); ?></h4>
+                                        <?php endif; ?>
+                                        <?php if ( $description ) : ?>
+                                            <p><?php echo esc_html( $description ); ?></p>
+                                        <?php endif; ?>
+                                        <div class="border_bottom"></div>
+                                        <a href="<?php echo esc_url( $link_url ); ?>" class="details_link_btn d-inline-block position-relative text-uppercase fw-semibold">
+                                            <i class="ti ti-arrow-up-right"></i>
+                                            <?php echo esc_html( $link_text ); ?>
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php endwhile; 
+                            wp_reset_postdata();
+                            endif; ?>
+                        </div>
                     </div>
                 </div>
-                <div class="border_bottom_style"></div>
-                <div class="container-fluid style_two max_w_1905px">
-                    <div class="awesome_team_slides owl-carousel owl-theme" data-cue="slideInUp">
-                        <?php if ( $query->have_posts() ) : 
-                            $post_count = 0;
-                            while ( $query->have_posts() ) : $query->the_post();
-                            $post_count++;
-                            // Get team member meta
-                            $position = get_post_meta(get_the_ID(), 'position', true);
-                            $description = get_the_excerpt();
-                            $link_url = get_post_meta(get_the_ID(), 'link_url', true) ?: get_permalink();
-                            $link_text = get_post_meta(get_the_ID(), 'link_text', true) ?: __('Learn more', 'lunex-toolkit');
-                            $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                            if (!$image_url) {
-                                $image_url = get_template_directory_uri() . '/assets/images/team/team' . $post_count . '.jpg';
-                            }
-                        ?>
-                            <div class="single_awesome_team_member">
-                                <div class="image position-relative">
-                                    <?php if ( $image_url ) : ?>
-                                        <img src="<?php echo esc_url( $image_url ); ?>"
-                                            alt="<?php the_title_attribute(); ?>"
-                                            class="team-member-image"
-                                            loading="lazy">
-                                    <?php endif; ?>
-                                    <h3 class="mb-0">
-                                        <?php the_title(); ?>
-                                    </h3>
-                                </div>
-                                <div class="content">
-                                    <?php if ( $position ) : ?>
-                                        <h4><?php echo esc_html( $position ); ?></h4>
-                                    <?php endif; ?>
-                                    <?php if ( $description ) : ?>
-                                        <p><?php echo esc_html( $description ); ?></p>
-                                    <?php endif; ?>
-                                    <div class="border_bottom"></div>
-                                    <a href="<?php echo esc_url( $link_url ); ?>" class="details_link_btn d-inline-block position-relative text-uppercase fw-semibold">
-                                        <i class="ti ti-arrow-up-right"></i>
-                                        <?php echo esc_html( $link_text ); ?>
-                                    </a>
-                                </div>
-                            </div>
-                        <?php endwhile; 
-                        wp_reset_postdata();
-                        endif; ?>
-                    </div>
-                </div>
-            </div>
- 
-
-    <?php
+            <?php
         }
-            }
-       
-
-    $widgets_manager->register(new lunex_team_slider());
+    }
+$widgets_manager->register(new lunex_team_slider());

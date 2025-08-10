@@ -407,6 +407,32 @@
             
             $this->end_controls_section();
 
+            // Sticky Header Style
+            $this->start_controls_section(
+                'sticky_header_style',
+                [
+                    'label' => esc_html__('Mobile Header', 'axero-toolkit'),
+                    'tab' => Controls_Manager::TAB_STYLE,
+                ]
+            );
+
+             
+            // Non Sticky Toggle Color
+            $this->add_control(
+                'non_sticky_toggle_color',
+                [
+                    'label' => esc_html__('Toggle Color', 'axero-toolkit'),
+                    'type' => Controls_Manager::COLOR,
+                    'default' => '#ffffff',
+                    'selectors' => [
+                        '{{WRAPPER}} .navbar_area.style_three .navbar .navbar-toggler .burger_menu span' => 'background-color: {{VALUE}};',
+                    ],
+                    'separator' => 'before',
+                ]
+            );
+            $this->end_controls_section();
+
+
             // Mobile Navigation Style
             $this->start_controls_section(
                 'mobile_nav_style',
@@ -573,7 +599,6 @@
             $this->end_controls_section();
 
             // mobile menu contact style 
-
             $this->start_controls_section(
                 'mobile_menu_contact_style',
                 [

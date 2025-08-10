@@ -270,8 +270,8 @@
                                     }
                                     $facebook = get_post_meta(get_the_ID(), 'facebook', true);
                                     $instagram = get_post_meta(get_the_ID(), 'instagram', true);
-                                    $x = get_post_meta(get_the_ID(), 'x', true);
-                                    $linkedin = get_post_meta(get_the_ID(), 'linkedin', true);
+                                    $x = get_post_meta(get_the_ID(), 'twitter_x', true);
+                                    $linkedin = get_post_meta(get_the_ID(), 'linkdin', true);
                                     $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
                                     if (!$image_url) {
                                         $image_url = get_template_directory_uri() . '/assets/images/team/team' . $post_count . '.jpg';

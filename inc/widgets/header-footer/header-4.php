@@ -1,5 +1,5 @@
 <?php
-    namespace lunex_toolkit\Widgets;
+    namespace axero_toolkit\Widgets;
 
     use Elementor\Controls_Manager;
     use Elementor\Widget_Base;
@@ -661,7 +661,7 @@
                 [
                     'name' => 'button_border',
                     'label' => esc_html__('Border', 'axero-toolkit'),
-                    'selector' => '{{WRAPPER}} .btn.style_three',
+                    'selector' => '{{WRAPPER}} .btn.style_three, {{WRAPPER}} .btn',
                 ]
             );
 
@@ -672,7 +672,7 @@
                     'label' => esc_html__('Hover Border Color', 'axero-toolkit'),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .btn.style_three:hover, {{WRAPPER}} .btn.style_three:focus, {{WRAPPER}} .btn.style_three:active' => 'border-color: {{VALUE}} !important;',
+                        '{{WRAPPER}} .btn.style_three:hover, {{WRAPPER}} .btn.style_three:focus, {{WRAPPER}} .btn.style_three:active, {{WRAPPER}} .btn:hover, {{WRAPPER}} .btn:focus, {{WRAPPER}} .btn:active' => 'border-color: {{VALUE}} !important;',
                     ],
                 ]
             );
@@ -685,8 +685,33 @@
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => ['px', '%', 'em'],
                     'selectors' => [
-                        '{{WRAPPER}} .btn.style_three' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .btn.style_three, {{WRAPPER}} .btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
+                ]
+            );
+            $this->end_controls_section();
+
+            // Sticky Header Style
+            $this->start_controls_section(
+                'sticky_header_style',
+                [
+                    'label' => esc_html__('Mobile Header', 'axero-toolkit'),
+                    'tab' => Controls_Manager::TAB_STYLE,
+                ]
+            );
+
+             
+            // Non Sticky Toggle Color
+            $this->add_control(
+                'non_sticky_toggle_color',
+                [
+                    'label' => esc_html__('Toggle Color', 'axero-toolkit'),
+                    'type' => Controls_Manager::COLOR,
+                    'default' => '#ffffff',
+                    'selectors' => [
+                        '{{WRAPPER}} .navbar_area.style_three .navbar .navbar-toggler .burger_menu span' => 'background-color: {{VALUE}};',
+                    ],
+                    'separator' => 'before',
                 ]
             );
             $this->end_controls_section();

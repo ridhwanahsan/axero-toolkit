@@ -1,10 +1,13 @@
 <?php
 
-// **
-// Register Projects Custom Post Type
-////***
-function axero_register_works_post_type()
-{
+
+// Projects Post Type
+
+function axero_register_projects_post_type() {
+    global $axero_opt;
+    $projects_permalink = isset($axero_opt['projects_permalink']) ? $axero_opt['projects_permalink'] : 'projects';
+
+
     $labels = [
         'name'               => __('Projects', 'axero-toolkit'),
         'singular_name'      => __('Projects', 'axero-toolkit'),
@@ -33,7 +36,8 @@ function axero_register_works_post_type()
         'supports'           => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'],
         'menu_position'      => 5,
         'menu_icon'          => 'dashicons-hammer',
-        'taxonomies'         => ['works_category'],
+        'taxonomies'         => ['projects_category'],
+        'rewrite' => array( 'slug' => $projects_permalink ),
     ];
 
     // Register Projects Category Taxonomy
@@ -51,27 +55,29 @@ function axero_register_works_post_type()
         'menu_name'         => __('Categories', 'axero-toolkit'),
     ];
 
-    register_taxonomy('works_category', ['Projects'], [
+    register_taxonomy('projects_category', ['Projects'], [
         'hierarchical'       => true,
         'labels'             => $category_labels,
         'show_ui'            => true,
         'show_in_rest'       => true,
         'show_admin_column'  => true,
         'query_var'          => true,
-        'rewrite'            => ['slug' => 'Projects-category'],
+        'rewrite'            => ['slug' => 'projects_category'],
         'show_in_quick_edit' => true,
         'meta_box_cb'        => null,
     ]);
 
     register_post_type('Projects', $args);
 }
-add_action('init', 'axero_register_works_post_type');
+add_action('init', 'axero_register_projects_post_type');
 
-// **
-// Register Teams Custom Post Type
-////***
-function axero_register_teams_post_type()
-{
+
+// Teams Post Type
+
+function axero_register_teams_post_type() {
+    global $axero_opt;
+    $teams_permalink = isset($axero_opt['teams_permalink']) ? $axero_opt['teams_permalink'] : 'teams';
+
     $labels = [
         'name'               => __('Teams', 'axero-toolkit'),
         'singular_name'      => __('Team', 'axero-toolkit'),
@@ -101,6 +107,7 @@ function axero_register_teams_post_type()
         'menu_position'      => 5,
         'menu_icon'          => 'dashicons-groups',
         'taxonomies'         => ['teams_category'],
+        'rewrite' => array( 'slug' => $teams_permalink ),
     ];
 
     // Register Teams Category Taxonomy
@@ -125,7 +132,7 @@ function axero_register_teams_post_type()
         'show_in_rest'       => true,
         'show_admin_column'  => true,
         'query_var'          => true,
-        'rewrite'            => ['slug' => 'teams-category'],
+        'rewrite'            => ['slug' => 'teams_category'],
         'show_in_quick_edit' => true,
         'meta_box_cb'        => null,
     ]);
@@ -134,11 +141,12 @@ function axero_register_teams_post_type()
 }
 add_action('init', 'axero_register_teams_post_type');
 
-// **
-// Register Services Custom Post Type
-////***
-function axero_register_services_post_type()
-{
+ 
+// Services Post Type
+function axero_register_services_post_type() {
+    global $axero_opt;
+    $services_permalink = isset($axero_opt['services_permalink']) ? $axero_opt['services_permalink'] : 'services';
+
     $labels = [
         'name'               => __('Services', 'axero-toolkit'),
         'singular_name'      => __('Service', 'axero-toolkit'),
@@ -168,6 +176,8 @@ function axero_register_services_post_type()
         'menu_position'      => 5,
         'menu_icon'          => 'dashicons-admin-tools',
         'taxonomies'         => ['services_category'],
+        'rewrite' => array( 'slug' => $services_permalink ),
+        
     ];
 
     // Register Services Category Taxonomy

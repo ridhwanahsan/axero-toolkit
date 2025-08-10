@@ -39,7 +39,7 @@
         protected function get_post_categories()
         {
             $categories = get_terms([
-                'taxonomy' => 'works_category',
+                'taxonomy' => 'projects_category',
                 'hide_empty' => false,
             ]);
             $options = [];
@@ -55,10 +55,6 @@
 
         protected function register_controls_section()
         {
-             
-
-            
-
             // Title & Description
             $this->start_controls_section(
                 'title_description_section',
@@ -144,7 +140,7 @@
                 [
                     'label'       => esc_html__('Filter by Category', 'axero-toolkit'),
                     'type'        => Controls_Manager::SELECT2,
-                    'options'     => $this->get_post_categories('works_category'),
+                    'options'     => $this->get_post_categories('projects_category'),
                     'multiple'    => true,
                     'label_block' => true,
                 ]
@@ -215,15 +211,11 @@
                 ]
             );
 
-        $this->end_controls_section();
-
-            
-
+            $this->end_controls_section();   
         }
 
         protected function style_tab_content()
         {
-             
             // Style5 Section Title Tab
             $this->start_controls_section(
                 'style5_section_title_tab',
@@ -456,138 +448,137 @@
 
             $this->end_controls_section();
 
-        // Work Button Style Tab
-        $this->start_controls_section(
-            'work_button_style',
-            [
-                'label' => esc_html__('Work Button Style', 'axero-toolkit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
+            // Work Button Style Tab
+            $this->start_controls_section(
+                'work_button_style',
+                [
+                    'label' => esc_html__('Work Button Style', 'axero-toolkit'),
+                    'tab'   => Controls_Manager::TAB_STYLE,
+                ]
+            );
 
-        // Button Text Color
-        $this->add_control(
-            'button_text_color',
-            [
-                'label'     => esc_html__('Text Color', 'axero-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .warning_btn' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        // Button Text Hover Color
-        $this->add_control(
-            'button_text_hover_color',
-            [
-                'label'     => esc_html__('Text Hover Color', 'axero-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .warning_btn:hover' => 'color: {{VALUE}} !important;',
-                ],
-            ]
-        );
-
-        // Button Text Typography
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'button_text_typography',
-                'label'    => esc_html__('Typography', 'axero-toolkit'),
-                'selector' => '{{WRAPPER}} .warning_btn',
-            ]
-        );
-
-        // Button Background Color
-        $this->add_control(
-            'button_bg_color',
-            [
-                'label'     => esc_html__('Background Color', 'axero-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .warning_btn' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        // Button Hover Background Color
-        $this->add_control(
-            'button_bg_hover_color',
-            [
-                'label'     => esc_html__('Hover Background Color', 'axero-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .warning_btn:hover' => 'background-color: {{VALUE}} !important;',
-                    '{{WRAPPER}} .warning_btn:focus' => 'background-color: {{VALUE}} !important;',
-                    '{{WRAPPER}} .warning_btn:active' => 'background-color: {{VALUE}} !important;',
-                ],
-            ]
-        );
-
-        // Button Border Color
-        $this->add_control(
-            'button_border_color',
-            [
-                'label'     => esc_html__('Border Color', 'axero-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .warning_btn' => 'border-color: {{VALUE}} !important;',
-                ],
-            ]
-        );
-
-        // Icon Color
-        $this->add_control(
-            'button_icon_color',
-            [
-                'label'     => esc_html__('Icon Color', 'axero-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .btn span i' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .btn span svg' => 'fill: {{VALUE}};',
-                ],
-            ]
-        );
-
-        // Icon Hover Color
-        $this->add_control(
-            'button_icon_hover_color',
-            [
-                'label'     => esc_html__('Icon Hover Color', 'axero-toolkit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .btn:hover span i' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .btn:hover span svg' => 'fill: {{VALUE}};',
-                ],
-            ]
-        );
-
-        // Icon Size
-        $this->add_control(
-            'button_icon_size',
-            [
-                'label'     => esc_html__('Icon Size', 'axero-toolkit'),
-                'type'      => Controls_Manager::SLIDER,
-                'range'     => [
-                    'px' => [
-                        'min' => 10,
-                        'max' => 50,
+            // Button Text Color
+            $this->add_control(
+                'button_text_color',
+                [
+                    'label'     => esc_html__('Text Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .warning_btn' => 'color: {{VALUE}};',
                     ],
-                ],
-                'default'   => [
-                    'size' => 22,
-                    'unit' => 'px',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .btn span i' => 'font-size: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .btn span svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; font-size: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
+                ]
+            );
 
-        $this->end_controls_section();
-        
+            // Button Text Hover Color
+            $this->add_control(
+                'button_text_hover_color',
+                [
+                    'label'     => esc_html__('Text Hover Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .warning_btn:hover' => 'color: {{VALUE}} !important;',
+                    ],
+                ]
+            );
+
+            // Button Text Typography
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name'     => 'button_text_typography',
+                    'label'    => esc_html__('Typography', 'axero-toolkit'),
+                    'selector' => '{{WRAPPER}} .warning_btn',
+                ]
+            );
+
+            // Button Background Color
+            $this->add_control(
+                'button_bg_color',
+                [
+                    'label'     => esc_html__('Background Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .warning_btn' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            // Button Hover Background Color
+            $this->add_control(
+                'button_bg_hover_color',
+                [
+                    'label'     => esc_html__('Hover Background Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .warning_btn:hover' => 'background-color: {{VALUE}} !important;',
+                        '{{WRAPPER}} .warning_btn:focus' => 'background-color: {{VALUE}} !important;',
+                        '{{WRAPPER}} .warning_btn:active' => 'background-color: {{VALUE}} !important;',
+                    ],
+                ]
+            );
+
+            // Button Border Color
+            $this->add_control(
+                'button_border_color',
+                [
+                    'label'     => esc_html__('Border Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .warning_btn' => 'border-color: {{VALUE}} !important;',
+                    ],
+                ]
+            );
+
+            // Icon Color
+            $this->add_control(
+                'button_icon_color',
+                [
+                    'label'     => esc_html__('Icon Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .btn span i' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .btn span svg' => 'fill: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            // Icon Hover Color
+            $this->add_control(
+                'button_icon_hover_color',
+                [
+                    'label'     => esc_html__('Icon Hover Color', 'axero-toolkit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .btn:hover span i' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .btn:hover span svg' => 'fill: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            // Icon Size
+            $this->add_control(
+                'button_icon_size',
+                [
+                    'label'     => esc_html__('Icon Size', 'axero-toolkit'),
+                    'type'      => Controls_Manager::SLIDER,
+                    'range'     => [
+                        'px' => [
+                            'min' => 10,
+                            'max' => 50,
+                        ],
+                    ],
+                    'default'   => [
+                        'size' => 22,
+                        'unit' => 'px',
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .btn span i' => 'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .btn span svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; font-size: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            $this->end_controls_section();
         }
 
         protected function render()
@@ -605,7 +596,7 @@
             if (! empty($settings['category_filter'])) {
                 $query_args['tax_query'] = [
                     [
-                        'taxonomy' => 'works_category',
+                        'taxonomy' => 'projects_category',
                         'field'    => 'term_id',
                         'terms'    => $settings['category_filter'],
                     ],
@@ -617,77 +608,72 @@
                 $query_args['post__not_in'] = array_map('intval', explode(',', $settings['exclude_posts']));
             }
 
-            $query    = new \WP_Query($query_args); ?>
-        
-                <div class="awesome_works_area ptb_150">
-                    <div class="container-fluid max_w_1905px">
-                        <div class="section_title style_five">
-                            <?php if (!empty($settings['section_title'])) : ?>
-                                <h2 class="mb-0 text_animation">
-                                    <?php echo wp_kses_post($settings['section_title']); ?>
-                                </h2>
-                            <?php endif; ?>
-                        </div>
+            $query    = new \WP_Query($query_args);
+            ?>
+            <div class="awesome_works_area ptb_150">
+                <div class="container-fluid max_w_1905px">
+                    <div class="section_title style_five">
+                        <?php if (!empty($settings['section_title'])) : ?>
+                            <h2 class="mb-0 text_animation">
+                                <?php echo wp_kses_post($settings['section_title']); ?>
+                            </h2>
+                        <?php endif; ?>
                     </div>
-                     <div class="border_bottom_style"></div>
-                     <div class="container-fluid max_w_1905px">
-                        <div class="awesome_works_list" data-cues="slideInUp" data-group="awesome_works_list">
-                             <?php if (!empty($settings['section_description'])) : ?>
-                                <p class="sub_title fw-medium">
-                                    <?php echo wp_kses_post($settings['section_description']); ?>
-                                </p>
-                            <?php endif; ?>
-                            <?php
-                                            $vector_image = ! empty($settings['style5_vector_image']['url']) ? esc_url($settings['style5_vector_image']['url']) : get_template_directory_uri() . '/assets/images/icons/vector2.svg';
-                                            if ($query->have_posts()):
-                                                $post_number = 1;
-                                                while ($query->have_posts()): $query->the_post();
-                                                    $background_image = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'full') : get_template_directory_uri() . '/assets/images/works/work6.jpg';
-                                                ?>
-                                            <div class="item_box position-relative z-1"
-                                                style="background-image: url('<?php echo esc_url($background_image); ?>');">
-                                                <div class="row">
-                                                    <div class="col-lg-5">
-                                                        <div class="title">
-                                                            <div class="number lh-1 fw-semibold">
-                                                                (<?php echo str_pad($post_number, 2, '0', STR_PAD_LEFT); ?>)
-                                                            </div>
-                                                            <h3 class="mb-0">
-                                                                <?php the_title(); ?>
-                                                            </h3>
+                </div>
+                    <div class="border_bottom_style"></div>
+                    <div class="container-fluid max_w_1905px">
+                    <div class="awesome_works_list" data-cues="slideInUp" data-group="awesome_works_list">
+                            <?php if (!empty($settings['section_description'])) : ?>
+                            <p class="sub_title fw-medium">
+                                <?php echo wp_kses_post($settings['section_description']); ?>
+                            </p>
+                        <?php endif; ?>
+                        <?php
+                                        $vector_image = ! empty($settings['style5_vector_image']['url']) ? esc_url($settings['style5_vector_image']['url']) : get_template_directory_uri() . '/assets/images/icons/vector2.svg';
+                                        if ($query->have_posts()):
+                                            $post_number = 1;
+                                            while ($query->have_posts()): $query->the_post();
+                                                $background_image = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'full') : get_template_directory_uri() . '/assets/images/works/work6.jpg';
+                                            ?>
+                                        <div class="item_box position-relative z-1"
+                                            style="background-image: url('<?php echo esc_url($background_image); ?>');">
+                                            <div class="row">
+                                                <div class="col-lg-5">
+                                                    <div class="title">
+                                                        <div class="number lh-1 fw-semibold">
+                                                            (<?php echo str_pad($post_number, 2, '0', STR_PAD_LEFT); ?>)
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-7">
-                                                        <div class="content">
-                                                            <img src="<?php echo $vector_image; ?>" alt="vector">
-                                                            <p>
-                                                                <?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?>
-                                                            </p>
-                                                        </div>
+                                                        <h3 class="mb-0">
+                                                            <?php the_title(); ?>
+                                                        </h3>
                                                     </div>
                                                 </div>
-                                                <a href="<?php the_permalink(); ?>" class="details_btn d-block position-absolute start-0 end-0 top-0 bottom-0 z-1"></a>
+                                                <div class="col-lg-7">
+                                                    <div class="content">
+                                                        <img src="<?php echo $vector_image; ?>" alt="vector">
+                                                        <p>
+                                                            <?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?>
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <?php $post_number++; endwhile; wp_reset_postdata();else:?>
-                                <p><?php esc_html_e('No works found.', 'axero-toolkit'); ?></p>
-                            <?php endif; ?>
-                             <div class="text-center">
-                                <a href="<?php echo esc_url($settings['button_link']['url']); ?>" class="btn warning_btn">
-                                    <span class="d-inline-block position-relative">
-                                        <?php echo esc_html($settings['button_text']); ?> 
-                                        <?php \Elementor\Icons_Manager::render_icon($settings['button_icon'], ['aria-hidden' => 'true']); ?>
-                                    </span>
-                                </a>
-                            </div>
+                                            <a href="<?php the_permalink(); ?>" class="details_btn d-block position-absolute start-0 end-0 top-0 bottom-0 z-1"></a>
+                                        </div>
+                                        <?php $post_number++; endwhile; wp_reset_postdata();else:?>
+                            <p><?php esc_html_e('No works found.', 'axero-toolkit'); ?></p>
+                        <?php endif; ?>
+                            <div class="text-center">
+                            <a href="<?php echo esc_url($settings['button_link']['url']); ?>" class="btn warning_btn">
+                                <span class="d-inline-block position-relative">
+                                    <?php echo esc_html($settings['button_text']); ?> 
+                                    <?php \Elementor\Icons_Manager::render_icon($settings['button_icon'], ['aria-hidden' => 'true']); ?>
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
- 
-                
-
+            </div>
             <?php
-            }
-            }
-      
-
-  $widgets_manager->register(new axero_work_post());
+        }
+    }
+$widgets_manager->register(new axero_work_post());

@@ -23,7 +23,7 @@
 
             $widget_ops = [
                 'classname'   => 'reusable_block page',
-                'description' => __('Insert Axero Blocks.', 'unex-toolkit'),
+                'description' => __('Insert Axero Blocks.', 'axero-toolkit'),
 
             ];
 
@@ -54,7 +54,7 @@
 		<div>
 
 		<p><label for="<?php echo esc_attr($this->get_field_id('reusecb_title')); ?>">
-			<?php echo esc_html__('Title:', 'unex-toolkit'); ?>
+			<?php echo esc_html__('Title:', 'axero-toolkit'); ?>
 		</label>
 		<input
             class="widefat"
@@ -65,7 +65,7 @@
 		</p>
 
         <p><label for="<?php echo esc_attr($this->get_field_id('data_source')); ?>">
-			<?php echo esc_html__('Select Data source:', 'unex-toolkit'); ?>
+			<?php echo esc_html__('Select Data source:', 'axero-toolkit'); ?>
         </label>
         <select
             class="widefat reusecb_data_source"
@@ -74,7 +74,7 @@
 
         	<option
                 value="reusable_block"                                                                             <?php selected($instance['data_source'], 'reusable_block'); ?>>
-                <?php echo esc_html__('Reusable Block', 'unex-toolkit'); ?></option>
+                <?php echo esc_html__('Reusable Block', 'axero-toolkit'); ?></option>
                 <option value="db_other"                                                                                 <?php selected($instance['data_source'], 'db_other'); ?>>
                 <?php echo esc_html__('Other post types', 'axero-toolkit'); ?></option>
         </select></p>
