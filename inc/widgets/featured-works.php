@@ -39,7 +39,7 @@
          protected function get_post_categories()
         {
             $categories = get_terms([
-                'taxonomy' => 'works_category',
+                'taxonomy' => 'projects_category',
                 'hide_empty' => false,
             ]);
             $options = [];
@@ -108,7 +108,7 @@
                 [
                     'label'       => esc_html__('Filter by Category', 'lunex-toolkit'),
                     'type'        => Controls_Manager::SELECT2,
-                    'options'     => $this->get_post_categories('works_category'),
+                    'options'     => $this->get_post_categories('projects_category'),
                     'multiple'    => true,
                     'label_block' => true,
                 ]
@@ -150,7 +150,7 @@
             if (! empty($settings['category_filter'])) {
                 $query_args['tax_query'] = [
                     [
-                        'taxonomy' => 'works_category',
+                        'taxonomy' => 'projects_category',
                         'field'    => 'term_id',
                         'terms'    => $settings['category_filter'],
                     ],
@@ -181,7 +181,7 @@
                                     $work_title = get_the_title();
                                     $work_link  = get_permalink();
                                     $work_image = get_the_post_thumbnail_url( get_the_ID(), 'large' );
-                                    $work_terms = get_the_terms( get_the_ID(), 'works_category' );
+                                    $work_terms = get_the_terms( get_the_ID(), 'projects_category' );
                                     ?>
                                     <div class="work_item">
                                         <div class="image position-relative overflow-hidden">

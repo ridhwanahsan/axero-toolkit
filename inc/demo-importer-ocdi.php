@@ -4,8 +4,8 @@
  * Demo Imports
  */
 // OCDI Importer System
-if (! function_exists('lunex_ocdi_import_files')) {
-    function lunex_ocdi_import_files()
+if (! function_exists('axero_ocdi_import_files')) {
+    function axero_ocdi_import_files()
     {
         return [
             [
@@ -15,7 +15,7 @@ if (! function_exists('lunex_ocdi_import_files')) {
                 'local_import_widget_file'     => trailingslashit(get_template_directory()) . 'lib/sample-data/widgets.wie',
                 'local_import_customizer_file' => trailingslashit(get_template_directory()) . 'lib/sample-data/customizer.dat',
                 'import_preview_image_url'     => get_template_directory_uri() . '/assets/images/demos/demo-1.jpg',
-                'preview_url'                  => 'http://lunex-fix.local/',
+                'preview_url'                  => 'http://axetro.local/',
             ],
             [
                 'import_file_name'             => 'IT Startup Agency Demo',
@@ -24,7 +24,7 @@ if (! function_exists('lunex_ocdi_import_files')) {
                 'local_import_widget_file'     => trailingslashit(get_template_directory()) . 'lib/sample-data/widgets.wie',
                 'local_import_customizer_file' => trailingslashit(get_template_directory()) . 'lib/sample-data/customizer.dat',
                 'import_preview_image_url'     => get_template_directory_uri() . '/assets/images/demos/demo-2.jpg',
-                'preview_url'                  => 'http://lunex-fix.local/digital-agency/',
+                'preview_url'                  => 'http://axetro.local/it-startup-agency-home/',
             ],
             [
                 'import_file_name'             => 'Digital Agency Demo',
@@ -33,7 +33,7 @@ if (! function_exists('lunex_ocdi_import_files')) {
                 'local_import_widget_file'     => trailingslashit(get_template_directory()) . 'lib/sample-data/widgets.wie',
                 'local_import_customizer_file' => trailingslashit(get_template_directory()) . 'lib/sample-data/customizer.dat',
                 'import_preview_image_url'     => get_template_directory_uri() . '/assets/images/demos/demo-3.jpg',
-                'preview_url'                  => 'http://lunex-fix.local/development-agency/',
+                'preview_url'                  => 'http://axetro.local/digital-agency-home/',
             ],
             [
                 'import_file_name'             => 'Marketing Agency Demo',
@@ -42,15 +42,15 @@ if (! function_exists('lunex_ocdi_import_files')) {
                 'local_import_widget_file'     => trailingslashit(get_template_directory()) . 'lib/sample-data/widgets.wie',
                 'local_import_customizer_file' => trailingslashit(get_template_directory()) . 'lib/sample-data/customizer.dat',
                 'import_preview_image_url'     => get_template_directory_uri() . '/assets/images/demos/demo-4.jpg',
-                'preview_url'                  => 'http://lunex-fix.local/digital-marketing-agency/',
+                'preview_url'                  => 'http://axetro.local/marketing-agency-home/',
             ],  
         ];
     }
-    add_filter('ocdi/import_files', 'lunex_ocdi_import_files');
+    add_filter('ocdi/import_files', 'axero_ocdi_import_files');
 }
 
-if (! function_exists('lunex_ocdi_after_import_setup')) {
-    function lunex_ocdi_after_import_setup($demo)
+if (! function_exists('axero_ocdi_after_import_setup')) {
+    function axero_ocdi_after_import_setup($demo)
     {
         $front_page_id = "";
         $blog_page_id  = "";
@@ -87,11 +87,11 @@ if (! function_exists('lunex_ocdi_after_import_setup')) {
         //     update_option('woocommerce_myaccount_page_id', '16');
         // }
     }
-    add_action('ocdi/after_import', 'lunex_ocdi_after_import_setup');
+    add_action('ocdi/after_import', 'axero_ocdi_after_import_setup');
 }
 
-if (! function_exists('lunex_ocdi_plugin_page_setup')) {
-    function lunex_ocdi_plugin_page_setup($default_settings)
+if (! function_exists('axero_ocdi_plugin_page_setup')) {
+    function axero_ocdi_plugin_page_setup($default_settings)
     {
         $default_settings['parent_slug'] = 'themes.php';
         $default_settings['page_title']  = esc_html__('One Click Demo Import', 'one-click-demo-import');
@@ -100,5 +100,5 @@ if (! function_exists('lunex_ocdi_plugin_page_setup')) {
         $default_settings['menu_slug']   = 'one-click-demo-import';
         return $default_settings;
     }
-    add_filter('ocdi/plugin_page_setup', 'lunex_ocdi_plugin_page_setup');
+    add_filter('ocdi/plugin_page_setup', 'axero_ocdi_plugin_page_setup');
 }

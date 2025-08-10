@@ -194,6 +194,10 @@
                                     <?php
                                     $categories = get_the_terms(get_the_ID(), 'teams_category');
                                     $category_name = !empty($categories) ? esc_html($categories[0]->name) : '';
+                                    $facebook = get_field('facebook');
+                                    $instagram = get_field('instagram');
+                                    $twitter_x = get_field('twitter_x');
+                                    $linkedin = get_field('linkdin');
                                     ?>
                                     <div class="slide d-flex align-items-end" style="background-image: url(<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>);">
                                         <div class="team_content">
@@ -211,18 +215,26 @@
                                                 <?php echo get_the_excerpt(); ?>
                                             </p>
                                             <div class="socials lh-1 d-flex align-items-center">
-                                                <a href="#" target="_blank">
-                                                    <i class="ti ti-brand-facebook"></i>
-                                                </a>
-                                                <a href="#" target="_blank">
-                                                    <i class="ti ti-brand-instagram"></i>
-                                                </a>
-                                                <a href="#" target="_blank">
-                                                    <i class="ti ti-brand-x"></i>
-                                                </a>
-                                                <a href="#" target="_blank">
-                                                    <i class="ti ti-brand-linkedin"></i>
-                                                </a>
+                                                <?php if ($facebook): ?>
+                                                    <a href="<?php echo esc_url($facebook); ?>" target="_blank">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                <?php endif; ?>
+                                                <?php if ($instagram): ?>
+                                                    <a href="<?php echo esc_url($instagram); ?>" target="_blank">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                <?php endif; ?>
+                                                <?php if ($twitter_x): ?>
+                                                    <a href="<?php echo esc_url($twitter_x); ?>" target="_blank">
+                                                        <i class="ti ti-brand-x"></i>
+                                                    </a>
+                                                <?php endif; ?>
+                                                <?php if ($linkedin): ?>
+                                                    <a href="<?php echo esc_url($linkedin); ?>" target="_blank">
+                                                        <i class="ti ti-brand-linkedin"></i>
+                                                    </a>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                     </div>

@@ -367,7 +367,6 @@
 
             $query    = new \WP_Query($query_args);
             ?>
-
                 <div class="awesome_team_area ptb_150">
                     <div class="container-fluid max_w_1905px">
                         <div class="section_title style_five">

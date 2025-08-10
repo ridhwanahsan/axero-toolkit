@@ -34,6 +34,6 @@ add_action('after_setup_theme', function () {
     require_once AXERO_ACC_PATH . '/inc/acf.php';
     require_once AXERO_ACC_PATH . '/inc/demo-importer-ocdi.php';
     require_once AXERO_ACC_PATH . '/inc/builder/core-builder.php';
-    require_once AXERO_ACC_PATH . '/inc/builder/defult-nav-walker.php';
+    require_once AXERO_ACC_PATH . '/inc/builder/bootstrap-nav-walker.php';
 
 });

@@ -79,7 +79,7 @@
                     <h2 class="text-white text_animation">
                         Let’s Talk
                     </h2>
-                    <a href="contact.html" class="details_link_btn menu_link" data-cue="slideInUp">
+                     <a href="<?php echo esc_url(home_url('/contact')); ?>" class="details_link_btn menu_link" data-cue="slideInUp">
                         <span class="d-block">
                             <i class="ti ti-arrow-up-right"></i>
                             <span class="menu_link_text d-block fw-medium">
