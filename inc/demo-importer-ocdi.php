@@ -15,16 +15,16 @@ if (! function_exists('axero_ocdi_import_files')) {
                 'local_import_widget_file'     => trailingslashit(get_template_directory()) . 'lib/sample-data/widgets.wie',
                 'local_import_customizer_file' => trailingslashit(get_template_directory()) . 'lib/sample-data/customizer.dat',
                 'import_preview_image_url'     => get_template_directory_uri() . '/assets/images/demos/demo-1.jpg',
-                'preview_url'                  => 'http://axetro.local/',
+                'preview_url'                  => 'https://demo.nsatheme.com/axero/',
             ],
             [
-                'import_file_name'             => 'IT Startup Agency Demo',
+                'import_file_name'             => 'It Startup Agency Demo',
                 'categories'                   => ['IT Startup Agency'],
                  'local_import_file'            => trailingslashit(get_template_directory()) . 'lib/sample-data/contents.xml',
                 'local_import_widget_file'     => trailingslashit(get_template_directory()) . 'lib/sample-data/widgets.wie',
                 'local_import_customizer_file' => trailingslashit(get_template_directory()) . 'lib/sample-data/customizer.dat',
                 'import_preview_image_url'     => get_template_directory_uri() . '/assets/images/demos/demo-2.jpg',
-                'preview_url'                  => 'http://axetro.local/it-startup-agency-home/',
+                'preview_url'                  => 'https://demo.nsatheme.com/axero/it-startup-agency-home/',
             ],
             [
                 'import_file_name'             => 'Digital Agency Demo',
@@ -33,7 +33,7 @@ if (! function_exists('axero_ocdi_import_files')) {
                 'local_import_widget_file'     => trailingslashit(get_template_directory()) . 'lib/sample-data/widgets.wie',
                 'local_import_customizer_file' => trailingslashit(get_template_directory()) . 'lib/sample-data/customizer.dat',
                 'import_preview_image_url'     => get_template_directory_uri() . '/assets/images/demos/demo-3.jpg',
-                'preview_url'                  => 'http://axetro.local/digital-agency-home/',
+                'preview_url'                  => 'https://demo.nsatheme.com/axero/digital-agency-home/',
             ],
             [
                 'import_file_name'             => 'Marketing Agency Demo',
@@ -42,7 +42,7 @@ if (! function_exists('axero_ocdi_import_files')) {
                 'local_import_widget_file'     => trailingslashit(get_template_directory()) . 'lib/sample-data/widgets.wie',
                 'local_import_customizer_file' => trailingslashit(get_template_directory()) . 'lib/sample-data/customizer.dat',
                 'import_preview_image_url'     => get_template_directory_uri() . '/assets/images/demos/demo-4.jpg',
-                'preview_url'                  => 'http://axetro.local/marketing-agency-home/',
+                'preview_url'                  => 'https://demo.nsatheme.com/axero/marketing-agency-home/',
             ],  
         ];
     }
@@ -56,13 +56,10 @@ if (! function_exists('axero_ocdi_after_import_setup')) {
         $blog_page_id  = "";
         // Map demo names to page titles
         $demo_to_page = [
-            'Creative Agency'          => 'Creative Agency',
-            'Digital Agency'           => 'Digital Agency',
-            'Development Agency'       => 'Development Agency',
-            'Digital Marketing Agency' => 'Digital Marketing Agency',
-            'UI/UX Design Agency'      => 'UI/UX Design Agency',
-            'Branding Agency'          => 'Branding Agency',
-            'Content Creation Agency'  => 'Content Creation Agency',
+        'Home Main'              => 'Home Main',
+        'It Startup Agency Home' => 'It Startup Agency Home',
+        'Digital Agency Home'    => 'Digital Agency Home',
+        'Marketing Agency Home'  => 'Marketing Agency Home',
         ];
         if (isset($demo_to_page[$demo['import_file_name']])) {
             $front_page = get_page_by_title($demo_to_page[$demo['import_file_name']]);

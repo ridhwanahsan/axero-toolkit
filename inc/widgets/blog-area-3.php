@@ -196,7 +196,7 @@
                             <h2 class="mb-0 text-white text-uppercase fw-semibold text_animation">
                                 Thoughts & insights
                             </h2>
-                            <img src="<?echo get_template_directory_uri()?>/assets/images/icons/right_down_arrow.svg" alt="right_down_arrow">
+                            <img src="<?php echo get_template_directory_uri()?>/assets/images/icons/right_down_arrow.svg" alt="right_down_arrow">
                         </div>
                         <div class="row justify-content-center" data-cues="slideInUp" data-group="blog_list">
                             <?php

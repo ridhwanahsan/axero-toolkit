@@ -2001,7 +2001,7 @@
                                     <?php echo esc_html($settings['style2_main_title_before_img']); ?>
                                 <?php endif; ?>
                                 <?php if (!empty($settings['style2_main_title_img']['url'])) : ?>
-                                    <img src="<?php echo esc_url($settings['style2_main_title_img']['url']); ?>" alt="<?php echo esc_attr(basename($settings['style2_main_title_img']['url'], '.' . pathinfo($settings['style2_main_title_img']['url']))); ?>">
+                                    <img src="<?php echo esc_url($settings['style2_main_title_img']['url']); ?>" alt="<?php echo esc_attr($settings['style2_main_title_before_img']); ?>">
                                 <?php endif; ?>
                                 <?php if (!empty($settings['style2_main_title_after_img'])) : ?>
                                     <?php echo esc_html($settings['style2_main_title_after_img']); ?>
